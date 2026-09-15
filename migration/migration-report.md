@@ -1,0 +1,150 @@
+# Source Audit & Migration Inventory Report
+
+**Date:** 2026-09-12T11:43:53.026Z  
+**Source Archive:** `C:\Users\ashis\www.krphysiotherapy.com.zip`  
+**Target Architecture:** React + Node.js + Express.js + MySQL + REST API  
+
+## 1. Executive Summary
+- **Total Audited Files:** 417
+- **Core Standard Pages:** 7 (`index.htm`, `about.html`, `services.html`, `treatments.html`, `contact.html`, `privacy-policy.html`, `terms-and-conditions.html`)
+- **Clinical Services:** 8
+- **Treatments & Conditions:** 9
+- **Doctor Profiles:** 2 (`Dr. Neelam Sharma`, `Dr. Anamika`)
+- **Sector / Location Landing Pages:** 5 (Sectors 34, 35, 52, 53, 71)
+- **Clinical Blog Posts:** 26
+- **Blog Archive & Category Pages:** 2
+- **Authentic Testimonials Extracted:** 3 (including Manvi Chaurasia, Khushboo, Sakshi Agrawal)
+- **SEO Records Captured:** 84
+- **Route Manifest Entries:** 116
+
+## 2. Route Inventory & Legacy Preservation
+Every legacy URL with its original `.html` extension or blog path has been inventoried and mapped to resolve directly without redirects:
+- **/** (page -> home template)
+- **/about.html** (page -> about template)
+- **/services.html** (page -> services template)
+- **/treatments.html** (page -> treatments template)
+- **/contact.html** (page -> contact template)
+- **/privacy-policy.html** (page -> legal template)
+- **/terms-and-conditions.html** (page -> legal template)
+- **/musculoskeletal-physiotherapy.html** (service -> service template)
+- **/neurological-physiotherapy.html** (service -> service template)
+- **/cardiorespiratory-physiotherapy.html** (service -> service template)
+- **/sports-physiotherapy.html** (service -> service template)
+- **/geriatric-physiotherapy.html** (service -> service template)
+- **/paediatric-physiotherapy.html** (service -> service template)
+- **/women-health-physiotherapy.html** (service -> service template)
+- **/physiotherapy-at-home.html** (service -> service template)
+- **/back-pain.html** (treatment -> treatment template)
+- **/shoulder-pain.html** (treatment -> treatment template)
+- **/knee-pain.html** (treatment -> treatment template)
+- **/neck-pain.html** (treatment -> treatment template)
+- **/knee-ligament-injury.html** (treatment -> treatment template)
+- **/hijama-cupping-therapy.html** (treatment -> treatment template)
+- **/cerebral-palsy.html** (treatment -> treatment template)
+- **/scoliosis.html** (treatment -> treatment template)
+- **/bell-palsy.html** (treatment -> treatment template)
+- **/doctor-neelam-sharma.html** (doctor -> doctor template)
+- **/doctor-anamika.html** (doctor -> doctor template)
+- **/physiotherapy-in-noida-sector-34.html** (location -> location template)
+- **/physiotherapy-in-noida-sector-35.html** (location -> location template)
+- **/physiotherapy-in-noida-sector-52.html** (location -> location template)
+- **/physiotherapy-in-noida-sector-53.html** (location -> location template)
+- **/physiotherapy-in-noida-sector-71.html** (location -> location template)
+- **/blogs/index.htm** (blog_list -> blog_list template)
+- **/blogs/** (blog_list -> blog_list template)
+- **/blogs** (blog_list -> blog_list template)
+- **/blogs/3-reasons-for-choosing-only-a-paediatric-physiotherapist-for-your-child/index.htm** (blog -> blog_article template)
+- **/blogs/3-reasons-for-choosing-only-a-paediatric-physiotherapist-for-your-child/** (blog -> blog_article template)
+- **/blogs/3-reasons-for-choosing-only-a-paediatric-physiotherapist-for-your-child** (blog -> blog_article template)
+- **/blogs/4-symptoms-that-require-you-to-see-the-physiotherapist-in-noida/index.htm** (blog -> blog_article template)
+- **/blogs/4-symptoms-that-require-you-to-see-the-physiotherapist-in-noida/** (blog -> blog_article template)
+- **/blogs/4-symptoms-that-require-you-to-see-the-physiotherapist-in-noida** (blog -> blog_article template)
+- **/blogs/4-tips-for-finding-the-best-physiotherapy-clinic-in-noida/index.htm** (blog -> blog_article template)
+- **/blogs/4-tips-for-finding-the-best-physiotherapy-clinic-in-noida/** (blog -> blog_article template)
+- **/blogs/4-tips-for-finding-the-best-physiotherapy-clinic-in-noida** (blog -> blog_article template)
+- **/blogs/6-top-qualities-in-selecting-the-best-physiotherapist-around-you/index.htm** (blog -> blog_article template)
+- **/blogs/6-top-qualities-in-selecting-the-best-physiotherapist-around-you/** (blog -> blog_article template)
+- **/blogs/6-top-qualities-in-selecting-the-best-physiotherapist-around-you** (blog -> blog_article template)
+- **/blogs/back-pain-causes-and-cure/index.htm** (blog -> blog_article template)
+- **/blogs/back-pain-causes-and-cure/** (blog -> blog_article template)
+- **/blogs/back-pain-causes-and-cure** (blog -> blog_article template)
+- **/blogs/beat-the-muscle-pain-with-kr-physiotherapy-rehabilitation-clinic/index.htm** (blog -> blog_article template)
+- **/blogs/beat-the-muscle-pain-with-kr-physiotherapy-rehabilitation-clinic/** (blog -> blog_article template)
+- **/blogs/beat-the-muscle-pain-with-kr-physiotherapy-rehabilitation-clinic** (blog -> blog_article template)
+- **/blogs/cupping-therapy-and-the-various-advantages-it-provides/index.htm** (blog -> blog_article template)
+- **/blogs/cupping-therapy-and-the-various-advantages-it-provides/** (blog -> blog_article template)
+- **/blogs/cupping-therapy-and-the-various-advantages-it-provides** (blog -> blog_article template)
+- **/blogs/everything-that-you-need-to-know-about-ligament-injury/index.htm** (blog -> blog_article template)
+- **/blogs/everything-that-you-need-to-know-about-ligament-injury/** (blog -> blog_article template)
+- **/blogs/everything-that-you-need-to-know-about-ligament-injury** (blog -> blog_article template)
+- **/blogs/everything-you-need-to-know-about-physiotherapy/index.htm** (blog -> blog_article template)
+- **/blogs/everything-you-need-to-know-about-physiotherapy/** (blog -> blog_article template)
+- **/blogs/everything-you-need-to-know-about-physiotherapy** (blog -> blog_article template)
+- **/blogs/feed/index.htm** (blog_archive -> blog_list template)
+- **/blogs/feed/** (blog_archive -> blog_list template)
+- **/blogs/feel-the-relief-from-the-functional-disorder-with-kr-physiotherapy-rehabilitation-clinic/index.htm** (blog -> blog_article template)
+- **/blogs/feel-the-relief-from-the-functional-disorder-with-kr-physiotherapy-rehabilitation-clinic/** (blog -> blog_article template)
+- **/blogs/feel-the-relief-from-the-functional-disorder-with-kr-physiotherapy-rehabilitation-clinic** (blog -> blog_article template)
+- **/blogs/go-for-the-cupping-therapy-in-noida-for-best-results/index.htm** (blog -> blog_article template)
+- **/blogs/go-for-the-cupping-therapy-in-noida-for-best-results/** (blog -> blog_article template)
+- **/blogs/go-for-the-cupping-therapy-in-noida-for-best-results** (blog -> blog_article template)
+- **/blogs/how-can-you-benefit-from-musculoskeletal-physiotherapy/index.htm** (blog -> blog_article template)
+- **/blogs/how-can-you-benefit-from-musculoskeletal-physiotherapy/** (blog -> blog_article template)
+- **/blogs/how-can-you-benefit-from-musculoskeletal-physiotherapy** (blog -> blog_article template)
+- **/blogs/how-does-physiotherapy-help-with-knee-pain/index.htm** (blog -> blog_article template)
+- **/blogs/how-does-physiotherapy-help-with-knee-pain/** (blog -> blog_article template)
+- **/blogs/how-does-physiotherapy-help-with-knee-pain** (blog -> blog_article template)
+- **/blogs/how-much-does-physiotherapy-cost-in-noida-and-delhi/index.htm** (blog -> blog_article template)
+- **/blogs/how-much-does-physiotherapy-cost-in-noida-and-delhi/** (blog -> blog_article template)
+- **/blogs/how-much-does-physiotherapy-cost-in-noida-and-delhi** (blog -> blog_article template)
+- **/blogs/how-to-choose-the-best-physiotherapy-clinic-in-noida/index.htm** (blog -> blog_article template)
+- **/blogs/how-to-choose-the-best-physiotherapy-clinic-in-noida/** (blog -> blog_article template)
+- **/blogs/how-to-choose-the-best-physiotherapy-clinic-in-noida** (blog -> blog_article template)
+- **/blogs/how-to-keep-your-child-engaged-in-their-physiotherapy-treatment/index.htm** (blog -> blog_article template)
+- **/blogs/how-to-keep-your-child-engaged-in-their-physiotherapy-treatment/** (blog -> blog_article template)
+- **/blogs/how-to-keep-your-child-engaged-in-their-physiotherapy-treatment** (blog -> blog_article template)
+- **/blogs/muscular-pain-consult-a-physiotherapist/index.htm** (blog -> blog_article template)
+- **/blogs/muscular-pain-consult-a-physiotherapist/** (blog -> blog_article template)
+- **/blogs/muscular-pain-consult-a-physiotherapist** (blog -> blog_article template)
+- **/blogs/physiotherapy-a-lifeline-for-a-quality-life-ahead/index.htm** (blog -> blog_article template)
+- **/blogs/physiotherapy-a-lifeline-for-a-quality-life-ahead/** (blog -> blog_article template)
+- **/blogs/physiotherapy-a-lifeline-for-a-quality-life-ahead** (blog -> blog_article template)
+- **/blogs/points-to-get-best-paralysis-physiotherapy-in-noida/index.htm** (blog -> blog_article template)
+- **/blogs/points-to-get-best-paralysis-physiotherapy-in-noida/** (blog -> blog_article template)
+- **/blogs/points-to-get-best-paralysis-physiotherapy-in-noida** (blog -> blog_article template)
+- **/blogs/solve-all-joint-pains-with-the-help-of-physiotherapy-in-noida/index.htm** (blog -> blog_article template)
+- **/blogs/solve-all-joint-pains-with-the-help-of-physiotherapy-in-noida/** (blog -> blog_article template)
+- **/blogs/solve-all-joint-pains-with-the-help-of-physiotherapy-in-noida** (blog -> blog_article template)
+- **/blogs/what-are-the-3-most-common-causes-of-hand-pain/index.htm** (blog -> blog_article template)
+- **/blogs/what-are-the-3-most-common-causes-of-hand-pain/** (blog -> blog_article template)
+- **/blogs/what-are-the-3-most-common-causes-of-hand-pain** (blog -> blog_article template)
+- **/blogs/what-are-the-benefits-of-a-female-physiotherapist-for-you/index.htm** (blog -> blog_article template)
+- **/blogs/what-are-the-benefits-of-a-female-physiotherapist-for-you/** (blog -> blog_article template)
+- **/blogs/what-are-the-benefits-of-a-female-physiotherapist-for-you** (blog -> blog_article template)
+- **/blogs/what-are-the-benefits-of-cardiorespiratory-physiotherapy/index.htm** (blog -> blog_article template)
+- **/blogs/what-are-the-benefits-of-cardiorespiratory-physiotherapy/** (blog -> blog_article template)
+- **/blogs/what-are-the-benefits-of-cardiorespiratory-physiotherapy** (blog -> blog_article template)
+- **/blogs/what-are-the-benefits-of-neurological-physiotherapy/index.htm** (blog -> blog_article template)
+- **/blogs/what-are-the-benefits-of-neurological-physiotherapy/** (blog -> blog_article template)
+- **/blogs/what-are-the-benefits-of-neurological-physiotherapy** (blog -> blog_article template)
+- **/blogs/what-are-the-causes-of-back-pain-in-children/index.htm** (blog -> blog_article template)
+- **/blogs/what-are-the-causes-of-back-pain-in-children/** (blog -> blog_article template)
+- **/blogs/what-are-the-causes-of-back-pain-in-children** (blog -> blog_article template)
+- **/blogs/why-women-need-special-physiotherapy-for-certain-health-problems/index.htm** (blog -> blog_article template)
+- **/blogs/why-women-need-special-physiotherapy-for-certain-health-problems/** (blog -> blog_article template)
+- **/blogs/why-women-need-special-physiotherapy-for-certain-health-problems** (blog -> blog_article template)
+- **/blogs/wp-json/index.htm** (blog_archive -> blog_list template)
+- **/blogs/wp-json/** (blog_archive -> blog_list template)
+
+## 3. SEO Equity Inventory
+- **Meta Titles Captured:** 84
+- **Meta Descriptions Captured:** 70
+- **Keywords Tags Captured:** 26
+- **Canonical URLs Captured:** 84
+- **OpenGraph Tags Captured:** 82
+- **Structured Data JSON-LD Schemas:** 84
+
+## 4. Assets & Images
+- **Total Images Migrated:** 139
+- **Doctor Photos Preserved:** `Dr-Neelam-Sharma2.jpg`, `Dr-anamika.png`
+- **Brand Logo Preserved:** `logo1.jpg`, `logo1.png`

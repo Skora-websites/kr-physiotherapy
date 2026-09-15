@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "Physiotherapy",
+    "slug": "physiotherapy",
+    "description": "Physiotherapy insights and tips"
+  },
+  {
+    "id": 2,
+    "name": "Uncategorized",
+    "slug": "uncategorized",
+    "description": "General articles"
+  }
+]

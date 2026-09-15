@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "slug": "doctor-neelam-sharma",
+    "name": "Doctor Neelam Sharma",
+    "designation": "Senior Consultant Physiotherapist & Clinical Director",
+    "qualification": "B.P.T, M.P.T (Neuro), MIAP",
+    "experience_years": 12,
+    "bio_html": "<h3 class=\"icon-default\"><a href=\"doctor-neelam-sharma.html\">Dr. Neelam Sharma</a></h3>\n                <h5 class=\"icon-primary\"><strong> MPT(Neuro), BPT, MIAP</strong></h5>\n                <p>Dr. Neelam Sharma, B.P.T., M.P.Th, M.I.A.P. has done specialization in Physiotherapy. Dr. Neelam\n                    Sharma is best Physiotherapist in orthopaedic, Neurological, Geriatrics, Pediatrics conditions. She is\n                    managing her clinic with modern and advanced treatment to help you move well and stay happy and\n                    well trained team which is working under guidance of her.</p>\n                <p>She provides best Physiotherapy service in Noida like Manual Therapy, Exercise therapy, Modalities (\n                    US,IFT,TENS LASER,SWD,MS,MH), tapping, Chiropractor, Dry needling, dry cupping, hijama cupping.\n                    Dr. Neelam Sharma is well educated in her field and she is Best Physiotherapist in Noida</p>     \n                 <h3><strong>FAQ</strong></h3>\n                <p>\n               <strong> Q: Where does Dr. Neelam Sharma (Physiotherapist) practice?</strong><br>\n               Ans - Dr. Neelam Sharma(PT) practices at K R Physiotherapy &amp; Rehabilitation Clinic, Kisan Tower Basement, Main Road Hoshiyarpur, Sector 51 Noida, Uttar Pradesh 201301. She also provides home visits.<br></p>\n               <p>\n               <strong> Q: How can I take Dr. Neelam Sharma (Physiotherapist)'s appointment ?</strong><br>\n               Ans - You can take Dr. Neelam Sharma’s appointment through website or you can call on 85953 21652.<br></p>\n               <p>\n               <strong> Q: Why do patients visit Dr. Neelam Sharma (Physiotherapist)?</strong><br>\n               Ans - Patients frequntly visit Dr. Neelam Sharma(PT) for neck pain, back pain, knee pain, all orthro and neurological problems. She also provides dry needling, cupping therapy, chirapractic and other manual therapies.<br></p>\n               <p>\n               <strong> Q: What is Dr. Neelam Sharma (Physiotherapist)'s education qualification?</strong><br>\n               Ans - Dr. Neelam Sharma(PT) has following qualifications- BPT ( Bachelor of Physiotherapy), MPT (Master of Physiotherapy)(Neurology).<br></p>\n               <p>\n               <strong> Q: What is physiotherapy treatment cost?</strong><br>\n                </p>",
+    "photo_url": "/images/Dr-Neelam-Sharma2.jpg",
+    "phone": "+91 8595321652",
+    "email": "info@krphysiotherapy.com",
+    "sort_order": 1,
+    "status": "published"
+  },
+  {
+    "id": 2,
+    "slug": "doctor-anamika",
+    "name": "Doctor Anamika",
+    "designation": "Consultant Physiotherapist",
+    "qualification": "B.P.T, M.P.T (Ortho), MIAP",
+    "experience_years": 8,
+    "bio_html": "<h3 class=\"icon-default\"><a href=\"doctor-anamika.html\"> Dr. Anamika</a></h3>\n                    <h5 class=\"icon-primary\"><strong>BPT</strong> </h5>\n                    <p>Dr. Anamika done her Bachelor of Physiotherapy from one of the best college of Delhi NCR. Dr\n                        Anamika have great knowledge about Manual therapy, Physiotherapy Modalities, Tapping.</p>",
+    "photo_url": "/images/Dr-anamika.png",
+    "phone": "+91 8595321652",
+    "email": "info@krphysiotherapy.com",
+    "sort_order": 2,
+    "status": "published"
+  }
+]

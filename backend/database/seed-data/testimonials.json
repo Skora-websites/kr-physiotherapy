@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "patient_name": "Manvi Chaurasia",
+    "location": "Noida  Manvi Chaurasia, Noida",
+    "condition_treated": "Knee Stiffness",
+    "rating": 5,
+    "testimonial_text": "Very well experienced. This is not the first time when I have consulted Dr. Neelam. This time I consulted her for my knee stiffness. She gave me simple solution and the stiffness was gone in a day. Her treatment comes with a great care. MUST CONSULT HER.",
+    "doctor_name": "Dr. Neelam Sharma",
+    "is_featured": 1,
+    "sort_order": 1
+  },
+  {
+    "id": 2,
+    "patient_name": "Khushboo",
+    "location": "Noida Sector-51  Khushboo, Noida Sector-51",
+    "condition_treated": "Neuro Rehabilitation",
+    "rating": 5,
+    "testimonial_text": "KR Physiotherapy and Rehabilitation Clinic is one of the best physiotherapy clinic in noida. All doctors are very good and experienced. Specially Dr.Neelam Sharma is a good physiotherapist for neuro problems.",
+    "doctor_name": "Dr. Neelam Sharma",
+    "is_featured": 1,
+    "sort_order": 2
+  },
+  {
+    "id": 3,
+    "patient_name": "Sakshi Agrawal",
+    "location": "Noida Sakshi Agrawal, Noida",
+    "condition_treated": "Back Pain",
+    "rating": 5,
+    "testimonial_text": "Very trained and professional doctor. Highly recommended place. Well equipped place for physiotherapy. I am taking treatment for back pain and the results are visible in 2 days. I am recovering soon.",
+    "doctor_name": "Clinical Team",
+    "is_featured": 1,
+    "sort_order": 3
+  }
+]

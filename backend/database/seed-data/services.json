@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "slug": "musculoskeletal-physiotherapy",
+    "name": "Musculoskeletal Physiotherapy",
+    "short_description": "Expert diagnosis and hands-on treatment for joint, muscle, ligament and spinal pain — restoring strength, flexibility and long-term movement without surgery.",
+    "full_description_html": "<p>Musculoskeletal physiotherapy treats conditions affecting muscles, joints, bones and soft tissues. If you have been suffering from joint, back or muscle pain, a structured physiotherapy programme provides lasting relief rather than temporary fixes.</p><p><strong>How we help:</strong></p><ul><li>Reduce pain and inflammation</li><li>Restore joint mobility and muscle flexibility</li><li>Rebuild strength with progressive exercise programmes</li><li>Correct posture and movement patterns to prevent recurrence</li><li>Speed up your safe return to work, sport and daily activities</li></ul><p>Every plan begins with a thorough biomechanical assessment, so treatment targets the true root cause of your pain — not just the symptoms.</p>",
+    "icon": "accessibility_new",
+    "banner_image": "/images/services/1.jpg",
+    "sort_order": 1,
+    "status": "published"
+  },
+  {
+    "id": 2,
+    "slug": "neurological-physiotherapy",
+    "name": "Neurological Physiotherapy",
+    "short_description": "Specialised rehabilitation for stroke, paralysis, Bell's palsy and nerve-related conditions — retraining the nervous system to restore movement, balance and independence.",
+    "full_description_html": "<p>Neurological physiotherapy addresses conditions of the nervous and neuromuscular systems: stroke (CVA/TIA), spinal cord and traumatic brain injuries, Bell's palsy, Parkinson's disease, multiple sclerosis and more.</p><p><strong>Our neuro rehab focus:</strong></p><ul><li>Re-learn sitting balance, standing and walking (gait training)</li><li>Reduce spasticity and improve muscle control</li><li>Retrain facial muscles for Bell's palsy recovery</li><li>Improve coordination, proprioception and fall prevention</li><li>Support family members with home-care guidance</li></ul><p>People with neurological conditions need higher levels of care and specialised equipment — our Sector 51 centre is fully equipped, and early treatment significantly improves outcomes.</p>",
+    "icon": "psychology",
+    "banner_image": "/images/services/2.jpg",
+    "sort_order": 2,
+    "status": "published"
+  },
+  {
+    "id": 3,
+    "slug": "cardiorespiratory-physiotherapy",
+    "name": "Cardiorespiratory Physiotherapy",
+    "short_description": "Targeted therapy for heart and lung conditions — breathing exercises, airway clearance and graded rehabilitation for asthma, COPD, post-cardiac surgery and more.",
+    "full_description_html": "<p>Cardiorespiratory physiotherapy treats patients whose heart or lungs limit their daily life. Conditions include asthma, chronic bronchitis, pneumonia, emphysema, COPD, hypertension, and recovery after cardiac surgery.</p><p><strong>Treatment includes:</strong></p><ul><li>Deep breathing and correct breathing techniques</li><li>Circulation and airway-clearance exercises</li><li>Positioning for optimal lung expansion</li><li>Strategies to manage coughs and breathlessness</li><li>Graded pulmonary and cardiac rehabilitation programmes</li></ul><p>These protocols are safe, non-surgical and benefit patients of all ages — including pre- and post-operative heart and lung surgery rehabilitation.</p>",
+    "icon": "monitor_heart",
+    "banner_image": "/images/services/3.jpg",
+    "sort_order": 3,
+    "status": "published"
+  },
+  {
+    "id": 4,
+    "slug": "sports-physiotherapy",
+    "name": "Sports Physiotherapy",
+    "short_description": "Rapid, evidence-based recovery for athletic injuries — sprains, strains, ACL and tendon injuries — plus performance screening and injury-prevention programmes.",
+    "full_description_html": "<p>Sports injuries differ from everyday injuries: athletes place extreme demands on muscles, joints and bones. Our sports physiotherapy programme treats muscle strains, ligament sprains (ACL, MCL), tendon problems such as tennis elbow, shin splints, plantar fasciitis and more.</p><p><strong>What we deliver:</strong></p><ul><li>Accurate injury diagnosis and staged return-to-play plans</li><li>Manual therapy, taping and sport-specific exercise rehab</li><li>Strength and conditioning to rebuild performance safely</li><li>Biomechanical screening to prevent re-injury</li></ul><p>Whether you play professionally or at weekends, the goal is the same: a confident, fully-rehabilitated return to your sport.</p>",
+    "icon": "directions_run",
+    "banner_image": "/images/services/4.jpg",
+    "sort_order": 4,
+    "status": "published"
+  },
+  {
+    "id": 5,
+    "slug": "geriatric-physiotherapy",
+    "name": "Geriatric Physiotherapy",
+    "short_description": "Gentle, effective care for seniors — arthritis management, balance and fall prevention, post-joint-replacement rehab and mobility preservation for an active later life.",
+    "full_description_html": "<p>With age come conditions such as arthritis, osteoporosis, joint replacements, Alzheimer's and balance disorders. Geriatric physiotherapy reduces pain and keeps older adults mobile, confident and independent.</p><p><strong>Programme highlights:</strong></p><ul><li>Arthritis pain management and joint protection</li><li>Balance training and fall prevention</li><li>Post-operative rehab after hip/knee replacement</li><li>Strength and flexibility maintenance</li><li>Confidence-building so seniors stay active for years</li></ul><p>Physiotherapy is a proven tool for seniors to regain confidence in their physical abilities and continue living life on their own terms.</p>",
+    "icon": "elderly",
+    "banner_image": "/images/services/5.jpg",
+    "sort_order": 5,
+    "status": "published"
+  },
+  {
+    "id": 6,
+    "slug": "paediatric-physiotherapy",
+    "name": "Paediatric Physiotherapy",
+    "short_description": "Play-based therapy for infants, children and teens — developmental delays, cerebral palsy, torticollis and childhood injuries, guided by specialist paediatric skills.",
+    "full_description_html": "<p>Paediatric physiotherapy supports the physical needs of infants, children and adolescents — from delayed milestones to neurological and orthopaedic conditions.</p><p><strong>We help children who:</strong></p><ul><li>Are late learning to sit, crawl or walk</li><li>W-sit, bottom-shuffle or toe-walk</li><li>Have cerebral palsy or other neuromuscular diagnoses</li><li>Have torticollis, plagiocephaly or post-fracture stiffness</li><li>Have juvenile arthritis or chronic pain conditions</li></ul><p>Movement is essential to learning and growing. Our therapists detect developmental issues early and build play-based programmes that optimise each child's abilities.</p>",
+    "icon": "child_care",
+    "banner_image": "/images/services/6.jpg",
+    "sort_order": 6,
+    "status": "published"
+  },
+  {
+    "id": 7,
+    "slug": "women-health-physiotherapy",
+    "name": "Women's Health Physiotherapy",
+    "short_description": "Private, specialised care for pregnancy, postnatal recovery and pelvic health — from back pain and core weakness to incontinence and pelvic floor retraining.",
+    "full_description_html": "<p>Women's bodies change significantly through pregnancy, delivery and later life. Our women's health physiotherapy is delivered in a private, calm environment by therapists who understand these stages.</p><p><strong>We help with:</strong></p><ul><li>Lower back, pelvic and hip pain during and after pregnancy</li><li>Core strengthening and diastasis recti recovery</li><li>Pelvic floor activation and retraining</li><li>Urinary incontinence control</li><li>Postnatal return-to-fitness programmes</li></ul><p>Every programme is tailored to your stage — prenatal, postnatal or beyond — with honest guidance on what is safe at every step.</p>",
+    "icon": "pregnant_woman",
+    "banner_image": "/images/services/7.jpg",
+    "sort_order": 7,
+    "status": "published"
+  },
+  {
+    "id": 8,
+    "slug": "physiotherapy-at-home",
+    "name": "Physiotherapy at Home",
+    "short_description": "Bedside physiotherapy across Noida for patients who cannot travel — paralysis, post-surgical recovery, elderly care — with the same clinical standards as the clinic.",
+    "full_description_html": "<p>KR Physiotherapy brings clinic-standard treatment to your home anywhere in Noida. Our experienced physiotherapists personally visit, assess your condition and deliver the full treatment plan at your bedside.</p><p><strong>Home visits for:</strong></p><ul><li>Paralysis, stroke and Parkinson's care</li><li>Post-surgical recovery (knee/hip replacement, spine surgery)</li><li>Bedridden and elderly patients</li><li>Back, neck and knee pain when travel is difficult</li><li>Post-fracture stiffness and neurological conditions</li></ul><p>We understand pain or medical problems can make travel impossible — family members can simply call to book a visit.</p>",
+    "icon": "home_health",
+    "banner_image": "/images/services/8.jpg",
+    "sort_order": 8,
+    "status": "published"
+  }
+]

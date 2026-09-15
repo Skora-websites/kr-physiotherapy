@@ -1,0 +1,54 @@
+[
+  {
+    "setting_key": "site_name",
+    "setting_value": "KR Physiotherapy & Rehabilitation Clinic"
+  },
+  {
+    "setting_key": "tagline",
+    "setting_value": "Physiotherapist, Physiotherapy at Home, Physiotherapy Clinic in Noida"
+  },
+  {
+    "setting_key": "phone_primary",
+    "setting_value": "+91 8595321652"
+  },
+  {
+    "setting_key": "phone_secondary",
+    "setting_value": "+91 7668527335"
+  },
+  {
+    "setting_key": "email",
+    "setting_value": "info@krphysiotherapy.com"
+  },
+  {
+    "setting_key": "address_street",
+    "setting_value": "Kisan Tower, Basement, Main Road Hosiyarpur, Sector 51"
+  },
+  {
+    "setting_key": "address_city",
+    "setting_value": "Noida"
+  },
+  {
+    "setting_key": "address_state",
+    "setting_value": "Uttar Pradesh"
+  },
+  {
+    "setting_key": "address_postal",
+    "setting_value": "201304"
+  },
+  {
+    "setting_key": "address_country",
+    "setting_value": "India"
+  },
+  {
+    "setting_key": "opening_hours",
+    "setting_value": "Monday - Sunday: 8:30am – 8:30pm"
+  },
+  {
+    "setting_key": "google_maps_url",
+    "setting_value": "https://maps.google.com/?q=KR+Physiotherapy+Noida"
+  },
+  {
+    "setting_key": "google_maps_embed",
+    "setting_value": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.7083042502684!2d77.36979201508137!3d28.578528982439396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce59f40faaaab%3A0x7ea9d107a61d157a!2sKR%20Physiotherapy%20%26%20Rehabilitation%20Clinic!5e0!3m2!1sen!2sin!4v1580198031535!5m2!1sen!2sin"
+  }
+]

@@ -1,0 +1,33 @@
+{
+  "name": "kr-physiotherapy",
+  "version": "1.0.0",
+  "description": "KR Physiotherapy & Rehabilitation Clinic - Migrated and Redesigned",
+  "main": "backend/src/server.js",
+  "scripts": {
+    "build": "node scripts/build-client.js",
+    "build:dev": "node scripts/build-client.js --dev",
+    "vercel-build": "node scripts/build-client.js",
+    "db:migrate": "node backend/database/migrations/migrate.js",
+    "db:seed": "node backend/database/seeders/master-seeder.js",
+    "start": "node backend/src/server.js",
+    "dev": "node backend/src/server.js",
+    "validate:routes": "node scripts/validate-routes.js",
+    "compare:content": "node scripts/compare-content.js",
+    "validate:seo": "node scripts/validate-seo.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.1.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.3.1",
+    "esbuild": "^0.28.2",
+    "express": "^5.2.1",
+    "framer-motion": "^13.2.0",
+    "gsap": "^3.15.0",
+    "mysql2": "^3.19.1",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "agentation": "^3.0.2"
+  }
+}
