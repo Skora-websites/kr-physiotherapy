@@ -46,7 +46,7 @@ export function SectionHeader({ badge, title, subtitle, align = 'center', ctaTex
 export const SERVICE_ICONS = {
   'musculoskeletal-physiotherapy': 'accessibility_new',
   'neurological-physiotherapy': 'psychology',
-  'cardiorespiratory-physiotherapy': 'monitor_heart',
+  'chronic-pain-physiotherapy': 'healing',
   'sports-physiotherapy': 'directions_run',
   'geriatric-physiotherapy': 'elderly',
   'paediatric-physiotherapy': 'child_care',

@@ -40,14 +40,6 @@
     "sort_order": 2
   },
   {
-    "id": 6,
-    "menu_location": "header",
-    "parent_id": 3,
-    "title": "Cardiorespiratory Physiotherapy",
-    "url": "/cardiorespiratory-physiotherapy.html",
-    "sort_order": 3
-  },
-  {
     "id": 7,
     "menu_location": "header",
     "parent_id": 3,

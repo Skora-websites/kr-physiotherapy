@@ -185,7 +185,7 @@ export default function AppointmentModal({ isOpen, onClose }) {
                   <optgroup label="Clinical Services">
                     <option>Musculoskeletal Physiotherapy</option>
                     <option>Neurological Physiotherapy</option>
-                    <option>Cardiorespiratory Physiotherapy</option>
+                    <option>Chronic Pain Physiotherapy</option>
                     <option>Sports Physiotherapy</option>
                     <option>Geriatric Physiotherapy</option>
                     <option>Paediatric Physiotherapy</option>

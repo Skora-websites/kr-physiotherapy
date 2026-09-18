@@ -901,7 +901,7 @@ export function ContactTemplate({ onBook }) {
             badge="Clinic Connectivity"
             size="page"
             title="Contact &amp; Clinic Location"
-            subtitle="Call for a same-day appointment, send us a message, or simply walk in — the clinic is open 7 days a week in the heart of Sector 51, Noida."
+            subtitle="Call for a same-day appointment, send us a message, or simply walk in — the clinic is open 7 days a week in the centre of Sector 51, Noida."
             align="left"
           />
           <div className="flex flex-wrap items-center gap-3 text-xs font-semibold text-slate-600">

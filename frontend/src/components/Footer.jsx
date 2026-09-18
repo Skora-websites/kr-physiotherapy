@@ -31,7 +31,7 @@ export default function Footer() {
             <ul className="space-y-2 text-xs text-slate-400">
               <li><a href="/musculoskeletal-physiotherapy.html" className="hover:text-[#0084d1] transition">Musculoskeletal Physiotherapy</a></li>
               <li><a href="/neurological-physiotherapy.html" className="hover:text-[#0084d1] transition">Neurological Rehabilitation</a></li>
-              <li><a href="/cardiorespiratory-physiotherapy.html" className="hover:text-[#0084d1] transition">Cardiorespiratory Care</a></li>
+              <li><a href="/chronic-pain-physiotherapy.html" className="hover:text-[#0084d1] transition">Chronic Pain Relief</a></li>
               <li><a href="/sports-physiotherapy.html" className="hover:text-[#0084d1] transition">Sports Injury Management</a></li>
               <li><a href="/geriatric-physiotherapy.html" className="hover:text-[#0084d1] transition">Geriatric Rehabilitation</a></li>
               <li><a href="/paediatric-physiotherapy.html" className="hover:text-[#0084d1] transition">Paediatric Physiotherapy</a></li>
