@@ -89,9 +89,6 @@ export default function Footer() {
             <a href="/privacy-policy.html" className="hover:text-slate-300 transition">Privacy Policy</a>
             <a href="/terms-and-conditions.html" className="hover:text-slate-300 transition">Terms &amp; Conditions</a>
             <a href="/contact.html" className="hover:text-slate-300 transition">Contact Us</a>
-            <a href="/admin" className="text-slate-400 hover:text-emerald-400 font-semibold transition flex items-center gap-1">
-              <span className="material-symbols-outlined text-[14px]">lock</span> Staff Admin
-            </a>
           </div>
         </div>
       </div>
