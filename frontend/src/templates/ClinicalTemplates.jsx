@@ -94,8 +94,8 @@ export function ServicesListTemplate({ onBook }) {
             <p className="text-sm text-slate-300">Our clinical desk will guide you to the right specialist — no obligation.</p>
           </div>
           <div className="flex flex-wrap gap-3 justify-center">
-            <a href="tel:+918595321652" className="px-6 py-3.5 bg-white/10 border border-white/20 text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-white/20 transition">
-              Call +91 85953 21652
+            <a href="tel:+917668527335" className="px-6 py-3.5 bg-white/10 border border-white/20 text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-white/20 transition">
+              Call +91 76685 27335
             </a>
             <button onClick={() => onBook()} className="px-6 py-3.5 bg-gradient-to-r from-[#f37021] to-[#ea580c] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-lg transition active:scale-95">
               Book Consultation
@@ -167,11 +167,11 @@ export function TreatmentsListTemplate({ onBook }) {
         <div className="bg-gradient-to-r from-[#0b1c30] to-[#0084d1] rounded-3xl p-8 sm:p-10 text-white flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="space-y-1.5 text-center sm:text-left">
             <h2 className="text-xl sm:text-2xl font-black font-headline">Suffering From Persistent Pain?</h2>
-            <p className="text-sm text-slate-200">Get a detailed root-cause assessment from Dr. Neelam Sharma — in-clinic or at home.</p>
+            <p className="text-sm text-slate-200">Get a detailed root-cause assessment from Dr. Neelam Sharma(PT) — in-clinic or at home.</p>
           </div>
           <div className="flex flex-wrap gap-3 justify-center">
-            <a href="tel:+918595321652" className="px-6 py-3.5 bg-white/10 border border-white/20 text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-white/20 transition">
-              Call +91 85953 21652
+            <a href="tel:+917668527335" className="px-6 py-3.5 bg-white/10 border border-white/20 text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-white/20 transition">
+              Call +91 76685 27335
             </a>
             <button onClick={() => onBook()} className="px-6 py-3.5 bg-gradient-to-r from-[#f37021] to-[#ea580c] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-lg transition active:scale-95">
               Book Evaluation
@@ -243,9 +243,9 @@ export function ServiceTemplate({ service, onBook }) {
                 <span className="material-symbols-outlined text-base">calendar_month</span>
                 Book This Service
               </button>
-              <a href="tel:+918595321652" className="px-7 py-3.5 bg-white border border-slate-200 text-[#0b1c30] text-xs font-bold uppercase tracking-wider rounded-xl hover:border-[#0084d1] hover:text-[#0084d1] transition flex items-center gap-2">
+              <a href="tel:+917668527335" className="px-7 py-3.5 bg-white border border-slate-200 text-[#0b1c30] text-xs font-bold uppercase tracking-wider rounded-xl hover:border-[#0084d1] hover:text-[#0084d1] transition flex items-center gap-2">
                 <span className="material-symbols-outlined text-base text-[#f37021]">call</span>
-                +91 85953 21652
+                +91 76685 27335
               </a>
             </div>
             <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] font-semibold text-slate-500">
@@ -332,7 +332,7 @@ export function ServiceTemplate({ service, onBook }) {
             </button>
             <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs text-slate-300">
               <span>Direct Helpline:</span>
-              <a href="tel:+918595321652" className="text-white font-bold">+91 85953 21652</a>
+              <a href="tel:+917668527335" className="text-white font-bold">+91 76685 27335</a>
             </div>
           </div>
 
@@ -398,8 +398,8 @@ export function TreatmentTemplate({ treatment, onBook }) {
   const sidebarKicker = isNeuro ? 'Neuro Rehabilitation' : 'Non-Surgical Cure';
   const sidebarHeading = isNeuro ? 'Book Recovery Assessment' : 'Book Pain Evaluation';
   const sidebarText = isNeuro
-    ? 'Dr. Neelam Sharma performs a detailed neurological and functional assessment to map your recovery path — in-clinic or at home.'
-    : 'Dr. Neelam Sharma performs a detailed one-on-one assessment to identify the root trigger — in-clinic or at home.';
+    ? 'Dr. Neelam Sharma(PT) performs a detailed neurological and functional assessment to map your recovery path — in-clinic or at home.'
+    : 'Dr. Neelam Sharma(PT) performs a detailed one-on-one assessment to identify the root trigger — in-clinic or at home.';
   const badgeLabel = isNeuro ? 'Drug-Free' : 'Non-Surgical';
 
   const approachHtml = cleanClinicalHtml(treatment.treatment_html || '');
@@ -435,9 +435,9 @@ export function TreatmentTemplate({ treatment, onBook }) {
                 <span className="material-symbols-outlined text-base">event_available</span>
                 {ctaLabel}
               </button>
-              <a href="tel:+918595321652" className="px-7 py-3.5 bg-white border border-slate-200 text-[#0b1c30] text-xs font-bold uppercase tracking-wider rounded-xl hover:border-[#f37021] hover:text-[#f37021] transition flex items-center gap-2">
+              <a href="tel:+917668527335" className="px-7 py-3.5 bg-white border border-slate-200 text-[#0b1c30] text-xs font-bold uppercase tracking-wider rounded-xl hover:border-[#f37021] hover:text-[#f37021] transition flex items-center gap-2">
                 <span className="material-symbols-outlined text-base text-[#0084d1]">call</span>
-                +91 85953 21652
+                +91 76685 27335
               </a>
             </div>
             <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] font-semibold text-slate-500">
@@ -545,7 +545,7 @@ export function TreatmentTemplate({ treatment, onBook }) {
             </button>
             <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs text-slate-300">
               <span>Appointment Desk:</span>
-              <a href="tel:+918595321652" className="text-white font-bold">+91 85953 21652</a>
+              <a href="tel:+917668527335" className="text-white font-bold">+91 76685 27335</a>
             </div>
           </div>
 
@@ -679,7 +679,7 @@ export function LocationTemplate({ page, onBook }) {
             </p>
             <div className="text-xs space-y-2 text-slate-700">
               <p><strong>Clinic:</strong> Kisan Tower, Hosiyarpur, Sector 51</p>
-              <p><strong>Helpline:</strong> <a href="tel:+918595321652" className="text-[#0084d1] font-bold">+91 85953 21652</a></p>
+              <p><strong>Helpline:</strong> <a href="tel:+917668527335" className="text-[#0084d1] font-bold">+91 76685 27335</a></p>
               <p><strong>Hours:</strong> 8:30 AM – 8:30 PM (7 Days)</p>
             </div>
             <button
@@ -713,7 +713,7 @@ export function BlogListTemplate() {
             badge="Clinical Knowledge Hub"
             size="page"
             title="Clinical Insights &amp; Blog Archive"
-            subtitle="Physiotherapy guides, posture tips, and pain management articles authored by Dr. Neelam Sharma."
+            subtitle="Physiotherapy guides, posture tips, and pain management articles authored by Dr. Neelam Sharma(PT)."
             align="left"
           />
           <div className="mt-6 max-w-md">
@@ -812,7 +812,7 @@ export function BlogArticleTemplate({ blog }) {
               <div className="w-8 h-8 rounded-full bg-[#0084d1]/20 flex items-center justify-center">
                 <span className="material-symbols-outlined text-sm text-[#0084d1]">person</span>
               </div>
-              <span>By <strong className="text-white">{blog.author_name || 'Dr. Neelam Sharma'}</strong></span>
+              <span>By <strong className="text-white">{blog.author_name || 'Dr. Neelam Sharma(PT)'}</strong></span>
             </div>
             <span className="text-slate-500">•</span>
             <span>{formattedDate}</span>
@@ -838,7 +838,7 @@ export function BlogArticleTemplate({ blog }) {
             <span className="material-symbols-outlined text-2xl text-[#0084d1]">medical_services</span>
           </div>
           <div className="space-y-2">
-            <h3 className="text-base font-bold text-[#0b1c30] font-headline">Dr. Neelam Sharma</h3>
+            <h3 className="text-base font-bold text-[#0b1c30] font-headline">Dr. Neelam Sharma(PT)</h3>
             <p className="text-xs text-slate-600 leading-relaxed">
               Senior Physiotherapist &amp; Founder of KR Physiotherapy &amp; Rehabilitation Clinic, Noida. With 12+ years of experience, Dr. Sharma specializes in musculoskeletal, neurological, and sports rehabilitation.
             </p>
@@ -853,7 +853,7 @@ export function BlogArticleTemplate({ blog }) {
         <div className="mt-10 bg-gradient-to-r from-[#0b1c30] via-[#0b1c30] to-[#0084d1]/90 rounded-3xl p-8 sm:p-10 text-white flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="space-y-2 text-center sm:text-left">
             <h3 className="text-lg font-black font-headline">Need Expert Physiotherapy Guidance?</h3>
-            <p className="text-xs text-slate-300">Book a consultation with Dr. Neelam Sharma for personalized treatment.</p>
+            <p className="text-xs text-slate-300">Book a consultation with Dr. Neelam Sharma(PT) for personalized treatment.</p>
           </div>
           <a href="/contact.html" className="shrink-0 px-6 py-3 bg-gradient-to-r from-[#f37021] to-[#ea580c] hover:from-[#d9570c] hover:to-[#f37021] text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition active:scale-95 flex items-center gap-2">
             <span className="material-symbols-outlined text-base">event_available</span>
@@ -929,10 +929,6 @@ export function ContactTemplate({ onBook }) {
             <h3 className="text-base font-bold text-[#0b1c30] font-headline">Fastest — Call the Desk</h3>
             <p className="text-xs text-slate-500 leading-relaxed mt-1.5 mb-5">Same-day slots, home-visit scheduling and fee questions answered instantly during clinic hours.</p>
             <div className="mt-auto space-y-2">
-              <a href="tel:+918595321652" className="flex items-center justify-between px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl text-sm font-bold text-[#0b1c30] hover:border-[#0084d1] hover:text-[#0084d1] transition">
-                +91 85953 21652
-                <span className="material-symbols-outlined text-sm text-[#f37021]">north_east</span>
-              </a>
               <a href="tel:+917668527335" className="flex items-center justify-between px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl text-sm font-bold text-[#0b1c30] hover:border-[#0084d1] hover:text-[#0084d1] transition">
                 +91 76685 27335
                 <span className="material-symbols-outlined text-sm text-[#f37021]">north_east</span>
@@ -987,8 +983,7 @@ export function ContactTemplate({ onBook }) {
             <div className="flex items-start gap-3">
               <span className="material-symbols-outlined text-[#f37021] text-base mt-0.5">call</span>
               <div className="text-xs">
-                <a href="tel:+918595321652" className="font-bold text-white hover:underline block">+91 85953 21652</a>
-                <a href="tel:+917668527335" className="text-slate-400 hover:underline block">+91 76685 27335</a>
+                <a href="tel:+917668527335" className="font-bold text-white hover:underline block">+91 76685 27335</a>
               </div>
             </div>
             <div className="flex items-start gap-3">

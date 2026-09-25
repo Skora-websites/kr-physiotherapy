@@ -65,19 +65,6 @@
     "status": "published"
   },
   {
-    "id": 6,
-    "slug": "hijama-cupping-therapy",
-    "name": "Hijama Cupping Therapy",
-    "category": "Manual Therapy",
-    "summary": "Hijama (wet) cupping is a safe, effective procedure with zero side effects that gives immediate relief. Also known as medicinal cupping, it removes toxins and triggers the body's natural healing response.",
-    "symptoms_html": "<ul><li>Chronic back, neck, knee or arthritic pain</li><li>Tension headaches and migraine</li><li>Seasonal allergies and sinus trouble</li><li>Bloating, indigestion and constipation</li><li>Fatigue, sluggishness and poor circulation</li></ul>",
-    "causes_html": "<p>Cupping is used when sluggish circulation, toxin build-up and muscle tension keep the body from healing itself. It complements — not replaces — physiotherapy for the conditions above.</p>",
-    "treatment_html": "<p>Hijama cupping therapy is very safe and gives immediate relief. Cups create suction on the skin (dry cupping) for 2–3 minutes; for wet cupping, tiny sterile incisions then allow elimination of toxic blood and fluids. Proper sterilisation technique is followed throughout.</p><h3>Types of cupping</h3><ul><li>Hijama / wet cupping</li><li>Dry cupping</li><li>Fire cupping</li><li>Moving / dynamic cupping</li></ul><h3>Benefits</h3><ul><li><strong>Pain relief</strong> — back, neck, knee, arthritic pain, headache and migraine</li><li><strong>Sinus discomfort</strong> — many patients report easier, freer comfort</li><li><strong>Skin health</strong> — increased blood flow keeps skin glowing and toned</li><li><strong>Hair growth</strong> — scalp cupping removes toxins and stimulates follicles</li><li><strong>Digestion</strong> — helps bloating, ulcers and constipation</li><li><strong>Relaxation</strong> — increased circulation relieves deep tension</li></ul><h3>When cupping is not used</h3><ul><li>Fractures, bleeding disorders, haemophilia</li><li>Severe infection or non-compliant patients</li></ul>",
-    "banner_image": "/images/Hijama-Cupping-Therapy.jpg",
-    "sort_order": 6,
-    "status": "published"
-  },
-  {
     "id": 7,
     "slug": "cerebral-palsy",
     "name": "Physiotherapy for Cerebral Palsy",

@@ -71,7 +71,7 @@ const AdminController = {
     return res.json({
       success: true,
       token: signAdminToken(expected.email),
-      user: { name: 'Dr. Neelam Sharma (Admin)', email: expected.email }
+      user: { name: 'Dr. Neelam Sharma(PT) (Admin)', email: expected.email }
     });
   },
 
@@ -301,7 +301,7 @@ const AdminController = {
       const finalSlug = slug || title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
       const result = await query(
         'INSERT INTO blogs (title, slug, excerpt, content_html, featured_image, author_name, status) VALUES (?,?,?,?,?,?,?)',
-        [title, finalSlug, excerpt || '', content_html || '', featured_image || '/images/clinic-gym.jpg', author_name || 'Dr. Neelam Sharma', 'published']
+        [title, finalSlug, excerpt || '', content_html || '', featured_image || '/images/clinic-gym.jpg', author_name || 'Dr. Neelam Sharma(PT)', 'published']
       );
       res.status(201).json({ success: true, id: result.insertId, slug: finalSlug });
     } catch (err) { next(err); }
@@ -312,7 +312,7 @@ const AdminController = {
       const { title, excerpt, content_html, featured_image, author_name, status } = req.body;
       await query(
         'UPDATE blogs SET title=?, excerpt=?, content_html=?, featured_image=?, author_name=?, status=? WHERE id=?',
-        [title, excerpt || '', content_html || '', featured_image || '', author_name || 'Dr. Neelam Sharma', status || 'published', req.params.id]
+        [title, excerpt || '', content_html || '', featured_image || '', author_name || 'Dr. Neelam Sharma(PT)', status || 'published', req.params.id]
       );
       res.json({ success: true });
     } catch (err) { next(err); }
@@ -338,7 +338,7 @@ const AdminController = {
       const { patient_name, location, condition_treated, rating, testimonial_text, doctor_name, is_featured } = req.body;
       const result = await query(
         'INSERT INTO testimonials (patient_name, location, condition_treated, rating, testimonial_text, doctor_name, is_featured) VALUES (?,?,?,?,?,?,?)',
-        [patient_name, location || 'Noida', condition_treated || '', rating || 5, testimonial_text, doctor_name || 'Dr. Neelam Sharma', is_featured ? 1 : 0]
+        [patient_name, location || 'Noida', condition_treated || '', rating || 5, testimonial_text, doctor_name || 'Dr. Neelam Sharma(PT)', is_featured ? 1 : 0]
       );
       res.status(201).json({ success: true, id: result.insertId });
     } catch (err) { next(err); }

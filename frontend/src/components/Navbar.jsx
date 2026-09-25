@@ -134,14 +134,14 @@ export default function Navbar({ onOpenBooking }) {
           {/* Right actions */}
           <div className="hidden sm:flex items-center gap-3">
             <motion.a
-              href="tel:+918595321652"
+              href="tel:+917668527335"
               className="flex items-center gap-2 text-xs font-bold text-[#0084d1] bg-[#0084d1]/10 hover:bg-[#0084d1]/15 px-3.5 py-2 rounded-xl transition-colors"
               whileHover={reduced ? undefined : { y: -2 }}
               whileTap={reduced ? undefined : { scale: 0.96 }}
               transition={{ duration: 0.2, ease: EASE }}
             >
               <span className="material-symbols-outlined text-[17px]">phone_in_talk</span>
-              <span>+91 85953 21652</span>
+              <span>+91 76685 27335</span>
             </motion.a>
             <MotionButton
               onClick={onOpenBooking}
@@ -227,11 +227,11 @@ export default function Navbar({ onOpenBooking }) {
                 className="pt-4"
               >
                 <a
-                  href="tel:+918595321652"
+                  href="tel:+917668527335"
                   className="flex items-center justify-center gap-2 w-full py-3 bg-[#0084d1]/10 text-[#0084d1] font-bold text-xs rounded-xl"
                 >
                   <span className="material-symbols-outlined text-base">call</span>
-                  <span>Call Helpline: +91 85953 21652</span>
+                  <span>Call Helpline: +91 76685 27335</span>
                 </a>
               </motion.div>
             </motion.div>

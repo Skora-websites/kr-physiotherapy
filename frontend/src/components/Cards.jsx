@@ -60,7 +60,6 @@ export const TREATMENT_ICONS = {
   'knee-pain': 'directions_walk',
   'neck-pain': 'self_improvement',
   'knee-ligament-injury': 'healing',
-  'hijama-cupping-therapy': 'spa',
   'cerebral-palsy': 'child_care',
   'scoliosis': 'straighten',
   'bell-palsy': 'sentiment_satisfied',
@@ -412,7 +411,7 @@ export function ContactForm() {
         setErr(data.message || 'Submission failed.');
       }
     } catch (e) {
-      setErr('Connection error. Please call +91 85953 21652.');
+      setErr('Connection error. Please call +91 76685 27335.');
     } finally {
       setLoading(false);
     }

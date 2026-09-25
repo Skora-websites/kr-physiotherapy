@@ -175,8 +175,8 @@ async function renderHtmlForPath(urlPath) {
                     <a href="/contact.html" class="hover:text-[#0084d1] transition">Contact</a>
                 </nav>
                 <div class="flex items-center gap-3">
-                    <a href="tel:+918595321652" class="hidden sm:flex items-center gap-1.5 text-xs font-bold text-[#0084d1] bg-[#0084d1]/10 px-3.5 py-2 rounded-xl">
-                        <span class="material-symbols-outlined text-[17px]">call</span> +91 85953 21652
+                    <a href="tel:+917668527335" class="hidden sm:flex items-center gap-1.5 text-xs font-bold text-[#0084d1] bg-[#0084d1]/10 px-3.5 py-2 rounded-xl">
+                        <span class="material-symbols-outlined text-[17px]">call</span> +91 76685 27335
                     </a>
                     <a href="/contact.html" class="bg-gradient-to-r from-[#0084d1] to-[#0284c7] hover:from-[#006cb0] hover:to-[#0084d1] text-white px-5 py-2.5 rounded-xl text-xs font-bold transition shadow-sm">
                         Book Consultation
@@ -228,7 +228,7 @@ async function renderHtmlForPath(urlPath) {
                 <div>
                     <h4 class="font-bold text-sm tracking-wider uppercase mb-4 text-slate-200 font-headline">Clinic Coordinates</h4>
                     <p class="text-slate-400 mb-2">Kisan Tower, Basement, Main Road Hosiyarpur, Sector 51, Noida, Uttar Pradesh 201304</p>
-                    <p class="font-bold text-emerald-400 mb-1">Phone: <a href="tel:+918595321652">+91 85953 21652</a></p>
+                    <p class="font-bold text-emerald-400 mb-1">Phone: <a href="tel:+917668527335">+91 76685 27335</a></p>
                     <p class="text-slate-300">Open 7 Days: 8:30am - 8:30pm</p>
                 </div>
             </div>

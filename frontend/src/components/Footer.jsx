@@ -51,7 +51,7 @@ export default function Footer() {
               <li><a href="/physiotherapy-in-noida-sector-52.html" className="hover:text-[#0084d1] transition">Physiotherapy in Noida Sector 52</a></li>
               <li><a href="/physiotherapy-in-noida-sector-53.html" className="hover:text-[#0084d1] transition">Physiotherapy in Noida Sector 53</a></li>
               <li><a href="/physiotherapy-in-noida-sector-71.html" className="hover:text-[#0084d1] transition">Physiotherapy in Noida Sector 71</a></li>
-              <li><a href="/doctor-neelam-sharma.html" className="hover:text-[#0084d1] transition font-medium text-slate-300">Dr. Neelam Sharma (Lead Clinician)</a></li>
+              <li><a href="/doctor-neelam-sharma.html" className="hover:text-[#0084d1] transition font-medium text-slate-300">Dr. Neelam Sharma(PT) (Lead Clinician)</a></li>
               <li><a href="/doctor-anamika.html" className="hover:text-[#0084d1] transition font-medium text-slate-300">Dr. Anamika (Consultant)</a></li>
             </ul>
           </div>
@@ -68,11 +68,7 @@ export default function Footer() {
               </p>
               <p className="flex items-center gap-2.5">
                 <span className="material-symbols-outlined text-[#0084d1] text-sm">call</span>
-                <a href="tel:+918595321652" className="hover:text-[#f37021] font-bold text-white transition">+91 85953 21652</a>
-              </p>
-              <p className="flex items-center gap-2.5">
-                <span className="material-symbols-outlined text-[#0084d1] text-sm">call</span>
-                <a href="tel:+917668527335" className="hover:text-[#f37021] transition">+91 76685 27335</a>
+                <a href="tel:+917668527335" className="hover:text-[#f37021] font-bold text-white transition">+91 76685 27335</a>
               </p>
               <p className="flex items-center gap-2.5">
                 <span className="material-symbols-outlined text-[#f37021] text-sm">mail</span>

@@ -50,7 +50,7 @@ export function HomeTemplate({ onBook }) {
 
               {/* Subheading / Value Proposition */}
               <p className="text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed font-normal">
-                Personalized physical rehabilitation under senior specialist <strong className="text-slate-900 font-semibold">Dr. Neelam Sharma</strong>. Restoring pain-free joint movement, spinal mobility, and neurological recovery with non-surgical protocols.
+                Personalized physical rehabilitation under senior specialist <strong className="text-slate-900 font-semibold">Dr. Neelam Sharma(PT)</strong>. Restoring pain-free joint movement, spinal mobility, and neurological recovery with non-surgical protocols.
               </p>
 
               {/* Action Buttons */}
@@ -305,9 +305,9 @@ export function HomeTemplate({ onBook }) {
                   <span className="material-symbols-outlined text-base">calendar_month</span>
                   Book Appointment
                 </button>
-                <a href="tel:+918595321652" className="px-7 py-3.5 bg-white/10 border border-white/20 text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-white/20 transition flex items-center gap-2">
+                <a href="tel:+917668527335" className="px-7 py-3.5 bg-white/10 border border-white/20 text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-white/20 transition flex items-center gap-2">
                   <span className="material-symbols-outlined text-base">call</span>
-                  +91 85953 21652
+                  +91 76685 27335
                 </a>
               </div>
             </div>
@@ -357,9 +357,9 @@ export function HomeTemplate({ onBook }) {
                 Visit our central clinic in Sector 51 Noida or request specialized home physiotherapy. Transparent fees, compassionate doctors, zero waiting lines.
               </p>
               <div className="flex flex-wrap items-center gap-6 pt-3 text-xs sm:text-sm">
-                <a href="tel:+918595321652" className="flex items-center gap-2 text-amber-300 font-bold hover:underline">
+                <a href="tel:+917668527335" className="flex items-center gap-2 text-amber-300 font-bold hover:underline">
                   <span className="material-symbols-outlined text-lg">call</span>
-                  <span>+91 85953 21652</span>
+                  <span>+91 76685 27335</span>
                 </a>
                 <span className="text-slate-400">•</span>
                 <span className="text-slate-200">Open Mon - Sun: 8:30am - 8:30pm</span>
@@ -411,8 +411,8 @@ export function AboutTemplate({ page, onBook }) {
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-slate-200">
                   <span className="material-symbols-outlined text-sm text-[#0084d1]">schedule</span> Mon–Sun: 8:30am – 8:30pm
                 </span>
-                <a href="tel:+918595321652" className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-slate-200 text-[#0084d1]">
-                  <span className="material-symbols-outlined text-sm">call</span> +91 85953 21652
+                <a href="tel:+917668527335" className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-slate-200 text-[#0084d1]">
+                  <span className="material-symbols-outlined text-sm">call</span> +91 76685 27335
                 </a>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-slate-200">
                   <span className="material-symbols-outlined text-sm text-[#f37021]">location_on</span> Sector-51, Noida
@@ -436,13 +436,13 @@ export function AboutTemplate({ page, onBook }) {
               <div className="rounded-3xl relative" >
                 <img
                   src="/images/about/welcome-team.jpg"
-                  alt="Dr. Neelam Sharma and the KR Physiotherapy team"
+                  alt="Dr. Neelam Sharma(PT) and the KR Physiotherapy team"
                   className="w-full h-[420px] object-cover rounded-3xl"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0b1c30]/80 via-transparent to-transparent rounded-3xl"></div>
                 <div className="absolute bottom-5 left-5 right-5 text-white">
                   <span className="text-[10px] uppercase font-bold tracking-widest text-amber-300">Senior Physiotherapist &amp; Team</span>
-                  <h2 className="text-base font-bold font-headline mt-0.5">Dr. Neelam Sharma · Sector 51, Noida</h2>
+                  <h2 className="text-base font-bold font-headline mt-0.5">Dr. Neelam Sharma(PT) · Sector 51, Noida</h2>
                 </div>
               </div>
 
@@ -622,11 +622,11 @@ export function AboutTemplate({ page, onBook }) {
           subtitle="Two dedicated clinicians, one standard of care — accurate diagnosis, honest guidance and hands-on treatment that works."
         />
         <div className="space-y-10">
-          {/* ── Dr. Neelam Sharma ── */}
+          {/* ── Dr. Neelam Sharma(PT) ── */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 bg-white rounded-3xl border border-slate-200/80 shadow-[0_10px_30px_rgba(11,28,48,0.05)] overflow-hidden">
             {/* Portrait */}
             <div className="lg:col-span-4 relative min-h-[320px]">
-              <img src="/images/Dr-Neelam-Sharma2.jpg" alt="Dr. Neelam Sharma, Senior Consultant Physiotherapist" className="absolute inset-0 w-full h-full object-cover object-top" />
+              <img src="/images/Dr-Neelam-Sharma2.jpg" alt="Dr. Neelam Sharma(PT), Senior Consultant Physiotherapist" className="absolute inset-0 w-full h-full object-cover object-top" />
               <div className="absolute top-4 left-4 flex flex-col gap-2">
                 <span className="bg-[#0b1c30]/90 backdrop-blur-md text-amber-300 text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow">12+ Years Experience</span>
                 <span className="bg-white/95 backdrop-blur-md text-[#0084d1] text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow flex items-center gap-1.5"><span className="material-symbols-outlined text-xs">verified</span> MIAP Certified</span>
@@ -636,13 +636,13 @@ export function AboutTemplate({ page, onBook }) {
             <div className="lg:col-span-8 p-7 sm:p-9 flex flex-col">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
-                  <h3 className="text-2xl font-black text-[#0b1c30] font-headline">Dr. Neelam Sharma</h3>
+                  <h3 className="text-2xl font-black text-[#0b1c30] font-headline">Dr. Neelam Sharma(PT)</h3>
                   <p className="text-xs text-slate-500 font-semibold mt-0.5">Senior Consultant Physiotherapist &amp; Clinical Director</p>
                 </div>
                 <a href="/doctor-neelam-sharma.html" className="px-4 py-2 text-xs font-bold text-[#0084d1] bg-[#0084d1]/10 hover:bg-[#0084d1]/20 rounded-xl transition shrink-0">Full Profile →</a>
               </div>
               <p className="text-sm text-slate-600 leading-relaxed mt-4">
-                Specialising in orthopaedic, neurological, geriatric and paediatric rehabilitation, Dr. Neelam Sharma leads the clinic with modern, evidence-based treatment — and personally trains the team that works under her guidance.
+                Specialising in orthopaedic, neurological, geriatric and paediatric rehabilitation, Dr. Neelam Sharma(PT) leads the clinic with modern, evidence-based treatment — and personally trains the team that works under her guidance.
               </p>
               <div className="flex flex-wrap gap-2 mt-5">
                 {['Manual Therapy', 'Dry Needling', 'Cupping / Hijama', 'Chiropractic', 'Electrotherapy (US, IFT, TENS, Laser)', 'Kinesio Taping'].map((t, i) => (
@@ -658,8 +658,8 @@ export function AboutTemplate({ page, onBook }) {
                 ))}
               </div>
               <div className="mt-auto pt-6 flex flex-wrap items-center gap-3">
-                <button onClick={() => onBook('Dr. Neelam Sharma')} className="px-6 py-3 bg-gradient-to-r from-[#0084d1] to-[#0284c7] hover:from-[#006cb0] hover:to-[#0084d1] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-md transition active:scale-95 flex items-center gap-1.5"><span className="material-symbols-outlined text-sm">calendar_month</span> Book with Dr. Neelam</button>
-                <a href="tel:+918595321652" className="px-5 py-3 bg-white border border-slate-200 text-xs font-bold text-[#0b1c30] rounded-xl hover:border-[#0084d1] hover:text-[#0084d1] transition flex items-center gap-1.5"><span className="material-symbols-outlined text-sm text-[#f37021]">call</span> +91 85953 21652</a>
+                <button onClick={() => onBook('Dr. Neelam Sharma(PT)')} className="px-6 py-3 bg-gradient-to-r from-[#0084d1] to-[#0284c7] hover:from-[#006cb0] hover:to-[#0084d1] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-md transition active:scale-95 flex items-center gap-1.5"><span className="material-symbols-outlined text-sm">calendar_month</span> Book with Dr. Neelam</button>
+                <a href="tel:+917668527335" className="px-5 py-3 bg-white border border-slate-200 text-xs font-bold text-[#0b1c30] rounded-xl hover:border-[#0084d1] hover:text-[#0084d1] transition flex items-center gap-1.5"><span className="material-symbols-outlined text-sm text-[#f37021]">call</span> +91 76685 27335</a>
               </div>
             </div>
           </div>
@@ -692,7 +692,7 @@ export function AboutTemplate({ page, onBook }) {
               </div>
               <div className="mt-auto pt-6 flex flex-wrap items-center gap-3">
                 <button onClick={() => onBook('Dr. Anamika')} className="px-6 py-3 bg-gradient-to-r from-[#f37021] to-[#ea580c] hover:from-[#d9570c] hover:to-[#f37021] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-md transition active:scale-95 flex items-center gap-1.5"><span className="material-symbols-outlined text-sm">calendar_month</span> Book with Dr. Anamika</button>
-                <a href="tel:+918595321652" className="px-5 py-3 bg-white border border-slate-200 text-xs font-bold text-[#0b1c30] rounded-xl hover:border-[#f37021] hover:text-[#f37021] transition flex items-center gap-1.5"><span className="material-symbols-outlined text-sm text-[#0084d1]">call</span> +91 85953 21652</a>
+                <a href="tel:+917668527335" className="px-5 py-3 bg-white border border-slate-200 text-xs font-bold text-[#0b1c30] rounded-xl hover:border-[#f37021] hover:text-[#f37021] transition flex items-center gap-1.5"><span className="material-symbols-outlined text-sm text-[#0084d1]">call</span> +91 76685 27335</a>
               </div>
             </div>
             {/* Portrait */}
@@ -991,7 +991,7 @@ export function AboutTemplate({ page, onBook }) {
               <div className="flex items-start gap-3">
                 <span className="material-symbols-outlined text-[#f37021] text-base mt-0.5">call</span>
                 <div className="text-xs">
-                  <a href="tel:+918595321652" className="font-bold text-white hover:underline block">+91 85953 21652</a>
+                  <a href="tel:+917668527335" className="font-bold text-white hover:underline block">+91 76685 27335</a>
                   <a href="tel:+917668527335" className="text-slate-400 hover:underline block">+91 76685 27335</a>
                 </div>
               </div>

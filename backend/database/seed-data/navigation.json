@@ -128,14 +128,6 @@
     "sort_order": 5
   },
   {
-    "id": 18,
-    "menu_location": "header",
-    "parent_id": 12,
-    "title": "Hijama Cupping Therapy",
-    "url": "/hijama-cupping-therapy.html",
-    "sort_order": 6
-  },
-  {
     "id": 19,
     "menu_location": "header",
     "parent_id": 12,
@@ -171,7 +163,7 @@
     "id": 23,
     "menu_location": "header",
     "parent_id": 22,
-    "title": "Dr. Neelam Sharma",
+    "title": "Dr. Neelam Sharma(PT)",
     "url": "/doctor-neelam-sharma.html",
     "sort_order": 1
   },

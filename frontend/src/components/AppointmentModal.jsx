@@ -50,7 +50,7 @@ export default function AppointmentModal({ isOpen, onClose }) {
         setErrors(data.errors || [data.message || 'Failed to submit appointment.']);
       }
     } catch (err) {
-      setErrors(['Network error. Please call +91 85953 21652 directly for immediate booking.']);
+      setErrors(['Network error. Please call +91 76685 27335 directly for immediate booking.']);
     } finally {
       setLoading(false);
     }
@@ -177,7 +177,6 @@ export default function AppointmentModal({ isOpen, onClose }) {
                     <option>Knee Pain</option>
                     <option>Neck Pain</option>
                     <option>Knee Ligament Injury</option>
-                    <option>Hijama Cupping Therapy</option>
                     <option>Cerebral Palsy</option>
                     <option>Scoliosis</option>
                     <option>Bell’s Palsy</option>
