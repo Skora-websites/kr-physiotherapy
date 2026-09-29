@@ -21,6 +21,21 @@ export default function AdminDashboard() {
   const [testimonials, setTestimonials] = useState([]);
   const [doctors, setDoctors] = useState([]);
   const [siteSettings, setSiteSettings] = useState([]);
+  const [videos, setVideos] = useState([]);
+  const [videoModalOpen, setVideoModalOpen] = useState(false);
+  const [videoMode, setVideoMode] = useState('create');
+  const [videoEditItem, setVideoEditItem] = useState(null);
+  const [videoForm, setVideoForm] = useState({ title: '', source_type: 'link', video_url: '', thumbnail_url: '', orientation: 'portrait', sort_order: 0, status: 'published' });
+  const [videoSaving, setVideoSaving] = useState(false);
+  const [videoMsg, setVideoMsg] = useState('');
+  const [videoUploading, setVideoUploading] = useState(false);
+  const [videoFileName, setVideoFileName] = useState('');   // picked video filename (label under button)
+  const [thumbFileName, setThumbFileName] = useState('');   // picked thumbnail filename
+  const videoFileInputRef = useRef(null);
+  const thumbInputRef = useRef(null);
+  const [seoEntries, setSeoEntries] = useState([]);
+  const [seoDrafts, setSeoDrafts] = useState({}); // per-row unsaved SEO edits
+  const [seoSearch, setSeoSearch] = useState('');
 
   const [modalOpen, setModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState('create');
@@ -73,6 +88,8 @@ export default function AdminDashboard() {
     { id: 'blogs', label: 'Blogs', icon: 'post_add' },
     { id: 'testimonials', label: 'Testimonials', icon: 'reviews' },
     { id: 'doctors', label: 'Doctors', icon: 'stethoscope' },
+    { id: 'seo', label: 'SEO (Pages)', icon: 'query_stats' },
+    { id: 'videos', label: 'Video Gallery', icon: 'smart_display' },
     { id: 'settings', label: 'Site Settings', icon: 'settings' },
   ];
 
@@ -170,6 +187,7 @@ export default function AdminDashboard() {
         jfetch('/api/admin/testimonials'),
         jfetch('/api/admin/doctors'),
       ]);
+      loadSeoEntries();
       if (sRes.success) setStats(sRes.data);
       if (svRes.success) setServices(svRes.data);
       if (trRes.success) setTreatments(trRes.data);
@@ -179,6 +197,24 @@ export default function AdminDashboard() {
       if (e.message !== 'unauthorized') console.error('Load error:', e);
     }
     setLoading(false);
+  };
+
+  const loadVideos = async () => {
+    try {
+      const data = await jfetch('/api/admin/videos');
+      if (data.success) setVideos(data.data);
+    } catch (e) {
+      if (e.message !== 'unauthorized') console.error(e);
+    }
+  };
+
+  const loadSeoEntries = async () => {
+    try {
+      const data = await jfetch('/api/admin/seo');
+      if (data.success) setSeoEntries(data.data);
+    } catch (e) {
+      if (e.message !== 'unauthorized') console.error(e);
+    }
   };
 
   const loadSiteSettings = async () => {
@@ -194,6 +230,7 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     if (activePage === 'settings') loadSiteSettings();
+    if (activePage === 'videos') loadVideos();
   }, [activePage]);
 
   useEffect(() => {
@@ -238,6 +275,7 @@ export default function AdminDashboard() {
         loadData();
         if (['appointments', 'contacts', 'blogs'].includes(entity)) fetchLists();
         if (entity === 'site-settings') loadSiteSettings();
+        if (entity === 'videos') loadVideos();
       }
     } catch {
       alert('Failed to delete');
@@ -272,6 +310,37 @@ export default function AdminDashboard() {
     }
   };
 
+  const slugify = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+  // Public URL paths an entity's SEO row can live under
+  const seoPathsForEntity = (entity, item) => {
+    if (!item) return [];
+    if (entity === 'blogs') {
+      const s = item.slug || '';
+      return [`/blogs/${s}/`, `/blogs/${s}/index.htm`, `/blogs/${s}`];
+    }
+    if (entity === 'services' || entity === 'treatments') return [`/${item.slug}.html`];
+    return [];
+  };
+
+  const findSeoForEntity = (entity, item) => {
+    for (const p of seoPathsForEntity(entity, item)) {
+      const found = seoEntries.find(r => r.path === p);
+      if (found) return found;
+    }
+    return null;
+  };
+
+  const seoFieldsFromRow = (row) => ({
+    seo_meta_title: row.meta_title || '',
+    seo_meta_description: row.meta_description || '',
+    seo_meta_keywords: row.meta_keywords || '',
+    seo_canonical_url: row.canonical_url || '',
+    seo_robots: row.robots || 'INDEX,FOLLOW',
+    seo_og_title: row.og_title || '',
+    seo_og_image: row.og_image || ''
+  });
+
   const openCreateModal = (entity) => {
     if (modalTimerRef.current) { clearTimeout(modalTimerRef.current); modalTimerRef.current = null; }
     setModalEntity(entity);
@@ -291,7 +360,11 @@ export default function AdminDashboard() {
     setModalEntity(entity);
     setModalMode('edit');
     setEditItem(item);
-    setFormData({ ...item });
+    const base = { ...item };
+    // Prefill the entity's SEO row (blogs/services/treatments) into the form
+    const seoRow = findSeoForEntity(entity, item);
+    if (seoRow) Object.assign(base, seoFieldsFromRow(seoRow));
+    setFormData(base);
     setModalOpen(true);
     setSaveMsg('');
   };
@@ -317,6 +390,38 @@ export default function AdminDashboard() {
       }
       const data = await res.json();
       if (res.ok) {
+        // Blogs / Services / Treatments: persist their SEO row (path-keyed)
+        if (['blogs', 'services', 'treatments'].includes(modalEntity)) {
+          const seoBody = {
+            meta_title: formData.seo_meta_title ?? '',
+            meta_description: formData.seo_meta_description ?? '',
+            meta_keywords: formData.seo_meta_keywords ?? '',
+            canonical_url: formData.seo_canonical_url ?? '',
+            robots: formData.seo_robots || 'INDEX,FOLLOW',
+            og_title: formData.seo_og_title ?? '',
+            og_image: formData.seo_og_image ?? ''
+          };
+          const hasExisting = !!findSeoForEntity(modalEntity, modalMode === 'edit' ? editItem : formData);
+          const hasInput = Object.entries(seoBody).some(([k, v]) => v && !(k === 'robots' && v === 'INDEX,FOLLOW'));
+          if (hasExisting || hasInput) {
+            let seoPath;
+            if (modalEntity === 'blogs') {
+              const slug = modalMode === 'edit' ? editItem.slug : (data.slug || formData.slug || slugify(formData.title));
+              seoPath = `/blogs/${slug}/`;
+            } else {
+              const slug = modalMode === 'edit' ? editItem.slug : (formData.slug || slugify(formData.name));
+              seoPath = `/${slug}.html`;
+            }
+            try {
+              await fetch('/api/admin/seo', {
+                method: 'PUT',
+                headers: apiHeaders(),
+                body: JSON.stringify({ path: seoPath, ...seoBody })
+              });
+            } catch { /* non-fatal: main entity saved */ }
+            loadSeoEntries();
+          }
+        }
         setSaveMsg('Saved successfully');
         if (modalTimerRef.current) clearTimeout(modalTimerRef.current);
         modalTimerRef.current = setTimeout(() => { setModalOpen(false); setSaveMsg(''); }, 800);
@@ -493,6 +598,22 @@ export default function AdminDashboard() {
     const title = `${modalMode === 'create' ? 'Create' : 'Edit'} ${modalEntity.charAt(0).toUpperCase() + modalEntity.slice(1, -1)}`;
 
     let fields = [];
+    const seoFieldset = (kind) => [
+      <div key="seo-sep" className="md:col-span-2 border-t border-gray-100 pt-3">
+        <div className="flex items-center gap-2">
+          <span className="material-symbols-outlined text-[#0084d1] text-base">query_stats</span>
+          <h4 className="text-xs font-bold text-[#0b1c30] uppercase tracking-wider">SEO for this {kind}</h4>
+        </div>
+        <p className="text-[11px] text-gray-400 mt-0.5">Drives the &lt;title&gt;, meta tags, canonical and social-share preview of the public page.</p>
+      </div>,
+      renderFormField('SEO Meta Title', 'seo_meta_title', 'text', { multiline: true }),
+      renderFormField('SEO Meta Description', 'seo_meta_description', 'text', { multiline: true }),
+      renderFormField('SEO Keywords', 'seo_meta_keywords', 'text', { multiline: true }),
+      renderFormField('SEO Canonical URL', 'seo_canonical_url'),
+      renderFormField('SEO OG Title', 'seo_og_title'),
+      renderFormField('SEO OG Image URL', 'seo_og_image'),
+    ];
+
     if (modalEntity === 'services') {
       fields = [
         renderFormField('Name', 'name', 'text', { required: true }),
@@ -503,6 +624,7 @@ export default function AdminDashboard() {
         renderFormField('Banner Image URL', 'banner_image'),
         renderFormField('Sort Order', 'sort_order', 'number'),
         renderFormField('Status', 'status', 'select', { choices: ['active', 'inactive'] }),
+        ...(modalMode === 'edit' ? seoFieldset('service') : []),
       ];
     } else if (modalEntity === 'treatments') {
       fields = [
@@ -516,6 +638,7 @@ export default function AdminDashboard() {
         renderFormField('Banner Image URL', 'banner_image'),
         renderFormField('Sort Order', 'sort_order', 'number'),
         renderFormField('Status', 'status', 'select', { choices: ['active', 'inactive'] }),
+        ...(modalMode === 'edit' ? seoFieldset('treatment') : []),
       ];
     } else if (modalEntity === 'blogs') {
       fields = [
@@ -527,6 +650,24 @@ export default function AdminDashboard() {
         renderFormField('Content (HTML)', 'content_html', 'text', { multiline: true }),
         renderFormField('Status', 'status', 'select', { choices: ['published', 'draft'] }),
       ];
+      if (modalMode === 'edit') {
+        fields = [
+          ...fields,
+          <div key="seo-sep" className="md:col-span-2 border-t border-gray-100 pt-3">
+            <div className="flex items-center gap-2">
+              <span className="material-symbols-outlined text-[#0084d1] text-base">query_stats</span>
+              <h4 className="text-xs font-bold text-[#0b1c30] uppercase tracking-wider">SEO for this blog</h4>
+            </div>
+            <p className="text-[11px] text-gray-400 mt-0.5">Saved to the page path /blogs/{modalMode === 'edit' && editItem ? editItem.slug : '…'}/ — drives the &lt;title&gt;, meta tags and social share preview.</p>
+          </div>,
+          renderFormField('SEO Meta Title', 'seo_meta_title', 'text', { multiline: true }),
+          renderFormField('SEO Meta Description', 'seo_meta_description', 'text', { multiline: true }),
+          renderFormField('SEO Keywords', 'seo_meta_keywords', 'text', { multiline: true }),
+          renderFormField('SEO Canonical URL', 'seo_canonical_url'),
+          renderFormField('SEO OG Title', 'seo_og_title'),
+          renderFormField('SEO OG Image URL', 'seo_og_image'),
+        ];
+      }
     } else if (modalEntity === 'testimonials') {
       fields = [
         renderFormField('Patient Name', 'patient_name', 'text', { required: true }),
@@ -959,6 +1100,11 @@ export default function AdminDashboard() {
       icon: 'tune',
       keys: ['whatsapp_number', 'google_analytics_id', 'clinic_established_year'],
     },
+    {
+      title: 'Video Gallery Section',
+      icon: 'smart_display',
+      keys: ['video_gallery_title', 'video_gallery_subtitle'],
+    },
   ];
 
   const renderSettings = () => {
@@ -1045,6 +1191,522 @@ export default function AdminDashboard() {
     );
   };
 
+  // ─── SEO page (pages/locations/doctors/blog-index) ────────────────
+  // Blogs/Services/Treatments SEO is edited from within those entities'
+  // own editors; this page covers everything else.
+  const SEO_PAGE_TYPES = [
+    { type: 'page', label: 'Pages', hint: 'Home, About, Services & Treatments lists, Contact, Legal' },
+    { type: 'location', label: 'Location Pages', hint: 'Physiotherapy-in-sector-XX landing pages' },
+    { type: 'doctor', label: 'Doctor Profiles', hint: 'Doctor profile pages' },
+    { type: 'blog_index', label: 'Blog Index', hint: 'The /blogs listing page' },
+  ];
+
+  const setSeoDraft = (id, key, value) => {
+    setSeoDrafts(prev => ({ ...prev, [id]: { ...(prev[id] || {}), [key]: value } }));
+  };
+
+  const seoDraftFor = (row) => ({
+    meta_title: row.meta_title || '',
+    meta_description: row.meta_description || '',
+    meta_keywords: row.meta_keywords || '',
+    canonical_url: row.canonical_url || '',
+    robots: row.robots || 'INDEX,FOLLOW',
+    og_title: row.og_title || '',
+    og_description: row.og_description || '',
+    og_image: row.og_image || '',
+    ...(seoDrafts[row.id] || {})
+  });
+
+  const seoDirtyCount = Object.keys(seoDrafts).length;
+
+  const handleSaveSeoRow = async (row) => {
+    const draft = seoDraftFor(row);
+    setSaving(true);
+    setSaveMsg('');
+    try {
+      const res = await fetch('/api/admin/seo', {
+        method: 'PUT',
+        headers: apiHeaders(),
+        body: JSON.stringify({ path: row.path, ...draft })
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setSeoDrafts(prev => {
+          const next = { ...prev };
+        delete next[row.id];
+          return next;
+        });
+        loadSeoEntries();
+      } else {
+        alert(data.message || 'Save failed');
+      }
+    } catch {
+      alert('Network error');
+    }
+    setSaving(false);
+  };
+
+  const handleSeoSearch = async (value) => {
+    setSeoSearch(value);
+    try {
+      const data = await jfetch(`/api/admin/seo?search=${encodeURIComponent(value)}`);
+      if (data.success) setSeoEntries(data.data);
+    } catch (e) {
+      if (e.message !== 'unauthorized') console.error(e);
+    }
+  };
+
+  const SEO_FIELD_LABELS = {
+    meta_title: 'Meta Title',
+    meta_description: 'Meta Description',
+    meta_keywords: 'Meta Keywords',
+    canonical_url: 'Canonical URL',
+    robots: 'Robots',
+    og_title: 'OG Title',
+    og_description: 'OG Description',
+    og_image: 'OG Image URL'
+  };
+
+  const renderSeoFields = (draft, onField) => (
+    <div className="space-y-3">
+      <div>
+        <label className="block text-xs font-semibold text-gray-600 mb-1">Meta Title <span className="text-gray-400 font-normal">(~60 chars ideal)</span></label>
+        <input
+          value={draft.meta_title}
+          onChange={e => onField('meta_title', e.target.value)}
+          className={`w-full px-3 py-2 border rounded-lg text-sm outline-none focus:ring-2 focus:ring-[#0084d1] ${draft.meta_title.length > 65 ? 'border-orange-300' : 'border-gray-200'}`}
+          maxLength={120}
+        />
+        <div className={`text-[10px] mt-0.5 ${draft.meta_title.length > 65 ? 'text-orange-500 font-semibold' : 'text-gray-400'}`}>{draft.meta_title.length}/65</div>
+      </div>
+      <div>
+        <label className="block text-xs font-semibold text-gray-600 mb-1">Meta Description <span className="text-gray-400 font-normal">(~160 chars ideal)</span></label>
+        <textarea
+          rows={3}
+          value={draft.meta_description}
+          onChange={e => onField('meta_description', e.target.value)}
+          className={`w-full px-3 py-2 border rounded-lg text-sm outline-none focus:ring-2 focus:ring-[#0084d1] ${draft.meta_description.length > 165 ? 'border-orange-300' : 'border-gray-200'}`}
+          maxLength={320}
+        />
+        <div className={`text-[10px] mt-0.5 ${draft.meta_description.length > 165 ? 'text-orange-500 font-semibold' : 'text-gray-400'}`}>{draft.meta_description.length}/160</div>
+  </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div>
+          <label className="block text-xs font-semibold text-gray-600 mb-1">Canonical URL</label>
+          <input
+            value={draft.canonical_url}
+            onChange={e => onField('canonical_url', e.target.value)}
+            placeholder="/about.html (relative) or full https URL"
+            className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-[#0084d1]"
+          />
+        </div>
+        <div>
+          <label className="block text-xs font-semibold text-gray-600 mb-1">Robots</label>
+          <select
+            value={draft.robots}
+            onChange={e => onField('robots', e.target.value)}
+            className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-[#0084d1] bg-white"
+          >
+            {['INDEX,FOLLOW', 'NOINDEX,NOFOLLOW', 'NOINDEX,FOLLOW', 'INDEX,NOFOLLOW'].map(r => <option key={r} value={r}>{r}</option>)}
+          </select>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div>
+          <label className="block text-xs font-semibold text-gray-600 mb-1">OG Title <span className="text-gray-400 font-normal">(social share)</span></label>
+          <input
+            value={draft.og_title}
+            onChange={e => onField('og_title', e.target.value)}
+            className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-[#0084d1]"
+          />
+        </div>
+        <div>
+          <label className="block text-xs font-semibold text-gray-600 mb-1">OG Image URL</label>
+          <input
+            value={draft.og_image}
+            onChange={e => onField('og_image', e.target.value)
+            }
+            className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-[#0084d1]"
+          />
+        </div>
+      </div>
+      <div>
+        <label className="block text-xs font-semibold text-gray-600 mb-1">OG Description</label>
+        <textarea
+          rows={2}
+          value={draft.og_description}
+          onChange={e => onField('og_description', e.target.value)}
+          className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-[#0084d1]"
+        />
+      </div>
+    </div>
+  );
+
+  const renderSeoPage = () => {
+    const byType = {};
+    seoEntries.forEach(r => {
+      const t = r.entity_type || 'other';
+      (byType[t] = byType[t] || []).push(r);
+    });
+
+    const groupOrder = [
+      ...SEO_PAGE_TYPES.map(t => ({ ...t, rows: byType[t.type] || [] })),
+      { type: 'other', label: 'Other', hint: 'Entries without a recognised type', rows: byType.other || [] }
+    ];
+
+    return (
+      <div className="space-y-6">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+          <div>
+            <h2 className="text-2xl font-bold text-[#0b1c30] font-headline">SEO — Pages, Locations & Doctors</h2>
+            <p className="text-xs text-gray-500 mt-1">Service / Treatment / Blog SEO is managed inside their own sections (Services, Treatments, Blogs pages).</p>
+          </div>
+          <div className="relative sm:max-w-xs">
+            <span className="material-symbols-outlined text-base text-gray-400 absolute left-3 top-1/2 -translate-y-1/2">search</span>
+            <input
+              type="text"
+              value={seoSearch}
+              onChange={e => handleSeoSearch(e.target.value)}
+              placeholder="Search by path or title…"
+              className="w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-[#0084d1] outline-none"
+            />
+          </div>
+        </div>
+
+        {seoEntries.length === 0 ? (
+          <div className="bg-white rounded-xl border border-gray-200 p-12 text-center text-gray-400 text-sm">No SEO entries found.</div>
+        ) : (
+          <>
+            {groupOrder.map(group => group.rows.length === 0 ? null : (
+              <div key={group.type} className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-sm font-bold text-[#0b1c30] uppercase tracking-wider">{group.label}</h3>
+                    <span className="px-2 py-0.5 bg-gray-100 text-gray-500 text-[10px] font-bold rounded-full">{group.rows.length}</span>
+                    {group.readOnly && <span className="px-2 py-0.5 bg-amber-50 text-amber-600 text-[10px] font-bold rounded-full">read-only here</span>}
+                  </div>
+                  <span className="text-[11px] text-gray-400">{group.hint}</span>
+                </div>
+                {group.rows.map(row => {
+                  const draft = seoDraftFor(row);
+                  const isDirty = !!seoDrafts[row.id];
+                  return (
+                    <details key={row.id} className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden" open={false}>
+                      <summary className="px-5 py-3.5 cursor-pointer flex items-center justify-between hover:bg-gray-50 transition">
+                        <div className="min-w-0">
+                          <div className="text-sm font-bold text-[#0b1c30] truncate">{row.meta_title || '(no title set)'}</div>
+                          <div className="text-xs text-gray-400 truncate">{row.path}</div>
+                        </div>
+                        <div className="flex items-center gap-2 shrink-0 ml-3">
+                          {isDirty && <span className="px-2 py-0.5 bg-blue-50 text-blue-600 text-[10px] font-bold rounded-full">unsaved</span>}
+                          <span className="material-symbols-outlined text-gray-400 text-lg">expand_more</span>
+                        </div>
+                      </summary>
+                      <div className="px-5 py-4 border-t border-gray-100">
+                        {group.readOnly ? (
+                          <p className="text-xs text-gray-500">This blog's SEO is managed from the <strong>Blogs</strong> page — open the blog in the Blogs section and use the SEO fields there.</p>
+                        ) : (
+                          <>
+                            <div className="flex flex-wrap items-center gap-2 mb-3 text-[11px] text-gray-400">
+                              <span className="px-2 py-0.5 bg-gray-100 rounded font-semibold">Path: {row.path}</span>
+                              {row.robots && (
+                                <span className={`px-2 py-0.5 rounded font-semibold ${String(row.robots).toUpperCase().includes('NOINDEX') ? 'bg-red-50 text-red-600' : 'bg-green-50 text-green-600'}`}>
+                                  {row.robots}
+                                </span>
+                              )}
+                            </div>
+                            {renderSeoFields(draft, (key, value) => setSeoDraft(row.id, key, value))}
+                            <div className="flex items-center gap-3 mt-4 pt-3 border-t border-gray-100">
+                              <button
+                                onClick={() => handleSaveSeoRow(row)}
+                                disabled={saving || !isDirty}
+                                className="px-5 py-2 bg-[#0084d1] hover:bg-[#006bb0] disabled:opacity-40 disabled:cursor-not-allowed text-white text-xs font-bold rounded-lg shadow transition"
+                              >
+                                {saving ? 'Saving…' : 'Save SEO'}
+                              </button>
+                              {isDirty && (
+                                <button
+                                  onClick={() => setSeoDrafts(prev => { const n = { ...prev }; delete n[row.id]; return n; })}
+                                  className="text-xs font-semibold text-gray-500 hover:text-gray-700 transition"
+                                >
+                                  Discard changes
+                                </button>
+                              )}
+                            </div>
+                          </>
+                        )}
+                      </div>
+                    </details>
+                  );
+                })}
+              </div>
+            ))}
+          </>
+        )}
+      </div>
+    )};
+
+  // ─── Video Gallery (About-page carousel) ─────────────────────────
+  // NOTE: video modal state lives with the other useState hooks at the top of
+  // the component (React hooks must run unconditionally, before the login
+  // early-return).
+  const blankVideo = { title: '', source_type: 'link', video_url: '', thumbnail_url: '', orientation: 'portrait', sort_order: 0, status: 'published' };
+
+  const handleFileUpload = async (file, kind) => {
+    if (!file) return '';
+    setVideoUploading(true);
+    try {
+      const fd = new FormData();
+      fd.append('file', file);
+      fd.append('kind', kind);
+      const res = await fetch('/api/admin/upload', { method: 'POST', headers: { Authorization: `Bearer ${localStorage.getItem('kr_admin_token')}` }, body: fd });
+      const data = await res.json();
+      if (res.ok && data.success) return data.url;
+      alert(data.message || 'Upload failed');
+      return '';
+    } catch {
+      alert('Upload failed — network error');
+      return '';
+    } finally {
+      setVideoUploading(false);
+    }
+  };
+
+  const handleVideoSave = async (e) => {
+    e.preventDefault();
+    setVideoSaving(true);
+    setVideoMsg('');
+    try {
+      const res = await fetch(videoMode === 'create' ? '/api/admin/videos' : `/api/admin/videos/${videoEditItem.id}`, {
+        method: videoMode === 'create' ? 'POST' : 'PUT',
+        headers: apiHeaders(),
+        body: JSON.stringify(videoForm)
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setVideoModalOpen(false);
+        loadVideos();
+      } else {
+        setVideoMsg(data.message || 'Save failed');
+      }
+    } catch {
+      setVideoMsg('Network error');
+    }
+    setVideoSaving(false);
+  };
+
+  const renderVideos = () => (
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <div>
+          <h2 className="text-2xl font-bold text-[#0b1c30] font-headline">Video Gallery</h2>
+          <p className="text-xs text-gray-500 mt-1">Videos shown in the carousel at the top of the About Us page. Default frame is portrait (reels 9:16); landscape videos are letterboxed inside the same frame.</p>
+        </div>
+        <button
+          onClick={() => { setVideoMode('create'); setVideoEditItem(null); setVideoForm({ ...blankVideo }); setVideoMsg(''); setVideoFileName(''); setThumbFileName(''); setVideoModalOpen(true); }}
+          className="flex items-center gap-2 px-4 py-2 bg-[#0084d1] hover:bg-[#006bb0] text-white text-sm font-bold rounded-lg shadow transition"
+        >
+          <span className="material-symbols-outlined text-base">add</span> Add Video
+        </button>
+      </div>
+      {videos.length === 0 ? (
+        <div className="bg-white rounded-xl border border-gray-200 p-12 text-center text-gray-400 text-sm">No videos yet — add one to show it in the carousel.</div>
+      ) : (
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-sm">
+              <thead>
+                <tr className="bg-gray-50 border-b border-gray-200 text-gray-500 uppercase text-xs font-bold">
+                  <th className="py-3 px-4">Thumb</th>
+                  <th className="py-3 px-4">Title</th>
+                  <th className="py-3 px-4">Source</th>
+                  <th className="py-3 px-4">Orientation</th>
+                  <th className="py-3 px-4">Order</th>
+                  <th className="py-3 px-4">Status</th>
+                  <th className="py-3 px-4">Actions</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100">
+                {videos.map(v => (
+                  <tr key={v.id} className="hover:bg-gray-50 transition">
+                    <td className="py-2 px-4">
+                      {v.thumbnail_url
+                        ? <img src={v.thumbnail_url} alt="" className="w-14 h-20 object-cover rounded-lg border border-gray-200" />
+                        : <div className="w-14 h-20 rounded-lg border border-gray-200 bg-gray-50 flex items-center justify-center text-gray-300"><span className="material-symbols-outlined">smart_display</span></div>}
+                    </td>
+                    <td className="py-3 px-4 font-semibold text-gray-900">{v.title || <span className="text-gray-400">—</span>}</td>
+                    <td className="py-3 px-4">
+                      <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${v.source_type === 'file' ? 'bg-purple-50 text-purple-600' : 'bg-blue-50 text-blue-600'}`}>{v.source_type}</span>
+                      <div className="text-[10px] text-gray-400 truncate max-w-[160px]">{v.video_url}</div>
+                    </td>
+                    <td className="py-3 px-4">
+                      <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${v.orientation === 'landscape' ? 'bg-amber-50 text-amber-600' : 'bg-green-50 text-green-600'}`}>{v.orientation}</span>
+                    </td>
+                    <td className="py-3 px-4 text-gray-600">{v.sort_order}</td>
+                    <td className="py-3 px-4">
+                      <span className={`px-2.5 py-1 rounded-full text-xs font-bold ${statusColors[v.status] || 'bg-gray-100 text-gray-600'}`}>{v.status}</span>
+                    </td>
+                    <td className="py-3 px-4">
+                      <div className="flex items-center gap-1">
+                        <button onClick={() => { setVideoMode('edit'); setVideoEditItem(v); setVideoForm({ ...v }); setVideoMsg(''); setVideoFileName(''); setThumbFileName(''); setVideoModalOpen(true); }} className="text-[#0084d1] hover:text-[#006bb0] p-1 rounded hover:bg-blue-50 transition">
+                          <span className="material-symbols-outlined text-base">edit</span>
+                        </button>
+                        <button onClick={() => handleDelete('videos', v.id)} className="text-red-400 hover:text-red-600 p-1 rounded hover:bg-red-50 transition">
+                          <span className="material-symbols-outlined text-base">delete</span>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {videoModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div className="sticky top-0 bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between rounded-t-2xl">
+              <h3 className="text-lg font-bold text-[#0b1c30] font-headline">{videoMode === 'create' ? 'Add Video' : 'Edit Video'}</h3>
+              <button onClick={() => setVideoModalOpen(false)} className="text-gray-400 hover:text-gray-600">
+                <span className="material-symbols-outlined text-xl">close</span>
+              </button>
+            </div>
+            <form onSubmit={handleVideoSave} className="p-6 space-y-4">
+              {videoMsg && <div className="p-3 bg-red-50 text-red-700 text-sm rounded-lg">{videoMsg}</div>}
+              <div>
+                <label className="block text-xs font-semibold text-gray-700 mb-1">Title</label>
+                <input value={videoForm.title || ''} onChange={e => setVideoForm({ ...videoForm, title: e.target.value })} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-[#0084d1] outline-none" placeholder="e.g. Clinic tour" />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-gray-700 mb-1.5">Video Source</label>
+                <div className="flex gap-2 mb-3">
+                  {['link', 'file'].map(t => (
+                    <button
+                      type="button"
+                      key={t}
+                      onClick={() => setVideoForm({ ...videoForm, source_type: t })}
+                      className={`px-4 py-2 rounded-lg text-xs font-bold transition ${videoForm.source_type === t ? 'bg-[#0084d1] text-white shadow' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                    >
+                      {t === 'link' ? 'Video Link' : 'Upload File'}
+                    </button>
+                  ))}
+                </div>
+                {videoForm.source_type === 'link' ? (
+                  <input
+                    value={videoForm.video_url || ''}
+                    onChange={e => setVideoForm({ ...videoForm, video_url: e.target.value })}
+                    required
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-[#0084d1] outline-none"
+                    placeholder="https://… (mp4/webm link, YouTube or Instagram reel embed)"
+                  />
+                ) : (
+                  <div className="flex items-center gap-3">
+                    {/* Hidden native input + styled button: we control the label so it
+                        always reflects real state (file picked → uploading → uploaded) */}
+                    <input
+                      ref={el => { videoFileInputRef.current = el; }}
+                      type="file"
+                      accept="video/mp4,video/webm,video/quicktime,video/x-m4v,video/ogg,.mp4,.webm,.mov,.m4v,.ogv"
+                      className="hidden"
+                      onChange={async e => {
+                        const file = e.target.files && e.target.files[0];
+                        if (!file) return;
+                        setVideoFileName(file.name);
+                        const url = await handleFileUpload(file, 'video');
+                        if (url) setVideoForm(f => ({ ...f, video_url: url }));
+                        e.target.value = ''; // allow re-picking the same file
+                      }}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => videoFileInputRef.current && videoFileInputRef.current.click()}
+                      className="px-4 py-2 bg-[#0084d1] hover:bg-[#006bb0] text-white text-xs font-bold rounded-lg shadow transition shrink-0"
+                    >
+                      Choose Video File
+                    </button>
+                    <span className="text-xs text-gray-600 truncate">
+                      {videoUploading
+                        ? 'Uploading…'
+                        : videoForm.video_url
+                          ? `✓ ${videoFileName || videoForm.video_url}`
+                          : 'No file chosen'}
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-gray-700 mb-1.5">Thumbnail (optional — shown before play)</label>
+                <div className="flex items-center gap-3">
+                  {/* Hidden native input + styled button (same pattern as the video picker) */}
+                  <input
+                    ref={el => { thumbInputRef.current = el; }}
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={async e => {
+                      const file = e.target.files && e.target.files[0];
+                      if (!file) return;
+                      setThumbFileName(file.name);
+                      const url = await handleFileUpload(file, 'image');
+                      if (url) setVideoForm(f => ({ ...f, thumbnail_url: url }));
+                      e.target.value = ''; // allow re-picking the same file
+                    }}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => thumbInputRef.current && thumbInputRef.current.click()}
+                    className="px-4 py-2 bg-gray-700 hover:bg-gray-800 text-white text-xs font-bold rounded-lg shadow transition shrink-0"
+                  >
+                    Choose File
+                  </button>
+                  <input
+                    value={videoForm.thumbnail_url || ''}
+                    onChange={e => setVideoForm({ ...videoForm, thumbnail_url: e.target.value })}
+                    className="flex-1 px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-[#0084d1] outline-none"
+                    placeholder="…or paste an image URL"
+                  />
+                  {videoForm.thumbnail_url && <img src={videoForm.thumbnail_url} alt="" className="w-10 h-16 object-cover rounded border border-gray-200" />}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold text-gray-700 mb-1">Orientation</label>
+                  <select value={videoForm.orientation || 'portrait'} onChange={e => setVideoForm({ ...videoForm, orientation: e.target.value })} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm bg-white focus:ring-2 focus:ring-[#0084d1] outline-none">
+                    <option value="portrait">Portrait (reels)</option>
+                    <option value="landscape">Landscape</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-gray-700 mb-1">View Order</label>
+                  <input type="number" value={videoForm.sort_order || 0} onChange={e => setVideoForm({ ...videoForm, sort_order: parseInt(e.target.value) || 0 })} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-[#0084d1] outline-none" />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-gray-700 mb-1">Status</label>
+                  <select value={videoForm.status || 'published'} onChange={e => setVideoForm({ ...videoForm, status: e.target.value })} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm bg-white focus:ring-2 focus:ring-[#0084d1] outline-none">
+                    <option value="published">published</option>
+                    <option value="draft">draft</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="flex justify-end gap-3 pt-4 border-t border-gray-100">
+                <button type="button" onClick={() => setVideoModalOpen(false)} className="px-5 py-2.5 text-sm font-semibold text-gray-600 hover:bg-gray-100 rounded-lg transition">Cancel</button>
+                <button type="submit" disabled={videoSaving || videoUploading} className="px-6 py-2.5 bg-[#0084d1] hover:bg-[#006bb0] text-white text-sm font-bold rounded-lg shadow transition disabled:opacity-60">
+                  {videoSaving ? 'Saving…' : 'Save'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+
   const renderPage = () => {
     switch (activePage) {
       case 'dashboard': return renderDashboard();
@@ -1055,13 +1717,15 @@ export default function AdminDashboard() {
       case 'blogs': return renderBlogs();
       case 'testimonials': return renderTestimonialsList();
       case 'doctors': return renderDoctors();
+      case 'seo': return renderSeoPage();
+      case 'videos': return renderVideos();
       case 'settings': return renderSettings();
       default: return renderDashboard();
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex" style={{ fontFamily: 'Inter, sans-serif' }}>
+    <div className="h-screen overflow-hidden bg-gray-50 flex" style={{ fontFamily: 'Inter, sans-serif' }}>
       {renderModal()}
 
       {sidebarOpen && (
@@ -1072,10 +1736,6 @@ export default function AdminDashboard() {
         <div className="px-5 py-6 border-b border-white/10">
           <div className="flex items-center gap-3">
             <img src="/images/logo1.png" alt="KR Physiotherapy" className="h-10" />
-            <div>
-              <div className="text-sm font-bold font-headline leading-tight">KR Physiotherapy</div>
-              <div className="text-[10px] text-[#0084d1] font-semibold uppercase tracking-wider">Admin Panel</div>
-            </div>
           </div>
         </div>
 
@@ -1117,7 +1777,7 @@ export default function AdminDashboard() {
       </aside>
 
       <div className="flex-1 flex flex-col min-w-0">
-        <header className="bg-white border-b border-gray-200 sticky top-0 z-30 px-4 sm:px-6 py-3 flex items-center justify-between shadow-sm">
+        <header className="bg-white border-b border-gray-200 shrink-0 z-30 px-4 sm:px-6 py-3 flex items-center justify-between shadow-sm">
           <div className="flex items-center gap-3">
             <button
               onClick={() => setSidebarOpen(true)}
@@ -1131,7 +1791,6 @@ export default function AdminDashboard() {
           </div>
           <div className="flex items-center gap-3 text-sm">
             {loading && <span className="text-xs text-gray-400">Loading...</span>}
-            <span className="hidden sm:inline text-gray-500 text-xs">KR Physiotherapy Admin</span>
           </div>
         </header>
 

@@ -140,6 +140,12 @@ async function renderHtmlForPath(urlPath) {
       body { font-family: 'Inter', sans-serif; background-color: #f8f9ff; color: #0b1c30; margin: 0; }
       h1, h2, h3, h4, h5, h6 { font-family: 'Plus Jakarta Sans', sans-serif; }
       .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+      /* Scrollbars: slim, brand-tinted (WebKit + Firefox) */
+      * { scrollbar-width: thin; scrollbar-color: #94a3b8 transparent; }
+      ::-webkit-scrollbar { width: 8px; height: 8px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+      ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
       /* Pre-motion fade for JS-rendered pages; Framer Motion handles entrances after hydration */
       @media (prefers-reduced-motion: no-preference) {
         [data-reveal], [data-img-reveal] { opacity: 0; }
@@ -227,8 +233,8 @@ async function renderHtmlForPath(urlPath) {
                 </div>
                 <div>
                     <h4 class="font-bold text-sm tracking-wider uppercase mb-4 text-slate-200 font-headline">Clinic Coordinates</h4>
-                    <p class="text-slate-400 mb-2">Kisan Tower, Basement, Main Road Hosiyarpur, Sector 51, Noida, Uttar Pradesh 201304</p>
-                    <p class="font-bold text-emerald-400 mb-1">Phone: <a href="tel:+917668527335">+91 76685 27335</a></p>
+                    <p class="text-slate-400 mb-2"><a href="https://www.google.com/maps/dir/?api=1&destination=KR+Physiotherapy+%26+Rehabilitation+Clinic,Kisan+Tower,+Main+Road+Hosiyarpur,+Sector+51,+Noida" target="_blank" rel="noopener noreferrer" class="hover:text-amber-300">Kisan Tower, Basement, Main Road Hosiyarpur, Sector 51, Noida, Uttar Pradesh 201304</a></p>
+                    <p class="font-bold text-emerald-400 mb-1">Phone: <a href="tel:+917668527335">+91 76685 27335</a><br /><a href="tel:+918595321652" class="text-slate-300">+91 85953 21652</a></p>
                     <p class="text-slate-300">Open 7 Days: 8:30am - 8:30pm</p>
                 </div>
             </div>
@@ -257,6 +263,15 @@ function renderAdminShell() {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="NOINDEX,NOFOLLOW">
     <title>Admin Panel — KR Physiotherapy</title>
+    <style>
+      /* Admin scrollbars: neutral slate, slim */
+      * { scrollbar-width: thin; scrollbar-color: #94a3b8 transparent; }
+      ::-webkit-scrollbar { width: 8px; height: 8px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+      ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+      aside ::-webkit-scrollbar-thumb, .bg-\[\#0b1c30\] ::-webkit-scrollbar-thumb { background: #334155; }
+    </style>
     <link rel="icon" type="image/png" href="/images/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -278,6 +293,11 @@ function renderAdminShell() {
     <style>
       body { font-family: 'Inter', sans-serif; background-color: #0b1c30; color: #0b1c30; margin: 0; }
       .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+      * { scrollbar-width: thin; scrollbar-color: #334155 transparent; }
+      ::-webkit-scrollbar { width: 8px; height: 8px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: #334155; border-radius: 8px; }
+      ::-webkit-scrollbar-thumb:hover { background: #475569; }
     </style>
     <script>
       window.__INITIAL_DATA__ = { path: "/admin", entityType: "admin", seo: {}, content: {} };

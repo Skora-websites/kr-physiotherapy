@@ -50,5 +50,15 @@
   {
     "setting_key": "google_maps_embed",
     "setting_value": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.7083042502684!2d77.36979201508137!3d28.578528982439396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce59f40faaaab%3A0x7ea9d107a61d157a!2sKR%20Physiotherapy%20%26%20Rehabilitation%20Clinic!5e0!3m2!1sen!2sin!4v1580198031535!5m2!1sen!2sin"
+  },
+  {
+    "setting_key": "video_gallery_title",
+    "setting_value": "Patient Stories",
+    "id": 14
+  },
+  {
+    "setting_key": "video_gallery_subtitle",
+    "setting_value": "Hear directly from our patients about their treatment and recovery at our clinic.",
+    "id": 15
   }
 ]

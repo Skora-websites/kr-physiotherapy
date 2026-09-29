@@ -92,9 +92,6 @@ export function ServiceCard({ service }) {
               {cardIcon}
             </span>
           </div>
-          <div className="absolute bottom-2.5 left-3 text-[10px] uppercase font-bold tracking-wider text-amber-300">
-            Specialized Care
-          </div>
         </div>
 
         <div className="p-6">

@@ -50,7 +50,12 @@ export default function AppointmentModal({ isOpen, onClose }) {
         setErrors(data.errors || [data.message || 'Failed to submit appointment.']);
       }
     } catch (err) {
-      setErrors(['Network error. Please call +91 76685 27335 directly for immediate booking.']);
+      setErrors([
+        <span key="call-err">Network error. Please call{' '}
+          <a href="tel:+917668527335" className="font-bold underline">+91 76685 27335</a>
+          {' '}directly for immediate booking.
+        </span>
+      ]);
     } finally {
       setLoading(false);
     }

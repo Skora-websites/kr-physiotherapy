@@ -2,7 +2,7 @@
   {
     "id": 1,
     "patient_name": "Manvi Chaurasia",
-    "location": "Noida  Manvi Chaurasia, Noida",
+    "location": "Noida Manvi Chaurasia, Noida",
     "condition_treated": "Knee Stiffness",
     "rating": 5,
     "testimonial_text": "Very well experienced. This is not the first time when I have consulted Dr. Neelam. This time I consulted her for my knee stiffness. She gave me simple solution and the stiffness was gone in a day. Her treatment comes with a great care. MUST CONSULT HER.",
@@ -13,7 +13,7 @@
   {
     "id": 2,
     "patient_name": "Khushboo",
-    "location": "Noida Sector-51  Khushboo, Noida Sector-51",
+    "location": "Noida Sector-51 Khushboo, Noida Sector-51",
     "condition_treated": "Neuro Rehabilitation",
     "rating": 5,
     "testimonial_text": "KR Physiotherapy and Rehabilitation Clinic is one of the best physiotherapy clinic in noida. All doctors are very good and experienced. Specially Dr.Neelam Sharma(PT) is a good physiotherapist for neuro problems.",

@@ -56,4 +56,15 @@ router.get('/site-settings', AdminController.getSiteSettings);
 router.put('/site-settings/:key', AdminController.updateSiteSetting);
 router.put('/site-settings', AdminController.updateSiteSettingsBulk);
 
+// SEO Metadata (path-keyed; powers <title>/meta/canonical/OG on all public pages)
+router.get('/seo', AdminController.getSeoMetadata);
+router.put('/seo', AdminController.upsertSeoMetadata);
+router.delete('/seo/:id', AdminController.deleteSeoMetadata);
+
+// Video Gallery (carousel on the About page)
+router.get('/videos', AdminController.getVideos);
+router.post('/videos', AdminController.createVideo);
+router.put('/videos/:id', AdminController.updateVideo);
+router.delete('/videos/:id', AdminController.deleteVideo);
+
 module.exports = router;

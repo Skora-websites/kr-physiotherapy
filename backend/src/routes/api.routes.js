@@ -19,6 +19,7 @@ router.get('/blogs', ApiController.getBlogs);
 router.get('/blogs/:slug', ApiController.getBlogBySlug);
 router.get('/site-settings', ApiController.getSiteSettings);
 router.get('/navigation', ApiController.getNavigation);
+router.get('/videos', ApiController.getVideos);
 
 // Interactive Form endpoints
 router.post('/appointments', ApiController.createAppointment);

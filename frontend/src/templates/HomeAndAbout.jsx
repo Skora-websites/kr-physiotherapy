@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { SectionHeader, ServiceCard, TreatmentCard, TestimonialCard, RecoveryTracker } from '../components/Cards';
-import { Reveal, Stagger, MotionButton, FloatBadge, MotionSection } from '../components/motion-primitives';
+import { Reveal, Stagger, MotionButton, FloatBadge, MotionSection, EASE } from '../components/motion-primitives';
+import PlayButton from '../components/PlayButton';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export function HomeTemplate({ onBook }) {
   const [services, setServices] = useState([]);
@@ -74,12 +76,12 @@ export function HomeTemplate({ onBook }) {
               {/* Stats Ribbon */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-slate-200/80">
                 <div className="p-3 bg-white/70 backdrop-blur-sm rounded-xl border border-slate-100">
-                  <div className="text-2xl sm:text-3xl font-black text-[#0084d1] font-headline">12+</div>
+                  <div className="text-2xl sm:text-3xl font-black text-[#0084d1] font-headline">15</div>
                   <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">Years Experience</div>
                 </div>
                 <div className="p-3 bg-white/70 backdrop-blur-sm rounded-xl border border-slate-100">
-                  <div className="text-2xl sm:text-3xl font-black text-[#0084d1] font-headline">5,000+</div>
-                  <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">Recoveries</div>
+                  <div className="text-2xl sm:text-3xl font-black text-[#0084d1] font-headline">2</div>
+                  <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">Physiotherapists</div>
                 </div>
                 <div className="p-3 bg-white/70 backdrop-blur-sm rounded-xl border border-slate-100">
                   <div className="text-2xl sm:text-3xl font-black text-[#f37021] font-headline">5.0 ★</div>
@@ -164,7 +166,6 @@ export function HomeTemplate({ onBook }) {
       {/* 3. Services — 4 featured + why-it-works panel */}
       <MotionSection className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge="Specialized Care"
           title="Comprehensive Clinical Physiotherapy"
           subtitle="Engineered protocols across sports, neuro, orthopaedic and post-surgical rehabilitation."
           ctaText="View All 8 Clinical Services"
@@ -190,7 +191,7 @@ export function HomeTemplate({ onBook }) {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
               { icon: 'troubleshoot', title: 'Assessment First', desc: '45-minute root-cause evaluation before any treatment plan.' },
-              { icon: 'handyman', title: 'Hands-On Therapy', desc: 'Mobilisation, dry needling and cupping by certified therapists.' },
+              { icon: 'handyman', title: 'Hands-On Therapy', desc: 'Mobilisation, dry needling and manual therapy by certified therapists.' },
               { icon: 'monitor_heart', title: 'Measured Progress', desc: 'Re-assessed every 4 sessions — you see the improvement.' },
               { icon: 'home_health', title: 'Home Continuity', desc: 'Same protocol continues at home when travel is difficult.' },
             ].map((f, i) => (
@@ -216,7 +217,6 @@ export function HomeTemplate({ onBook }) {
       {/* 5. Treatments — 3 featured + conditions content + CTA strip */}
       <MotionSection className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge="Targeted Interventions"
           title="Non-Surgical Pain Management"
           subtitle="Effective treatment for severe musculoskeletal disorders and chronic acute pain syndromes."
           ctaText="Explore All Conditions"
@@ -319,7 +319,6 @@ export function HomeTemplate({ onBook }) {
       <MotionSection className="bg-gradient-to-b from-slate-50 via-white to-sky-50/30 py-20 border-y border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
-            badge="Patient Outcomes"
             title="Real Patient Testimonials"
             subtitle="Verified reviews from patients treated for back stiffness, neuro rehabilitation, and mobility recovery."
           />
@@ -354,7 +353,7 @@ export function HomeTemplate({ onBook }) {
                 Experience Relief From Chronic Pain Today
               </h2>
               <p className="text-sm sm:text-base text-slate-200 max-w-2xl leading-relaxed">
-                Visit our central clinic in Sector 51 Noida or request specialized home physiotherapy. Transparent fees, compassionate doctors, zero waiting lines.
+                Visit our clinic in Sector 51 Noida or book a home visit. Clear fees, qualified doctors, short waiting times.
               </p>
               <div className="flex flex-wrap items-center gap-6 pt-3 text-xs sm:text-sm">
                 <a href="tel:+917668527335" className="flex items-center gap-2 text-amber-300 font-bold hover:underline">
@@ -480,9 +479,9 @@ export function AboutTemplate({ page, onBook }) {
       <MotionSection className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            { val: '12+', label: 'Years Experience', icon: 'history', color: 'text-[#0084d1]', bg: 'bg-[#0084d1]/10' },
-            { val: '5,000+', label: 'Patients Recovered', icon: 'groups', color: 'text-[#16a34a]', bg: 'bg-[#16a34a]/10' },
+            { val: '15', label: 'Years Experience', icon: 'history', color: 'text-[#0084d1]', bg: 'bg-[#0084d1]/10' },
             { val: '5.0 ★', label: 'Google Rating', icon: 'star', color: 'text-[#f37021]', bg: 'bg-[#f37021]/10' },
+            { val: '2', label: 'Physiotherapists', icon: 'groups', color: 'text-[#16a34a]', bg: 'bg-[#16a34a]/10' },
             { val: '7 Days', label: 'Open Every Day', icon: 'calendar_month', color: 'text-[#7c3aed]', bg: 'bg-[#7c3aed]/10' },
           ].map((s, i) => (
             <div key={i} className={`bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs flex items-center gap-4 hover:shadow-md transition-shadow`}>
@@ -577,11 +576,11 @@ export function AboutTemplate({ page, onBook }) {
             <div className="max-w-2xl space-y-3">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f37021]/15 border border-[#f37021]/30 text-[11px] font-bold uppercase tracking-widest text-[#f37021]">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#f37021]"></span>
-                Why Patients Choose Us
+                What We Offer
               </div>
               <h2 className="text-2xl sm:text-3xl font-black font-headline tracking-tight">Best Physiotherapy Service in Noida</h2>
               <p className="text-sm text-slate-300 leading-relaxed">
-                Highly qualified therapists, honest guidance and treatment that works — for people of all ages, from children to seniors.
+                Qualified therapists, clear advice and treatment that works — for people of all ages, from children to seniors.
               </p>
             </div>
 
@@ -617,9 +616,8 @@ export function AboutTemplate({ page, onBook }) {
       ═════════════════════════════════════════════════════ */}
       <MotionSection className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge="Clinical Leadership"
           title="Meet Our Physiotherapists"
-          subtitle="Two dedicated clinicians, one standard of care — accurate diagnosis, honest guidance and hands-on treatment that works."
+          subtitle="Our two physiotherapists diagnose the problem first, explain it plainly, and treat it with hands-on care."
         />
         <div className="space-y-10">
           {/* ── Dr. Neelam Sharma(PT) ── */}
@@ -628,7 +626,7 @@ export function AboutTemplate({ page, onBook }) {
             <div className="lg:col-span-4 relative min-h-[320px]">
               <img src="/images/Dr-Neelam-Sharma2.jpg" alt="Dr. Neelam Sharma(PT), Senior Consultant Physiotherapist" className="absolute inset-0 w-full h-full object-cover object-top" />
               <div className="absolute top-4 left-4 flex flex-col gap-2">
-                <span className="bg-[#0b1c30]/90 backdrop-blur-md text-amber-300 text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow">12+ Years Experience</span>
+                <span className="bg-[#0b1c30]/90 backdrop-blur-md text-amber-300 text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow">15 Years Experience</span>
                 <span className="bg-white/95 backdrop-blur-md text-[#0084d1] text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow flex items-center gap-1.5"><span className="material-symbols-outlined text-xs">verified</span> MIAP Certified</span>
               </div>
             </div>
@@ -642,15 +640,15 @@ export function AboutTemplate({ page, onBook }) {
                 <a href="/doctor-neelam-sharma.html" className="px-4 py-2 text-xs font-bold text-[#0084d1] bg-[#0084d1]/10 hover:bg-[#0084d1]/20 rounded-xl transition shrink-0">Full Profile →</a>
               </div>
               <p className="text-sm text-slate-600 leading-relaxed mt-4">
-                Specialising in orthopaedic, neurological, geriatric and paediatric rehabilitation, Dr. Neelam Sharma(PT) leads the clinic with modern, evidence-based treatment — and personally trains the team that works under her guidance.
+                Dr. Neelam Sharma(PT) holds a Bachelor of Physiotherapy (BPT) and a Master of Physiotherapy in Neurology (MPT), and has 15 years of clinical experience. She treats orthopaedic, neurological, geriatric and paediatric conditions: assessment first, then a treatment plan using manual therapy, exercise and electrotherapy. As Clinical Director she also trains the clinic's team, and continues to see patients daily.
               </p>
               <div className="flex flex-wrap gap-2 mt-5">
-                {['Manual Therapy', 'Dry Needling', 'Cupping / Hijama', 'Chiropractic', 'Electrotherapy (US, IFT, TENS, Laser)', 'Kinesio Taping'].map((t, i) => (
+                {['Manual Therapy', 'Dry Needling', 'Chiropractic', 'Electrotherapy (US, IFT, TENS, Laser)', 'Kinesio Taping'].map((t, i) => (
                   <span key={i} className="px-3 py-1.5 bg-slate-50 border border-slate-200 text-[11px] font-bold text-slate-600 rounded-full">{t}</span>
                 ))}
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-6">
-                {[{ v: 'B.P.T, M.P.T (Neuro)', l: 'Qualification' }, { v: '5,000+', l: 'Patients Treated' }, { v: '5.0 ★', l: 'Google Rating' }].map((s, i) => (
+                {[{ v: 'B.P.T, M.P.T (Neurology)', l: 'Qualification' }, { v: '15', l: 'Years Experience' }, { v: '5.0 ★', l: 'Google Rating' }].map((s, i) => (
                   <div key={i} className="p-3.5 bg-slate-50 rounded-xl border border-slate-100 text-center">
                     <div className="text-sm font-black text-[#0084d1] font-headline truncate">{s.v}</div>
                     <div className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">{s.l}</div>
@@ -675,7 +673,7 @@ export function AboutTemplate({ page, onBook }) {
                 <a href="/doctor-anamika.html" className="px-4 py-2 text-xs font-bold text-[#0084d1] bg-[#0084d1]/10 hover:bg-[#0084d1]/20 rounded-xl transition shrink-0">Full Profile →</a>
               </div>
               <p className="text-sm text-slate-600 leading-relaxed mt-4">
-                A Bachelor of Physiotherapy graduate from one of Delhi NCR’s leading colleges, Dr. Anamika brings sharp clinical assessment skills and a patient-first approach to every session.
+                Dr. Anamika is a Bachelor of Physiotherapy graduate with an M.P.T (Ortho). She handles orthopaedic and sports rehab cases and keeps her sessions focused on assessment, treatment and measurable progress.
               </p>
               <div className="flex flex-wrap gap-2 mt-5">
                 {['Manual Therapy', 'Physiotherapy Modalities', 'Kinesio Taping', 'Post-Surgical Rehab', 'Sports Injury Care'].map((t, i) => (
@@ -707,6 +705,9 @@ export function AboutTemplate({ page, onBook }) {
         </div>
       </MotionSection>
 
+      {/* ═══ VIDEO GALLERY — admin-managed carousel (About page) ═══ */}
+      <VideoGalleryCarousel />
+
       {/* ═══════════════════════════════════════════════════════
           OUR MISSION — Dark split panel with 3 pillars
       ═══════════════════════════════════════════════════════ */}
@@ -720,7 +721,7 @@ export function AboutTemplate({ page, onBook }) {
               Our Mission
             </div>
             <h2 className="text-3xl sm:text-4xl font-black font-headline tracking-tight leading-tight">
-              Restoring Movement.<br />Restoring Life.
+              Recover faster.<br />Move better.
             </h2>
             <p className="text-sm sm:text-[15px] text-slate-300 leading-relaxed">
               KR Physiotherapy &amp; Rehabilitation Clinic aims to optimise the work and well-being of every patient — so they can return to their chosen lifestyle activities.
@@ -758,7 +759,6 @@ export function AboutTemplate({ page, onBook }) {
       ═══════════════════════════════════════════════════════ */}
       <MotionSection className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge="What We Do"
           title="From Accurate Diagnosis to Full Recovery"
           subtitle="Our patients deserve the absolute best in assessment, diagnosis and treatment — explained in plain language, with a plan that leads to full recovery."
         />
@@ -862,7 +862,7 @@ export function AboutTemplate({ page, onBook }) {
                 { year: '2013', title: 'Clinic Founded', desc: 'Established in Sector 51, Noida with a vision for evidence-based rehab.' },
                 { year: '2016', title: 'Facility Expansion', desc: 'Upgraded to a full-scale rehabilitation centre with dedicated recovery bays.' },
                 { year: '2020', title: 'Home Care Launch', desc: 'Introduced bedside physiotherapy services across Noida.' },
-                { year: '2024', title: '5,000+ Recoveries', desc: 'Crossed 5,000 successful recoveries with 5.0 Google rating.' },
+                { year: '2024', title: '2 Physiotherapists', desc: 'A second physiotherapist joined the clinic.' },
               ].map((m, i) => (
                 <div key={i} className={`relative`}>
                   {/* Dot */}
@@ -976,64 +976,6 @@ export function AboutTemplate({ page, onBook }) {
 
 
       {/* ═══════════════════════════════════════════════════════
-          CREDENTIALS + CLINIC INFO
-      ═══════════════════════════════════════════════════════ */}
-      <MotionSection className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Clinic Info */}
-          <Reveal x={40} className="bg-[#0b1c30] text-white p-7 rounded-2xl space-y-4">
-            <h3 className="text-sm font-bold font-headline uppercase tracking-wider text-slate-300">Clinic Information</h3>
-            <div className="space-y-3 text-sm">
-              <div className="flex items-start gap-3">
-                <span className="material-symbols-outlined text-[#f37021] text-base mt-0.5">location_on</span>
-                <span className="text-slate-300 text-xs leading-relaxed">Kisan Tower, Basement, Main Road, Hosiyarpur, Sector-51, Noida, UP 201301</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="material-symbols-outlined text-[#f37021] text-base mt-0.5">call</span>
-                <div className="text-xs">
-                  <a href="tel:+917668527335" className="font-bold text-white hover:underline block">+91 76685 27335</a>
-                  <a href="tel:+917668527335" className="text-slate-400 hover:underline block">+91 76685 27335</a>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="material-symbols-outlined text-[#f37021] text-base mt-0.5">mail</span>
-                <a href="mailto:info@krphysiotherapy.com" className="text-xs text-slate-300 hover:text-white hover:underline">info@krphysiotherapy.com</a>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="material-symbols-outlined text-[#f37021] text-base mt-0.5">schedule</span>
-                <span className="text-xs text-slate-300">Open 7 days a week<br />8:30am – 8:30pm</span>
-              </div>
-            </div>
-            <button onClick={() => onBook()} className="w-full py-3 bg-gradient-to-r from-[#f37021] to-[#ea580c] hover:from-[#d9570c] hover:to-[#f37021] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition shadow-lg">
-              Book Appointment
-            </button>
-          </Reveal>
-
-          {/* Credentials */}
-          <Reveal x={-40} className="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
-            <h3 className="text-sm font-bold text-[#0b1c30] font-headline uppercase tracking-wider">Clinical Credentials</h3>
-            <div className="space-y-3">
-              {[
-                { icon: 'verified', text: 'MIAP Certified Indian Association of Physiotherapists' },
-                { icon: 'biotech', text: 'Evidence-Based Clinical Rehabilitation Protocols' },
-                { icon: 'electric_bolt', text: 'Advanced Electrotherapy, Ultrasound & Traction' },
-                { icon: 'home_health', text: 'Physiotherapy At-Home Visits Throughout Noida' },
-                { icon: 'star', text: '5.0 Google Rating from 224+ Verified Patients' },
-              ].map((c, i) => (
-                <div key={i} className={`flex items-center gap-3 text-xs text-slate-600 p-2.5 rounded-lg hover:bg-slate-50 transition`}>
-                  <span className="w-8 h-8 rounded-lg bg-[#0084d1]/10 text-[#0084d1] flex items-center justify-center shrink-0">
-                    <span className="material-symbols-outlined text-base">{c.icon}</span>
-                  </span>
-                  {c.text}
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </MotionSection>
-
-
-      {/* ═══════════════════════════════════════════════════════
           FALLBACK PROSE — Only for non-about pages routed here
       ═══════════════════════════════════════════════════════ */}
       {!isAboutPage && page?.content_html && (
@@ -1056,7 +998,7 @@ export function AboutTemplate({ page, onBook }) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
             <div className="lg:col-span-8 space-y-3">
               <h2 className="text-2xl sm:text-3xl font-black font-headline tracking-tight">Experience Relief From Chronic Pain Today</h2>
-              <p className="text-sm text-slate-200 max-w-2xl leading-relaxed">Visit our Sector-51 clinic or request home physiotherapy. Transparent fees, compassionate doctors, zero waiting lines.</p>
+              <p className="text-sm text-slate-200 max-w-2xl leading-relaxed">Visit our Sector-51 clinic or book a home visit. Clear fees, no long waits.</p>
             </div>
             <div className="lg:col-span-4 flex lg:justify-end">
               <button onClick={() => onBook()} className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#f37021] to-[#ea580c] text-white font-bold text-xs uppercase tracking-wider rounded-2xl shadow-xl transition active:scale-95 whitespace-nowrap">
@@ -1068,5 +1010,217 @@ export function AboutTemplate({ page, onBook }) {
       </MotionSection>
 
     </div>
+  );
+}
+
+/* ═══ Video Gallery Carousel (About page) ═══
+   Testimonial-video carousel in a coverflow-style circular queue: 3 portrait
+   frames visible with real spacing between them — the current video in the
+   centre (thumbnail + play button) and the previous/next videos either side
+   with a grey overlay (click to navigate). Sliding/scale transition between
+   videos (Framer Motion). Heading + description come from Site Settings
+   (video_gallery_title / video_gallery_subtitle), editable in the admin panel.
+   Circular queue: Next on the last video wraps to the first, Prev on the
+   first wraps to the last. */
+function VideoGalleryCarousel() {
+  const [videos, setVideos] = React.useState(null); // null = loading
+  const [active, setActive] = React.useState(0);
+  const [playing, setPlaying] = React.useState(false); // centre video: thumbnail+play button until clicked
+  const [heading, setHeading] = React.useState({ title: 'Patient Stories', subtitle: 'Hear directly from our patients about their treatment and recovery at our clinic.' });
+  const videoRefs = React.useRef({});
+
+  React.useEffect(() => {
+    let cancelled = false;
+    fetch('/api/videos')
+      .then(r => r.json())
+      .then(d => { if (!cancelled) setVideos(d.success ? (d.data || []) : []); })
+      .catch(() => { if (!cancelled) setVideos([]); });
+    // Editable heading/description from Site Settings (public API returns a key→value map)
+    fetch('/api/site-settings')
+      .then(r => r.json())
+      .then(d => {
+        if (cancelled || !d.success) return;
+        const map = d.data || {};
+        setHeading({
+          title: map.video_gallery_title || 'Patient Stories',
+          subtitle: map.video_gallery_subtitle || 'Hear directly from our patients about their treatment and recovery at our clinic.'
+        });
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, []);
+
+  if (!videos || videos.length === 0) return null;
+
+  const count = videos.length;
+  const leftIdx = (active - 1 + count) % count;   // wraps to last
+  const rightIdx = (active + 1) % count;          // wraps to first
+
+  const goTo = (idx) => {
+    if (idx === active) return;
+    const el = videoRefs.current[active];
+    if (el && el.pause) { try { el.pause(); } catch (e) {} }
+    setActive(idx);
+    setPlaying(false); // back to thumbnail + play button on the new centre video
+  };
+
+  const isEmbed = (url) => url && !/\.(mp4|webm|mov|m4v|ogv)(\?|$)/i.test(url);
+  const youtubeEmbed = (url) => {
+    const m = url.match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([\w-]{6,})/);
+    return m ? `https://www.youtube.com/embed/${m[1]}` : url;
+  };
+
+  // ── Side frame: thumbnail + grey overlay, unplayable, click to navigate ──
+  const SideCard = ({ v, idx, side }) => (
+    <motion.button
+      type="button"
+      onClick={() => goTo(idx)}
+      aria-label={`Show ${v.title || `video ${idx + 1}`}`}
+      layout
+      initial={{ opacity: 0, scale: 0.92 }}
+      animate={{ opacity: 1, scale: 0.85 }}
+      exit={{ opacity: 0, scale: 0.92 }}
+      transition={{ duration: 0.45, ease: EASE }}
+      whileHover={{ scale: 0.9 }}
+      className={`relative shrink-0 rounded-3xl overflow-hidden border border-slate-200 shadow-md bg-[#0b1c30] cursor-pointer
+        hidden sm:block w-36 md:w-44 lg:w-52 focus:outline-none`}
+      style={{ aspectRatio: '9 / 16' }}
+    >
+      {v.thumbnail_url ? (
+        <img src={v.thumbnail_url} alt="" className="absolute inset-0 w-full h-full object-cover" />
+      ) : (
+        <div className="absolute inset-0 flex items-center justify-center text-slate-500">
+          <span className="material-symbols-outlined text-3xl">smart_display</span>
+        </div>
+      )}
+      {/* grey overlay — inactive videos */}
+      <div className="absolute inset-0 bg-slate-600/60"></div>
+      {/* small play affordance on side cards */}
+      <span className="absolute inset-0 flex items-center justify-center">
+        <PlayButton size="sm" pulse={false} />
+      </span>
+    </motion.button>
+  );
+
+  // ── Centre frame: the active video, no overlay, playable ──
+  const v = videos[active];
+  return (
+    <MotionSection className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <SectionHeader
+        title={heading.title}
+        subtitle={heading.subtitle}
+      />
+      <div className="flex flex-col items-center">
+        {/* Real spacing between the three cards (no overlap) */}
+        <div className="relative w-full flex items-center justify-center gap-5 md:gap-8">
+          {/* left neighbour (previous video in the circular queue) */}
+          {count > 1 && <SideCard v={videos[leftIdx]} idx={leftIdx} side="left" />}
+
+          {/* centre stage: fixed 9:16 frame; landscape videos letterbox inside.
+              AnimatePresence gives a smooth slide+fade when switching videos. */}
+          <div className="relative z-10 w-64 sm:w-72 lg:w-80 shrink-0">
+            <AnimatePresence mode="popLayout" initial={false}>
+              <motion.div
+                key={active}
+                initial={{ opacity: 0, x: 60, scale: 0.94 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                exit={{ opacity: 0, x: -60, scale: 0.94 }}
+                transition={{ duration: 0.45, ease: EASE }}
+                className="relative rounded-3xl overflow-hidden border border-slate-200 shadow-xl bg-[#0b1c30]"
+                style={{ aspectRatio: '9 / 16' }}
+              >
+                {isEmbed(v.video_url) ? (
+                  <>
+                    {playing ? (
+                      <iframe
+                        src={`${youtubeEmbed(v.video_url)}${youtubeEmbed(v.video_url).includes('?') ? '&' : '?'}autoplay=1`}
+                        className="w-full h-full"
+                        style={{ border: 0 }}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        title={v.title || 'Clinic video'}
+                      />
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => setPlaying(true)}
+                        aria-label={`Play ${v.title || 'video'}`}
+                        className="group absolute inset-0 w-full"
+                      >
+                        {v.thumbnail_url && <img src={v.thumbnail_url} alt="" className="absolute inset-0 w-full h-full object-cover" />}
+                        <span className="absolute inset-0 flex items-center justify-center">
+                          <PlayButton size="lg" />
+                        </span>
+                      </button>
+                    )}
+                  </>
+                ) : playing ? (
+                  <video
+                    ref={el => { videoRefs.current[active] = el; }}
+                    className="w-full h-full object-contain bg-black"
+                    controls
+                    autoPlay
+                    preload="auto"
+                    poster={v.thumbnail_url || undefined}
+                    src={v.video_url}
+                    onEnded={() => setPlaying(false)}
+                  />
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setPlaying(true)}
+                    aria-label={`Play ${v.title || 'video'}`}
+                    className="group absolute inset-0 w-full"
+                  >
+                    {v.thumbnail_url ? (
+                      <img src={v.thumbnail_url} alt="" className="absolute inset-0 w-full h-full object-cover" />
+                    ) : (
+                      <span className="absolute inset-0 flex items-center justify-center text-slate-500 bg-black">
+                        <span className="material-symbols-outlined text-4xl">smart_display</span>
+                      </span>
+                    )}
+                    <span className="absolute inset-0 flex items-center justify-center">
+                      <PlayButton size="lg" />
+                    </span>
+                  </button>
+                )}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* right neighbour (next video in the circular queue) */}
+          {count > 1 && <SideCard v={videos[rightIdx]} idx={rightIdx} side="right" />}
+
+          {/* Arrows */}
+          {count > 1 && (
+            <>
+              <button onClick={() => goTo(leftIdx)} aria-label="Previous video" className="absolute left-0 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white border border-slate-200 shadow-md flex items-center justify-center text-[#0b1c30] hover:bg-[#0084d1] hover:text-white hover:border-[#0084d1] transition z-20">
+                <span className="material-symbols-outlined">chevron_left</span>
+              </button>
+              <button onClick={() => goTo(rightIdx)} aria-label="Next video" className="absolute right-0 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white border border-slate-200 shadow-md flex items-center justify-center text-[#0b1c30] hover:bg-[#0084d1] hover:text-white hover:border-[#0084d1] transition z-20">
+                <span className="material-symbols-outlined">chevron_right</span>
+              </button>
+            </>
+          )}
+        </div>
+
+        {/* Title + dots */}
+        <div className="mt-4 text-center">
+          {v.title && <p className="text-sm font-bold text-[#0b1c30] font-headline mb-2">{v.title}</p>}
+          {count > 1 && (
+            <div className="flex items-center justify-center gap-2">
+              {videos.map((vid, i) => (
+                <button
+                  key={vid.id || i}
+                  onClick={() => goTo(i)}
+                  aria-label={`Go to video ${i + 1}`}
+                  className={`h-2 rounded-full transition-all ${i === active ? 'w-6 bg-[#0084d1]' : 'w-2 bg-slate-300 hover:bg-slate-400'}`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </MotionSection>
   );
 }

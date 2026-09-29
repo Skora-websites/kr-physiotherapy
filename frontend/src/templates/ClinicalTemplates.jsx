@@ -53,10 +53,9 @@ export function ServicesListTemplate({ onBook }) {
       <div className="bg-gradient-to-b from-slate-50 via-white to-sky-50/30 py-14 border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
-            badge="Specialized Care"
             size="page"
             title="Physiotherapy Services in Noida"
-            subtitle="Eight specialised clinical departments — from musculoskeletal and neurological rehabilitation to sports recovery and home care — delivered by MIAP-certified therapists."
+            subtitle="Eight clinical departments covering muscle and joint care, neurological rehab, sports recovery and home visits, delivered by MIAP-certified therapists."
             align="left"
           />
           <div className="flex flex-wrap items-center gap-3 text-xs font-semibold text-slate-600">
@@ -129,10 +128,9 @@ export function TreatmentsListTemplate({ onBook }) {
       <div className="bg-gradient-to-b from-slate-50 via-white to-sky-50/30 py-14 border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
-            badge="Non-Surgical Pain Relief"
             size="page"
             title="Conditions &amp; Treatments We Treat"
-            subtitle="Evidence-based physiotherapy programmes for back pain, joint injuries, neurological conditions and chronic pain — assessed first, treated second, always without surgery."
+            subtitle="Evidence-based physiotherapy for back pain, joint injuries, neurological conditions and chronic pain. Assessment first, then treatment — without surgery in most cases."
             align="left"
           />
           <div className="flex flex-wrap items-center gap-3 text-xs font-semibold text-slate-600">
@@ -515,7 +513,7 @@ export function TreatmentTemplate({ treatment, onBook }) {
             <div className="mt-7 grid grid-cols-1 sm:grid-cols-3 gap-5">
               {[
                 { icon: 'troubleshoot', title: 'Root-Cause Assessment', desc: 'Posture, movement and strength testing pinpoint the true pain generator.' },
-                { icon: 'handyman', title: 'Hands-On Treatment', desc: 'Mobilisation, dry needling, cupping and modalities to settle pain fast.' },
+                { icon: 'handyman', title: 'Hands-On Treatment', desc: 'Mobilisation, dry needling and modalities to settle pain fast.' },
                 { icon: 'fitness_center', title: 'Strengthen & Prevent', desc: 'Progressive exercises restore function and stop the pain from returning.' },
               ].map((step, i) => (
                 <div key={step.title} className="relative bg-slate-50/80 rounded-2xl border border-slate-100 p-5 pt-6">
@@ -580,7 +578,6 @@ export function DoctorTemplate({ doctor, onBook }) {
       <div className="bg-gradient-to-b from-slate-50 via-white to-sky-50/30 py-14 border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
-            badge="Practitioner Profile"
             title={doctor.name}
             subtitle={doctor.designation}
             align="left"
@@ -640,7 +637,6 @@ export function LocationTemplate({ page, onBook }) {
       <div className="bg-gradient-to-b from-slate-50 via-white to-sky-50/30 py-14 border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
-            badge="Local Sector Healthcare"
             title={page.title}
             subtitle={page.subtitle || 'Expert physiotherapy clinic and home visit care near you in Noida.'}
             align="left"
@@ -710,7 +706,6 @@ export function BlogListTemplate() {
       <div className="bg-gradient-to-b from-slate-50 via-white to-sky-50/30 py-14 border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
-            badge="Clinical Knowledge Hub"
             size="page"
             title="Clinical Insights &amp; Blog Archive"
             subtitle="Physiotherapy guides, posture tips, and pain management articles authored by Dr. Neelam Sharma(PT)."
@@ -898,16 +893,12 @@ export function ContactTemplate({ onBook }) {
       <div className="bg-gradient-to-b from-slate-50 via-white to-sky-50/30 py-12 border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
-            badge="Clinic Connectivity"
             size="page"
             title="Contact &amp; Clinic Location"
-            subtitle="Call for a same-day appointment, send us a message, or simply walk in — the clinic is open 7 days a week in the centre of Sector 51, Noida."
+            subtitle="Call for a same-day appointment, send us a message, or walk in. The clinic is open 7 days a week in Sector 51, Noida."
             align="left"
           />
           <div className="flex flex-wrap items-center gap-3 text-xs font-semibold text-slate-600">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-slate-200">
-              <span className="material-symbols-outlined text-sm text-[#16a34a]">bolt</span> Replies within 2 hours
-            </span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-slate-200">
               <span className="material-symbols-outlined text-sm text-[#0084d1]">schedule</span> Open Mon–Sun · 8:30am–8:30pm
             </span>
@@ -920,33 +911,23 @@ export function ContactTemplate({ onBook }) {
 
       {/* Three ways to reach us */}
       <MotionSection className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Stagger className="grid grid-cols-1 md:grid-cols-3 gap-6" gap={0.1}>
+        <Stagger className="grid grid-cols-1 md:grid-cols-2 gap-6" gap={0.1}>
           {/* Call */}
           <StaggerItem className="bg-white rounded-3xl border border-slate-200/80 shadow-sm p-7 flex flex-col">
             <div className="w-11 h-11 rounded-xl bg-[#0084d1]/10 text-[#0084d1] flex items-center justify-center mb-4">
               <span className="material-symbols-outlined text-xl">call</span>
             </div>
-            <h3 className="text-base font-bold text-[#0b1c30] font-headline">Fastest — Call the Desk</h3>
-            <p className="text-xs text-slate-500 leading-relaxed mt-1.5 mb-5">Same-day slots, home-visit scheduling and fee questions answered instantly during clinic hours.</p>
+            <h3 className="text-base font-bold text-[#0b1c30] font-headline">Call the Clinic</h3>
+            <p className="text-xs text-slate-500 leading-relaxed mt-1.5 mb-5">For same-day slots, home visits and fee questions during clinic hours.</p>
             <div className="mt-auto space-y-2">
               <a href="tel:+917668527335" className="flex items-center justify-between px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl text-sm font-bold text-[#0b1c30] hover:border-[#0084d1] hover:text-[#0084d1] transition">
                 +91 76685 27335
                 <span className="material-symbols-outlined text-sm text-[#f37021]">north_east</span>
               </a>
-            </div>
-          </StaggerItem>
-          {/* Book online */}
-          <StaggerItem className="bg-[#0b1c30] rounded-3xl shadow-lg p-7 flex flex-col text-white">
-            <div className="w-11 h-11 rounded-xl bg-[#f37021]/20 text-[#f37021] flex items-center justify-center mb-4">
-              <span className="material-symbols-outlined text-xl">calendar_month</span>
-            </div>
-            <h3 className="text-base font-bold font-headline">Book an Appointment</h3>
-            <p className="text-xs text-slate-300 leading-relaxed mt-1.5 mb-5">Pick your service, doctor and preferred time online — our desk confirms within 2 hours during clinic time.</p>
-            <div className="mt-auto">
-              <button onClick={() => onBook()} className="w-full py-3.5 bg-gradient-to-r from-[#f37021] to-[#ea580c] hover:from-[#d9570c] hover:to-[#f37021] text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition active:scale-95 flex items-center justify-center gap-2">
-                <span className="material-symbols-outlined text-base">event_available</span>
-                Book Appointment
-              </button>
+              <a href="tel:+918595321652" className="flex items-center justify-between px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl text-sm font-semibold text-[#0b1c30] hover:border-[#0084d1] hover:text-[#0084d1] transition">
+                +91 85953 21652
+                <span className="material-symbols-outlined text-sm text-[#f37021]">north_east</span>
+              </a>
             </div>
           </StaggerItem>
           {/* Home visit */}
@@ -978,12 +959,18 @@ export function ContactTemplate({ onBook }) {
             <h3 className="text-sm font-bold font-headline uppercase tracking-wider text-amber-300">Visit the Clinic</h3>
             <div className="flex items-start gap-3">
               <span className="material-symbols-outlined text-[#f37021] text-base mt-0.5">location_on</span>
-              <span className="text-xs text-slate-300 leading-relaxed">Kisan Tower, Basement, Main Road, Hosiyarpur, Sector-51, Noida, Uttar Pradesh 201301</span>
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=KR+Physiotherapy+%26+Rehabilitation+Clinic,Kisan+Tower,+Main+Road+Hosiyarpur,+Sector+51,+Noida"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-slate-300 leading-relaxed hover:text-white hover:underline"
+              >Kisan Tower, Basement, Main Road, Hosiyarpur, Sector-51, Noida, Uttar Pradesh 201301</a>
             </div>
             <div className="flex items-start gap-3">
               <span className="material-symbols-outlined text-[#f37021] text-base mt-0.5">call</span>
               <div className="text-xs">
                 <a href="tel:+917668527335" className="font-bold text-white hover:underline block">+91 76685 27335</a>
+                <a href="tel:+918595321652" className="text-slate-300 hover:underline block">+91 85953 21652</a>
               </div>
             </div>
             <div className="flex items-start gap-3">
@@ -994,9 +981,6 @@ export function ContactTemplate({ onBook }) {
               <span className="material-symbols-outlined text-[#f37021] text-base mt-0.5">schedule</span>
               <span className="text-xs text-slate-300">Open 7 days a week<br />8:30am – 8:30pm</span>
             </div>
-            <button onClick={() => onBook()} className="w-full py-3.5 bg-gradient-to-r from-[#f37021] to-[#ea580c] hover:from-[#d9570c] hover:to-[#f37021] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition shadow-lg active:scale-95">
-              Book Appointment
-            </button>
           </div>
 
           {/* Map */}
@@ -1021,7 +1005,7 @@ export function ContactTemplate({ onBook }) {
             { icon: 'local_parking', title: 'Free Parking', desc: 'Complimentary on-site parking for patients.' },
             { icon: 'train', title: 'Metro Access', desc: 'Easy reach from Sector-34 Metro station.' },
             { icon: 'account_balance', title: 'ATM & Bank', desc: 'Both inside the same building as the clinic.' },
-            { icon: 'event_available', title: 'Walk-ins Welcome', desc: 'Or book ahead to skip any waiting.' },
+            { icon: 'event_available', title: 'Walk-ins Welcome', desc: 'Appointments recommended but not required.' },
           ].map((f, i) => (
             <div key={i} className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs flex items-start gap-3">
               <div className="w-10 h-10 rounded-lg bg-[#0084d1]/10 text-[#0084d1] flex items-center justify-center shrink-0">
@@ -1047,7 +1031,6 @@ export function LegalTemplate({ page }) {
       <div className="bg-gradient-to-b from-slate-50 via-white to-sky-50/30 py-14 border-b border-slate-200/80">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
-            badge="Clinic Policies"
             title={page.title}
             align="left"
           />

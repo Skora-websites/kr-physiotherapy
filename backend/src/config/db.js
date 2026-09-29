@@ -21,6 +21,7 @@ function loadSeedData() {
       seo: require('../../database/seed-data/seo.json'),
       navigation: require('../../database/seed-data/navigation.json'),
       siteSettings: require('../../database/seed-data/site-settings.json'),
+      videos: require('../../database/seed-data/videos.json'),
       appointments: [],
       contacts: []
     };
@@ -53,6 +54,7 @@ function loadSeedData() {
     seo: read('seo.json'),
     navigation: read('navigation.json'),
     siteSettings: read('site-settings.json'),
+    videos: read('videos.json'),
     appointments: [],
     contacts: []
   };
@@ -118,11 +120,12 @@ function fallbackQuery(sql, params = []) {
     testimonials: 'testimonials',
     doctors: 'doctors',
     appointments: 'appointments',
-    contact_submissions: 'contacts'
+    contact_submissions: 'contacts',
+    video_gallery: 'videos'
   };
 
   // DELETE FROM <table> WHERE id = ?
-  const deleteMatch = normalizedSql.match(/^delete from (services|treatments|blogs|testimonials|doctors|appointments|contact_submissions) where id = \?$/);
+  const deleteMatch = normalizedSql.match(/^delete from (services|treatments|blogs|testimonials|doctors|appointments|contact_submissions|video_gallery) where id = \?$/);
   if (deleteMatch) {
     const arr = data[TABLE_KEYS[deleteMatch[1]]];
     const id = Number(params[0]);
@@ -142,7 +145,7 @@ function fallbackQuery(sql, params = []) {
   }
 
   // UPDATE <table> SET col=?, ... WHERE id = ?  (full row updates)
-  const updateMatch = normalizedSql.match(/^update (services|treatments|blogs|testimonials|doctors) set (.+) where id = \?$/);
+  const updateMatch = normalizedSql.match(/^update (services|treatments|blogs|testimonials|doctors|video_gallery) set (.+) where id = \?$/);
   if (updateMatch) {
     const cols = updateMatch[2].split(',').map(part => part.split('=')[0].trim());
     const arr = data[TABLE_KEYS[updateMatch[1]]];
@@ -153,7 +156,7 @@ function fallbackQuery(sql, params = []) {
   }
 
   // INSERT INTO <table> (cols...) VALUES (?,?,...)
-  const insertMatch = normalizedSql.match(/^insert into (services|treatments|blogs|testimonials|doctors) \(/);
+  const insertMatch = normalizedSql.match(/^insert into (services|treatments|blogs|testimonials|doctors|video_gallery) \(/);
   if (insertMatch) {
     const cols = sql.match(/\(([^)]+)\)/)[1].split(',').map(s => s.trim());
     const newRow = { id: Date.now() };
@@ -275,6 +278,7 @@ function fallbackQuery(sql, params = []) {
 
   // 7. SEO Metadata
   if (normalizedSql.includes('from seo_metadata')) {
+    // Public lookup: SELECT * FROM seo_metadata WHERE path = ? LIMIT 1
     const targetPath = params[0];
     const match = data.seo.find(s => s.path === targetPath);
     if (!match) return [];
@@ -337,6 +341,34 @@ function fallbackQuery(sql, params = []) {
       return [{ count: data.contacts.length }];
     }
     return data.contacts;
+  }
+
+  // 11. Video gallery
+  if (normalizedSql.includes('from video_gallery')) {
+    return [...data.videos]
+      .filter(v => v.status !== 'draft')
+      .sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0) || (a.id || 0) - (b.id || 0));
+  }
+
+  // 12. Admin list-all for SEO metadata (mutation upserts are handled in the
+  // controller directly against data.seo + write-through to seo.json).
+  if (normalizedSql.includes('seo_metadata')) {
+    return data.seo.map(m => ({
+      id: m.id,
+      path: m.path,
+      entity_type: m.entity_type || null,
+      entity_id: m.entity_id ?? null,
+      meta_title: m.title || m.meta_title || '',
+      meta_description: m.description || m.meta_description || '',
+      meta_keywords: m.keywords || m.meta_keywords || '',
+      canonical_url: m.canonical || m.canonical_url || '',
+      robots: m.robots || '',
+      og_title: m.ogTitle || m.og_title || '',
+      og_description: m.ogDesc || m.og_description || '',
+      og_url: m.ogUrl || m.og_url || '',
+      og_image: m.ogImage || m.og_image || '',
+      structured_data_json: Array.isArray(m.structuredData) ? JSON.stringify(m.structuredData) : (m.structured_data_json || null)
+    }));
   }
   if (normalizedSql.startsWith('insert into contact_submissions')) {
     const newId = Date.now();

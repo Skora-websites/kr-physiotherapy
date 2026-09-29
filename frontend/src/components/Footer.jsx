@@ -13,7 +13,7 @@ export default function Footer() {
               </a>
             </div>
             <p className="text-sm text-slate-400 leading-relaxed mb-6">
-              KR Physiotherapy &amp; Rehabilitation Clinic is a premier physiotherapy centre in Noida delivering individualized evidence-based recovery protocols, advanced electrotherapy, manual therapy, and at-home clinical care.
+              KR Physiotherapy &amp; Rehabilitation Clinic is a physiotherapy clinic in Noida offering electrotherapy, manual therapy, exercise-based rehab and home visits.
             </p>
             <div className="flex items-center gap-2 text-xs text-slate-300">
               <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[#0084d1]/20 text-[#0084d1]">
@@ -51,8 +51,6 @@ export default function Footer() {
               <li><a href="/physiotherapy-in-noida-sector-52.html" className="hover:text-[#0084d1] transition">Physiotherapy in Noida Sector 52</a></li>
               <li><a href="/physiotherapy-in-noida-sector-53.html" className="hover:text-[#0084d1] transition">Physiotherapy in Noida Sector 53</a></li>
               <li><a href="/physiotherapy-in-noida-sector-71.html" className="hover:text-[#0084d1] transition">Physiotherapy in Noida Sector 71</a></li>
-              <li><a href="/doctor-neelam-sharma.html" className="hover:text-[#0084d1] transition font-medium text-slate-300">Dr. Neelam Sharma(PT) (Lead Clinician)</a></li>
-              <li><a href="/doctor-anamika.html" className="hover:text-[#0084d1] transition font-medium text-slate-300">Dr. Anamika (Consultant)</a></li>
             </ul>
           </div>
 
@@ -64,11 +62,19 @@ export default function Footer() {
             <div className="space-y-3 text-xs text-slate-300">
               <p className="flex items-start gap-2.5">
                 <span className="material-symbols-outlined text-[#f37021] text-sm mt-0.5">location_on</span>
-                <span>Kisan Tower, Basement, Main Road Hosiyarpur, Sector 51, Noida, Uttar Pradesh 201304</span>
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=KR+Physiotherapy+%26+Rehabilitation+Clinic,Kisan+Tower,+Main+Road+Hosiyarpur,+Sector+51,+Noida"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#f37021] transition"
+                >Kisan Tower, Basement, Main Road Hosiyarpur, Sector 51, Noida, Uttar Pradesh 201304</a>
               </p>
               <p className="flex items-center gap-2.5">
                 <span className="material-symbols-outlined text-[#0084d1] text-sm">call</span>
-                <a href="tel:+917668527335" className="hover:text-[#f37021] font-bold text-white transition">+91 76685 27335</a>
+                <span className="flex flex-col">
+                  <a href="tel:+917668527335" className="hover:text-[#f37021] font-bold text-white transition">+91 76685 27335</a>
+                  <a href="tel:+918595321652" className="hover:text-[#f37021] text-slate-300 transition">+91 85953 21652</a>
+                </span>
               </p>
               <p className="flex items-center gap-2.5">
                 <span className="material-symbols-outlined text-[#f37021] text-sm">mail</span>

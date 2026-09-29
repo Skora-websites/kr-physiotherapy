@@ -184,3 +184,18 @@ CREATE TABLE IF NOT EXISTS contact_submissions (
   status VARCHAR(50) DEFAULT 'New',
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS video_gallery (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(255) DEFAULT '',
+  source_type ENUM('file','link') NOT NULL DEFAULT 'link',
+  video_url VARCHAR(1000) NOT NULL,
+  thumbnail_url VARCHAR(1000) DEFAULT '',
+  orientation ENUM('portrait','landscape') NOT NULL DEFAULT 'portrait',
+  sort_order INT DEFAULT 0,
+  status VARCHAR(50) NOT NULL DEFAULT 'published',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_video_status (status),
+  INDEX idx_video_sort (sort_order)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

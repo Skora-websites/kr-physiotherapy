@@ -3,6 +3,7 @@ const cors = require('cors');
 const path = require('path');
 const apiRoutes = require('./routes/api.routes');
 const adminRoutes = require('./routes/admin.routes');
+const uploadRoutes = require('./routes/upload.routes');
 const errorHandler = require('./middleware/errorHandler');
 const { renderHtmlForPath } = require('./services/ssr.service');
 
@@ -25,6 +26,7 @@ const frontendDist = path.resolve(__dirname, '../../frontend/dist');
 app.use(express.static(frontendDist));
 
 // REST API
+app.use('/api/admin', uploadRoutes);   // file uploads (multipart, own router)
 app.use('/api/admin', adminRoutes);
 app.use('/api', apiRoutes);
 

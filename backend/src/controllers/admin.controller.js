@@ -1,6 +1,79 @@
 const crypto = require('crypto');
+const fs = require('fs');
+const path = require('path');
 const { query, getDbMode, loadSeedData } = require('../config/db');
 const { signAdminToken } = require('../services/token.service');
+
+const SITE_URL = 'https://www.krphysiotherapy.com';
+
+// Map a seed-data SEO row (title/description/keywords/canonical/ogTitle/...)
+// to the snake_case shape used by the seo_metadata table / admin UI.
+function seoRowFromSeed(row) {
+  return {
+    id: row.id,
+    path: row.path,
+    entity_type: row.entity_type || null,
+    entity_id: row.entity_id ?? null,
+    meta_title: row.title || row.meta_title || '',
+    meta_description: row.description || row.meta_description || '',
+    meta_keywords: row.keywords || row.meta_keywords || '',
+    canonical_url: row.canonical || row.canonical_url || '',
+    robots: row.robots || 'INDEX,FOLLOW',
+    og_title: row.ogTitle || row.og_title || '',
+    og_description: row.ogDesc || row.og_description || '',
+    og_url: row.ogUrl || row.og_url || '',
+    og_image: row.ogImage || row.og_image || ''
+  };
+}
+
+// Build a seed-style patch from an admin payload — only keys present in the
+// body are written, so partial upserts (e.g. from the blog editor) never
+// clobber curated OG tags with blanks.
+function seedPatchFrom(body) {
+  const patch = {};
+  const map = {
+    meta_title: 'title',
+    meta_description: 'description',
+    meta_keywords: 'keywords',
+    canonical_url: 'canonical',
+    robots: 'robots',
+    og_title: 'ogTitle',
+    og_description: 'ogDesc',
+    og_url: 'ogUrl',
+    og_image: 'ogImage'
+  };
+  for (const [adminKey, seedKey] of Object.entries(map)) {
+    if (body[adminKey] !== undefined) patch[seedKey] = body[adminKey];
+  }
+  return patch;
+}
+
+function guessEntityType(normPath) {
+  if (/^\/blogs\/index\.htm$/.test(normPath)) return 'blog_index';
+  if (normPath.startsWith('/blogs/')) return 'blog';
+  return 'page';
+}
+
+// Write-through: persist the in-memory seo array back to the seed JSON so
+// fallback-mode admin edits survive a server restart.
+function persistSeedSeo(rows) {
+  try {
+    const file = path.resolve(__dirname, '../../database/seed-data/seo.json');
+    fs.writeFileSync(file, JSON.stringify(rows, null, 2) + '\n', 'utf8');
+  } catch (err) {
+    console.warn('[ADMIN] Could not persist seo.json:', err.message);
+  }
+}
+
+// Same write-through for the video gallery (fallback-mode admin edits survive restarts)
+function persistSeedVideos(rows) {
+  try {
+    const file = path.resolve(__dirname, '../../database/seed-data/videos.json');
+    fs.writeFileSync(file, JSON.stringify(rows, null, 2) + '\n', 'utf8');
+  } catch (err) {
+    console.warn('[ADMIN] Could not persist videos.json:', err.message);
+  }
+}
 
 // Credentials are read per-request from the environment. There is deliberately
 // no hardcoded password fallback: with ADMIN_PASSWORD unset, admin login is
@@ -429,6 +502,138 @@ const AdminController = {
           [setting_key, setting_value, setting_value]
         );
       }
+      res.json({ success: true });
+    } catch (err) { next(err); }
+  },
+
+  // ─── Video Gallery ──────────────────────────────────────────────────
+  async getVideos(req, res, next) {
+    try {
+      const rows = await query('SELECT * FROM video_gallery ORDER BY sort_order ASC, id ASC');
+      res.json({ success: true, data: rows });
+    } catch (err) { next(err); }
+  },
+
+  async createVideo(req, res, next) {
+    try {
+      const { title, source_type, video_url, thumbnail_url, orientation, sort_order, status } = req.body;
+      if (!video_url) return res.status(400).json({ success: false, message: 'video_url is required (upload a file or paste a link)' });
+      const result = await query(
+        'INSERT INTO video_gallery (title, source_type, video_url, thumbnail_url, orientation, sort_order, status) VALUES (?,?,?,?,?,?,?)',
+        [title || '', source_type === 'file' ? 'file' : 'link', video_url, thumbnail_url || '', orientation === 'landscape' ? 'landscape' : 'portrait', parseInt(sort_order, 10) || 0, status === 'draft' ? 'draft' : 'published']
+      );
+      if (getDbMode() !== 'mysql') persistSeedVideos(loadSeedData().videos);
+      res.status(201).json({ success: true, id: result.insertId });
+    } catch (err) { next(err); }
+  },
+
+  async updateVideo(req, res, next) {
+    try {
+      const { title, source_type, video_url, thumbnail_url, orientation, sort_order, status } = req.body;
+      await query(
+        'UPDATE video_gallery SET title=?, source_type=?, video_url=?, thumbnail_url=?, orientation=?, sort_order=?, status=? WHERE id=?',
+        [title || '', source_type === 'file' ? 'file' : 'link', video_url || '', thumbnail_url || '', orientation === 'landscape' ? 'landscape' : 'portrait', parseInt(sort_order, 10) || 0, status === 'draft' ? 'draft' : 'published', req.params.id]
+      );
+      if (getDbMode() !== 'mysql') persistSeedVideos(loadSeedData().videos);
+      res.json({ success: true });
+    } catch (err) { next(err); }
+  },
+
+  async deleteVideo(req, res, next) {
+    try {
+      await query('DELETE FROM video_gallery WHERE id = ?', [req.params.id]);
+      if (getDbMode() !== 'mysql') persistSeedVideos(loadSeedData().videos);
+      res.json({ success: true });
+    } catch (err) { next(err); }
+  },
+
+  // ─── SEO Metadata ───────────────────────────────────────────────────
+  // Rows are keyed by path; the SSR reads them via SeoModel.findByPath() to
+  // build <title>/meta/canonical/OG tags, so edits here go live immediately.
+  // Fallback mode mutates the in-memory seed array and writes through to
+  // backend/database/seed-data/seo.json (edits survive restarts).
+  async getSeoMetadata(req, res, next) {
+    try {
+      const search = (req.query.search || '').toString().trim().toLowerCase();
+
+      if (getDbMode() !== 'mysql') {
+        let rows = loadSeedData().seo.map(seoRowFromSeed);
+        if (search) {
+          rows = rows.filter(r => `${r.path} ${r.meta_title}`.toLowerCase().includes(search));
+        }
+        rows.sort((a, b) => String(a.path).localeCompare(String(b.path)));
+        return res.json({ success: true, data: rows });
+      }
+
+      const rows = search
+        ? await query('SELECT * FROM seo_metadata WHERE LOWER(path) LIKE ? OR LOWER(meta_title) LIKE ? ORDER BY path ASC', [`%${search}%`, `%${search}%`])
+        : await query('SELECT * FROM seo_metadata ORDER BY path ASC');
+      res.json({ success: true, data: rows });
+    } catch (err) { next(err); }
+  },
+
+  // Upsert by path: updates the row if one exists (any path variant — with or
+  // without trailing slash), otherwise creates it. Only fields present in the
+  // body are written.
+  async upsertSeoMetadata(req, res, next) {
+    try {
+      const body = req.body || {};
+      if (!body.path) return res.status(400).json({ success: false, message: 'path is required' });
+      const normPath = body.path.startsWith('/') ? body.path : '/' + body.path;
+      const robots = body.robots || 'INDEX,FOLLOW';
+
+      if (getDbMode() !== 'mysql') {
+        const data = loadSeedData();
+        const bare = normPath.replace(/\/$/, '');
+        let row = data.seo.find(s => s.path === normPath || s.path === bare || s.path === bare + '/');
+        const patch = seedPatchFrom(body);
+        if (row) {
+          Object.assign(row, patch);
+        } else {
+          row = {
+            id: Date.now(),
+            path: normPath,
+            entity_type: body.entity_type || guessEntityType(normPath),
+            entity_id: null,
+            title: '', description: '', keywords: '', canonical: '',
+            robots, ogTitle: '', ogDesc: '', ogUrl: `${SITE_URL}${normPath}`, ogImage: '',
+            structuredData: [],
+            ...patch
+          };
+          if (!row.robots) row.robots = robots;
+          data.seo.push(row);
+        }
+        persistSeedSeo(data.seo);
+        return res.json({ success: true, id: row.id, path: row.path });
+      }
+
+      const existing = await query('SELECT id FROM seo_metadata WHERE path = ? LIMIT 1', [normPath]);
+      if (existing.length) {
+        await query(
+          'UPDATE seo_metadata SET meta_title = COALESCE(?, meta_title), meta_description = COALESCE(?, meta_description), meta_keywords = COALESCE(?, meta_keywords), canonical_url = COALESCE(?, canonical_url), robots = COALESCE(?, robots), og_title = COALESCE(?, og_title), og_description = COALESCE(?, og_description), og_image = COALESCE(?, og_image) WHERE id = ?',
+          [body.meta_title ?? null, body.meta_description ?? null, body.meta_keywords ?? null, body.canonical_url ?? null, body.robots ?? null, body.og_title ?? null, body.og_description ?? null, body.og_image ?? null, existing[0].id]
+        );
+        return res.json({ success: true, id: existing[0].id, path: normPath });
+      }
+      const result = await query(
+        'INSERT INTO seo_metadata (entity_type, path, meta_title, meta_description, meta_keywords, canonical_url, robots, og_title, og_description, og_url, og_image) VALUES (?,?,?,?,?,?,?,?,?,?,?)',
+        [body.entity_type || guessEntityType(normPath), normPath, body.meta_title || '', body.meta_description || '', body.meta_keywords || '', body.canonical_url || '', robots, body.og_title || '', body.og_description || '', `${SITE_URL}${normPath}`, body.og_image || '']
+      );
+      res.status(201).json({ success: true, id: result.insertId, path: normPath });
+    } catch (err) { next(err); }
+  },
+
+  async deleteSeoMetadata(req, res, next) {
+    try {
+      if (getDbMode() !== 'mysql') {
+        const data = loadSeedData();
+        const idx = data.seo.findIndex(s => Number(s.id) === Number(req.params.id));
+        if (idx === -1) return res.status(404).json({ success: false, message: 'SEO entry not found' });
+        data.seo.splice(idx, 1);
+        persistSeedSeo(data.seo);
+        return res.json({ success: true });
+      }
+      await query('DELETE FROM seo_metadata WHERE id = ?', [req.params.id]);
       res.json({ success: true });
     } catch (err) { next(err); }
   }

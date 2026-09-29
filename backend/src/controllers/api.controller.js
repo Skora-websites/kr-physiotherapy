@@ -12,7 +12,7 @@ const {
   ContactModel
 } = require('../models');
 const { validateAppointment, validateContact } = require('../validators/form.validator');
-const { checkDatabase } = require('../config/db');
+const { checkDatabase, query } = require('../config/db');
 
 const ApiController = {
   // GET /api/pages/:path
@@ -166,6 +166,16 @@ const ApiController = {
     try {
       const items = await NavigationModel.getAll();
       res.json({ success: true, data: items });
+    } catch (err) {
+      next(err);
+    }
+  },
+
+  // GET /api/videos — published videos for the About-page carousel, in view order
+  async getVideos(req, res, next) {
+    try {
+      const rows = await query('SELECT * FROM video_gallery ORDER BY sort_order ASC, id ASC');
+      res.json({ success: true, data: rows });
     } catch (err) {
       next(err);
     }
