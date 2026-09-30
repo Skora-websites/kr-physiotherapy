@@ -1,50 +1,38 @@
 [
   {
     "id": 1,
-    "title": "Physiotherapy Gym Tour",
+    "title": "Effective Physiotherapy Treatment Insights & Tips by Dr. Neelam Sharma",
     "source_type": "link",
-    "video_url": "https://www.youtube.com/watch?v=3qag18laU50",
-    "thumbnail_url": "/images/about/clinic-interior.jpg",
+    "video_url": "https://www.instagram.com/reel/DXGzOCBEdPL/embed",
+    "thumbnail_url": "",
     "orientation": "portrait",
     "sort_order": 1,
     "status": "published",
-    "created_at": "2026-09-29T09:43:08.000Z",
-    "updated_at": "2026-09-29T11:23:40.000Z"
+    "created_at": "2026-09-30T10:00:00.000Z",
+    "updated_at": "2026-09-30T10:00:00.000Z"
   },
   {
     "id": 2,
-    "title": "Electrotherapy Session",
+    "title": "Advanced Pain Relief and Rehabilitation Techniques",
     "source_type": "link",
-    "video_url": "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4",
-    "thumbnail_url": "/images/about/electrotherapy.jpg",
+    "video_url": "https://www.instagram.com/reel/DNpxZXiR5km/embed",
+    "thumbnail_url": "",
     "orientation": "portrait",
     "sort_order": 2,
     "status": "published",
-    "created_at": "2026-09-29T09:43:08.000Z",
-    "updated_at": "2026-09-29T09:43:08.000Z"
+    "created_at": "2026-09-30T10:00:00.000Z",
+    "updated_at": "2026-09-30T10:00:00.000Z"
   },
   {
     "id": 3,
-    "title": "Manual Therapy Demo",
+    "title": "Expert Physiotherapy Exercises for Faster Recovery",
     "source_type": "link",
-    "video_url": "https://test-videos.co.uk/vids/jellyfish/mp4/h264/360/Jellyfish_360_10s_1MB.mp4",
-    "thumbnail_url": "/images/about/assessment.jpg",
+    "video_url": "https://www.instagram.com/reel/DR9QB4JEWFU/embed",
+    "thumbnail_url": "",
     "orientation": "portrait",
     "sort_order": 3,
     "status": "published",
-    "created_at": "2026-09-29T09:43:08.000Z",
-    "updated_at": "2026-09-29T09:43:08.000Z"
-  },
-  {
-    "id": 4,
-    "title": "Home Visit Care",
-    "source_type": "link",
-    "video_url": "https://www.youtube.com/watch?v=aqz-KE-bpKQ",
-    "thumbnail_url": "/images/physiotherapy-at-home.jpg",
-    "orientation": "landscape",
-    "sort_order": 4,
-    "status": "published",
-    "created_at": "2026-09-29T09:43:09.000Z",
-    "updated_at": "2026-09-29T09:43:09.000Z"
+    "created_at": "2026-09-30T10:00:00.000Z",
+    "updated_at": "2026-09-30T10:00:00.000Z"
   }
 ]
