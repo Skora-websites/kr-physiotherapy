@@ -92,13 +92,13 @@
   {
     "path": "/privacy-policy.html",
     "title": "Privacy Policy - KR Physiotherapy & Rehabilitation Clinic",
-    "description": "Back Pain Physiotherapist - Best Back Pain and lower back pain Physiotherapy doctors in Noida and nearby area. Book an appointment online or call now.",
+    "description": "How KR Physiotherapy & Rehabilitation Clinic, Noida collects, uses and protects your personal and health information under Indian data protection law.",
     "keywords": "",
     "robots": "INDEX,FOLLOW",
-    "canonical": "back-pain.html",
+    "canonical": "https://www.krphysiotherapy.com/privacy-policy",
     "ogTitle": "",
     "ogDesc": "KR Physiotherapy is an expert in physiotherapy for the prevention, rehabilitation and recovery of orthopaedic, neurological and sports-related conditions. ",
-    "ogUrl": "https://www.krphysiotherapy.com/chronic-pain-physiotherapy.html",
+    "ogUrl": "https://www.krphysiotherapy.com/privacy-policy",
     "ogImage": "http://krphysiotherapy.com/images/favicon.png",
     "structuredData": [
       "{\n \"@context\": \"https://schema.org\",\n \"image\":\"https://www.krphysiotherapy.com/images/logo1.jpg\",\n \"@type\": \"LocalBusiness\",\n \"address\": {\n \"@type\": \"PostalAddress\",\n \"streetAddress\": \"Kisan Tower, Basement, Main Road Hosiyarpur, Sector 51\",\n \"addressLocality\": \"Noida\",\n \"addressRegion\": \"Uttar Pradesh\",\n \"postalCode\": \"201304\",\n \"addressCountry\": \"India\"\n },\n \n \"aggregateRating\": {\n \"@type\": \"AggregateRating\",\n \"ratingValue\": \"5\",\n \"reviewCount\": \"219\"\n },\n \"name\": \"KR Physiotherapy & Rehabilitation Clinic (Physiotherapist, Physiotherapy at Home, Physiotherapy Clinic in Noida)\",\n \"description\": \"KR Physiotherapy is a physiotherapy clinic in Noida, offers physiotherapy services with the help of the best physiotherapist. Our physiotherapy clinic is nearby sector 50 and sector 53 in Noida.\",\n \"openingHours\": [\n\"Monday\t8.30am–8.30pm\",\n\"Tuesday 8.30am–8.30pm\",\n\"Wednesday 8.30am–8.30pm\",\n\"Thursday 8.30am–8.30pm\",\n\"Friday\t8.30am–8.30pm\",\n\"Saturday 8.30am–8.30pm\",\n\"Sunday\t8.30am–8.30pm\"\n ],\n \"priceRange\": \"INR\",\n \n \"telephone\": \" +91 7668527335\",\n \"url\": \"https://www.krphysiotherapy.com/\"\n}"
@@ -110,13 +110,13 @@
   {
     "path": "/terms-and-conditions.html",
     "title": "Terms and Conditions - KR Physiotherapy & Rehabilitation Clinic",
-    "description": "Back Pain Physiotherapist - Best Back Pain and lower back pain Physiotherapy doctors in Noida and nearby area. Book an appointment online or call now.",
+    "description": "Terms and Conditions for using the KR Physiotherapy & Rehabilitation Clinic website and for booking physiotherapy appointments and home visits in Noida.",
     "keywords": "",
     "robots": "INDEX,FOLLOW",
-    "canonical": "back-pain.html",
+    "canonical": "https://www.krphysiotherapy.com/terms-and-conditions",
     "ogTitle": "",
     "ogDesc": "KR Physiotherapy is an expert in physiotherapy for the prevention, rehabilitation and recovery of orthopaedic, neurological and sports-related conditions. ",
-    "ogUrl": "https://www.krphysiotherapy.com/chronic-pain-physiotherapy.html",
+    "ogUrl": "https://www.krphysiotherapy.com/terms-and-conditions",
     "ogImage": "http://krphysiotherapy.com/images/favicon.png",
     "structuredData": [
       "{\n \"@context\": \"https://schema.org\",\n \"image\":\"https://www.krphysiotherapy.com/images/logo1.jpg\",\n \"@type\": \"LocalBusiness\",\n \"address\": {\n \"@type\": \"PostalAddress\",\n \"streetAddress\": \"Kisan Tower, Basement, Main Road Hosiyarpur, Sector 51\",\n \"addressLocality\": \"Noida\",\n \"addressRegion\": \"Uttar Pradesh\",\n \"postalCode\": \"201304\",\n \"addressCountry\": \"India\"\n },\n \n \"aggregateRating\": {\n \"@type\": \"AggregateRating\",\n \"ratingValue\": \"5\",\n \"reviewCount\": \"219\"\n },\n \"name\": \"KR Physiotherapy & Rehabilitation Clinic (Physiotherapist, Physiotherapy at Home, Physiotherapy Clinic in Noida)\",\n \"description\": \"KR Physiotherapy is a physiotherapy clinic in Noida, offers physiotherapy services with the help of the best physiotherapist. Our physiotherapy clinic is nearby sector 50 and sector 53 in Noida.\",\n \"openingHours\": [\n\"Monday\t8.30am–8.30pm\",\n\"Tuesday 8.30am–8.30pm\",\n\"Wednesday 8.30am–8.30pm\",\n\"Thursday 8.30am–8.30pm\",\n\"Friday\t8.30am–8.30pm\",\n\"Saturday 8.30am–8.30pm\",\n\"Sunday\t8.30am–8.30pm\"\n ],\n \"priceRange\": \"INR\",\n \n \"telephone\": \" +91 7668527335\",\n \"url\": \"https://www.krphysiotherapy.com/\"\n}"
@@ -8207,5 +8207,23 @@
     "id": 84,
     "entity_type": "blog",
     "entity_id": 26
+  },
+  {
+    "path": "/physiotherapy-in-noida-sector-51.html",
+    "title": "Physiotherapy in Noida Sector 51 | Main Clinic - KR Physiotherapy",
+    "description": "KR Physiotherapy is the main clinic in Sector 51, Noida. Book physiotherapy for back, knee, sports, neurological and post-operative problems, or book a home visit. Open 7 days, 8:30 AM - 8:30 PM.",
+    "keywords": "physiotherapy in noida sector 51, physiotherapist in sector 51 noida, physiotherapy clinic sector 51 noida, best physiotherapy clinic in noida sector 51, home visit physiotherapy noida sector 51",
+    "robots": "INDEX,FOLLOW",
+    "canonical": "https://www.krphysiotherapy.com/physiotherapy-in-noida-sector-51",
+    "ogTitle": "Physiotherapy in Noida Sector 51 | Main Clinic - KR Physiotherapy",
+    "ogDesc": "Our main clinic in Sector 51, Noida: assessment, manual therapy, electrotherapy and structured rehab. Open 7 days, 8:30 AM - 8:30 PM.",
+    "ogUrl": "https://www.krphysiotherapy.com/physiotherapy-in-noida-sector-51",
+    "ogImage": "https://www.krphysiotherapy.com/images/clinic-gym.jpg",
+    "structuredData": [
+      "{\n \"@context\": \"https://schema.org\",\n \"image\":\"https://www.krphysiotherapy.com/images/logo1.jpg\",\n \"@type\": \"LocalBusiness\",\n \"address\": {\n \"@type\": \"PostalAddress\",\n \"streetAddress\": \"Kisan Tower, Basement, Main Road Hosiyarpur, Sector 51\",\n \"addressLocality\": \"Noida\",\n \"addressRegion\": \"Uttar Pradesh\",\n \"postalCode\": \"201304\",\n \"addressCountry\": \"India\"\n },\n \n \"aggregateRating\": {\n \"@type\": \"AggregateRating\",\n \"ratingValue\": \"5\",\n \"reviewCount\": \"219\"\n },\n \"name\": \"KR Physiotherapy & Rehabilitation Clinic (Physiotherapist, Physiotherapy at Home, Physiotherapy Clinic in Noida)\",\n \"description\": \"KR Physiotherapy is a physiotherapy clinic in Noida, offers physiotherapy services with the help of the best physiotherapist. Our physiotherapy clinic is nearby sector 50 and sector 53 in Noida.\",\n \"openingHours\": [\n\"Monday\t8.30am–8.30pm\",\n\"Tuesday 8.30am–8.30pm\",\n\"Wednesday 8.30am–8.30pm\",\n\"Thursday 8.30am–8.30pm\",\n\"Friday\t8.30am–8.30pm\",\n\"Saturday 8.30am–8.30pm\",\n\"Sunday\t8.30am–8.30pm\"\n ],\n \"priceRange\": \"INR\",\n \n \"telephone\": \" +91 7668527335\",\n \"url\": \"https://www.krphysiotherapy.com/\"\n}"
+    ],
+    "id": 85,
+    "entity_type": "location",
+    "entity_id": 6
   }
 ]

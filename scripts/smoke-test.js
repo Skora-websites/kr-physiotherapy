@@ -2,7 +2,9 @@
 // The service keeps DB retry handles open, so we force-exit when done.
 process.env.NODE_ENV = 'production';
 const { renderHtmlForPath } = require('../backend/src/services/ssr.service');
-const re = /cardi|respiratory|heart|lung|breath|airway|chest|COPD|asthma/i;
+// \b around "heart" so icon names like monitor_heart don't false-positive;
+// real cardio content ("heart disease", "heart failure") still matches.
+const re = /cardi|respiratory|\bheart\b|lung|breath|airway|chest|COPD|asthma/i;
 
 (async () => {
   const paths = [

@@ -106,7 +106,7 @@ export function ServiceCard({ service }) {
 
       <div className="px-6 pb-6 pt-2 border-t border-slate-100 flex items-center justify-between">
         <a
-          href={`/${service.slug}.html`}
+          href={`/${service.slug}`}
           className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0084d1] group-hover:text-[#f37021] group-hover:translate-x-1 transition-all"
         >
           <span>Clinical Protocols</span>
@@ -156,7 +156,7 @@ export function TreatmentCard({ treatment }) {
 
       <div className="px-6 pb-6 pt-2 border-t border-slate-100">
         <a
-          href={`/${treatment.slug}.html`}
+          href={`/${treatment.slug}`}
           className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0084d1] group-hover:text-[#f37021] group-hover:translate-x-1 transition-all"
         >
           <span>View Treatment &amp; Recovery</span>
@@ -244,7 +244,7 @@ export function DoctorCard({ doctor, onBook }) {
         {/* Actions */}
         <div className="flex flex-wrap items-center gap-3 mt-auto pt-4 border-t border-slate-100">
           <a
-            href={`/${doctor.slug}.html`}
+            href={`/${doctor.slug}`}
             className="px-4 py-2.5 text-xs font-bold text-[#0084d1] bg-[#0084d1]/10 hover:bg-[#0084d1]/20 rounded-xl transition"
           >
             Full Clinical Profile

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { SectionHeader, ContactForm, ServiceCard, TreatmentCard, SERVICE_ICONS, TREATMENT_ICONS } from '../components/Cards';
 import { Reveal, Stagger, StaggerItem, MotionButton, MotionSection, useMotionPrefs, EASE } from '../components/motion-primitives';
+import { parseLegalSections, isAlertSection } from '../utils/legalContent';
 
 /** Strip the leading <h2>/<img> that legacy CMS content embeds, leaving clean prose. */
 function cleanClinicalHtml(html = '') {
@@ -203,7 +204,7 @@ export function ServiceTemplate({ service, onBook }) {
       <div className="pt-40 pb-32 text-center space-y-4">
         <span className="material-symbols-outlined text-5xl text-slate-300">medical_services</span>
         <p className="text-sm text-slate-500">Service not found.</p>
-        <a href="/services.html" className="inline-block px-6 py-3 bg-[#0084d1] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow">
+        <a href="/services" className="inline-block px-6 py-3 bg-[#0084d1] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow">
           Browse All Services
         </a>
       </div>
@@ -219,7 +220,7 @@ export function ServiceTemplate({ service, onBook }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div>
             <nav className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-4">
-              <a href="/services.html" className="hover:text-[#0084d1] transition">Services</a>
+              <a href="/services" className="hover:text-[#0084d1] transition">Services</a>
               <span className="material-symbols-outlined text-sm">chevron_right</span>
               <span className="text-[#0084d1]">{service.name}</span>
             </nav>
@@ -351,7 +352,7 @@ export function ServiceTemplate({ service, onBook }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
           <div className="flex items-end justify-between gap-4 mb-7">
             <h2 className="text-xl sm:text-2xl font-black text-[#0b1c30] font-headline">Explore Other Clinical Services</h2>
-            <a href="/services.html" className="text-xs font-bold text-[#0084d1] hover:text-[#f37021] transition shrink-0">View all &rarr;</a>
+            <a href="/services" className="text-xs font-bold text-[#0084d1] hover:text-[#f37021] transition shrink-0">View all &rarr;</a>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {related.map((s) => <ServiceCard key={s.id} service={s} />)}
@@ -384,7 +385,7 @@ export function TreatmentTemplate({ treatment, onBook }) {
       <div className="pt-40 pb-32 text-center space-y-4">
         <span className="material-symbols-outlined text-5xl text-slate-300">healing</span>
         <p className="text-sm text-slate-500">Treatment condition not found.</p>
-        <a href="/treatments.html" className="inline-block px-6 py-3 bg-[#0084d1] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow">
+        <a href="/treatments" className="inline-block px-6 py-3 bg-[#0084d1] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow">
           Browse All Treatments
         </a>
       </div>
@@ -409,7 +410,7 @@ export function TreatmentTemplate({ treatment, onBook }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div>
             <nav className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-4">
-              <a href="/treatments.html" className="hover:text-[#f37021] transition">Treatments</a>
+              <a href="/treatments" className="hover:text-[#f37021] transition">Treatments</a>
               <span className="material-symbols-outlined text-sm">chevron_right</span>
               <span className="text-[#f37021]">{treatment.name}</span>
             </nav>
@@ -553,7 +554,7 @@ export function TreatmentTemplate({ treatment, onBook }) {
               <ul className="space-y-1">
                 {related.map(t => (
                   <li key={t.id}>
-                    <a href={`/${t.slug}.html`} className="group flex items-center justify-between gap-3 py-2 border-b border-slate-50 last:border-0 text-xs font-semibold text-slate-600 hover:text-[#0084d1] transition">
+                    <a href={`/${t.slug}`} className="group flex items-center justify-between gap-3 py-2 border-b border-slate-50 last:border-0 text-xs font-semibold text-slate-600 hover:text-[#0084d1] transition">
                       <span className="truncate">{t.name}</span>
                       <span className="material-symbols-outlined text-sm text-slate-300 group-hover:text-[#0084d1] transition shrink-0">arrow_forward</span>
                     </a>
@@ -837,7 +838,7 @@ export function BlogArticleTemplate({ blog }) {
             <p className="text-xs text-slate-600 leading-relaxed">
               Senior Physiotherapist &amp; Founder of KR Physiotherapy &amp; Rehabilitation Clinic, Noida. With 12+ years of experience, Dr. Sharma specializes in musculoskeletal, neurological, and sports rehabilitation.
             </p>
-            <a href="/doctors/dr-neelam-sharma.html" className="inline-flex items-center gap-1 text-xs font-bold text-[#0084d1] hover:text-[#f37021] transition">
+            <a href="/doctor-neelam-sharma" className="inline-flex items-center gap-1 text-xs font-bold text-[#0084d1] hover:text-[#f37021] transition">
               View Full Profile
               <span className="material-symbols-outlined text-sm">arrow_forward</span>
             </a>
@@ -849,8 +850,7 @@ export function BlogArticleTemplate({ blog }) {
           <div className="space-y-2 text-center sm:text-left">
             <h3 className="text-lg font-black font-headline">Need Expert Physiotherapy Guidance?</h3>
             <p className="text-xs text-slate-300">Book a consultation with Dr. Neelam Sharma(PT) for personalized treatment.</p>
-          </div>
-          <a href="/contact.html" className="shrink-0 px-6 py-3 bg-gradient-to-r from-[#f37021] to-[#ea580c] hover:from-[#d9570c] hover:to-[#f37021] text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition active:scale-95 flex items-center gap-2">
+          </div>            <a href="/contact" className="shrink-0 px-6 py-3 bg-gradient-to-r from-[#f37021] to-[#ea580c] hover:from-[#d9570c] hover:to-[#f37021] text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition active:scale-95 flex items-center gap-2">
             <span className="material-symbols-outlined text-base">event_available</span>
             Book Appointment
           </a>
@@ -1024,23 +1024,132 @@ export function ContactTemplate({ onBook }) {
 }
 
 export function LegalTemplate({ page }) {
+  const { intro, sections } = useMemo(() => parseLegalSections(page && page.content_html), [page]);
+  const [activeId, setActiveId] = useState('');
+
+  // Highlight the section currently in view in the table of contents
+  useEffect(() => {
+    if (!sections.length || typeof IntersectionObserver === 'undefined') return;
+    const targets = sections.map(s => document.getElementById(s.id)).filter(Boolean);
+    if (!targets.length) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter(e => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible[0]) setActiveId(visible[0].target.id);
+      },
+      { rootMargin: '-140px 0px -65% 0px', threshold: 0 }
+    );
+    targets.forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, [sections]);
+
   if (!page) return <div className="pt-32 pb-20 text-center text-sm">Legal document not found.</div>;
 
+  const isPrivacy = page.slug === 'privacy-policy';
+  const lastUpdated = /last updated/i.test(page.subtitle || '') ? page.subtitle : null;
+  const proseCls = 'prose prose-sm prose-slate max-w-none [&_a]:text-[#0084d1] [&_a]:font-semibold [&_a]:no-underline hover:[&_a]:underline [&_strong]:text-[#0b1c30]';
+
+  const tocLink = (s) => `flex items-start gap-2.5 rounded-xl px-3 py-2 text-xs leading-relaxed transition ${activeId === s.id ? 'bg-[#0084d1]/10 text-[#0084d1] font-bold' : 'text-slate-600 hover:bg-slate-50 hover:text-[#0b1c30]'}`;
+
   return (
-    <div className="space-y-12 pb-24 pt-24 sm:pt-28">
+    <div className="pb-24 pt-24 sm:pt-28">
+      {/* Hero */}
       <div className="bg-gradient-to-b from-slate-50 via-white to-sky-50/30 py-14 border-b border-slate-200/80">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            title={page.title}
-            align="left"
-          />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeader badge={isPrivacy ? 'Privacy' : 'Legal'} title={page.title} align="left" />
+          {lastUpdated && (
+            <div className="-mt-6 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-white border border-slate-200 text-slate-500 shadow-xs">
+              <span className="material-symbols-outlined text-sm text-[#0084d1]">history</span>
+              {lastUpdated}
+            </div>
+          )}
         </div>
       </div>
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-          className="prose prose-sm prose-slate max-w-none bg-white p-8 sm:p-12 rounded-3xl border border-slate-200/80 shadow-xs"
-          dangerouslySetInnerHTML={{ __html: page.content_html || '' }}
-        />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 grid grid-cols-1 lg:grid-cols-[17rem_minmax(0,1fr)] gap-10 lg:gap-14">
+        {/* Sticky table of contents (desktop) */}
+        <aside className="hidden lg:block">
+          <div className="sticky top-28 space-y-4">
+            <nav className="bg-white rounded-3xl border border-slate-200/80 shadow-xs p-6">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-[#0b1c30] font-headline">On this page</h3>
+              <div className="mt-4 space-y-1">
+                {sections.map(s => (
+                  <a key={s.id} href={`#${s.id}`} className={tocLink(s)}>
+                    <span className="font-headline tabular-nums shrink-0 w-4">{s.number}</span>
+                    <span>{s.title}</span>
+                  </a>
+                ))}
+              </div>
+            </nav>
+            <div className="bg-[#0b1c30] text-white rounded-3xl p-6">
+              <h3 className="text-sm font-bold font-headline">Questions?</h3>
+              <p className="mt-1.5 text-[11px] text-slate-400 leading-relaxed">
+                We are happy to explain anything in this document.
+              </p>
+              <a href="tel:+917668527335" className="mt-3 block text-lg font-black font-headline hover:text-amber-300 transition">+91 76685 27335</a>
+              <a href="mailto:info@krphysiotherapy.com" className="block text-[11px] text-slate-300 hover:text-[#0084d1] transition">info@krphysiotherapy.com</a>
+            </div>
+          </div>
+        </aside>
+
+        {/* Document body */}
+        <div className="min-w-0 space-y-5">
+          {/* On this page — mobile */}
+          <details className="lg:hidden bg-white rounded-3xl border border-slate-200/80 shadow-xs p-5">
+            <summary className="cursor-pointer text-xs font-bold uppercase tracking-wider text-[#0b1c30] font-headline">
+              On this page ({sections.length} sections)
+            </summary>
+            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-1">
+              {sections.map(s => (
+                <a key={s.id} href={`#${s.id}`} className="flex items-start gap-2.5 rounded-xl px-3 py-2 text-xs leading-relaxed text-slate-600 hover:bg-slate-50 hover:text-[#0b1c30] transition">
+                  <span className="font-headline tabular-nums shrink-0 w-4">{s.number}</span>
+                  <span>{s.title}</span>
+                </a>
+              ))}
+            </div>
+          </details>
+
+          {intro && (
+            <div className={`${proseCls} bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/80 shadow-xs`} dangerouslySetInnerHTML={{ __html: intro }} />
+          )}
+
+          {sections.map(s => {
+            const alert = isAlertSection(s.title);
+            return (
+              <section
+                key={s.id}
+                id={s.id}
+                className={`scroll-mt-28 rounded-3xl border p-6 sm:p-8 shadow-xs ${alert ? 'bg-amber-50/70 border-amber-200' : 'bg-white border-slate-200/80'}`}
+              >
+                <div className="flex items-start gap-3.5">
+                  <span className={`shrink-0 w-9 h-9 rounded-xl flex items-center justify-center text-sm font-black font-headline ${alert ? 'bg-amber-500/15 text-amber-700' : 'bg-[#0084d1]/10 text-[#0084d1]'}`}>
+                    {s.number}
+                  </span>
+                  <h2 className="pt-1.5 text-lg sm:text-xl font-black text-[#0b1c30] font-headline leading-snug">{s.title}</h2>
+                </div>
+                <div className={`${proseCls} mt-4`} dangerouslySetInnerHTML={{ __html: s.body }} />
+              </section>
+            );
+          })}
+
+          {/* Closing CTA */}
+          <div className="rounded-3xl bg-gradient-to-r from-[#0084d1] to-[#0284c7] text-white p-8 sm:p-10">
+            <h3 className="text-xl font-black font-headline">Need something clarified?</h3>
+            <p className="mt-2 text-sm text-white/90 max-w-xl leading-relaxed">
+              Our team is happy to walk you through any part of this document &mdash; call us, email us, or book a consultation at our Sector 51 clinic.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a href="tel:+917668527335" className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#0084d1] text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-slate-50 transition">
+                <span className="material-symbols-outlined text-sm">call</span> Call the clinic
+              </a>
+              <a href="/contact" className="inline-flex items-center gap-2 px-6 py-3 border border-white/40 text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-white/10 transition">
+                <span className="material-symbols-outlined text-sm">calendar_month</span> Book a consultation
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

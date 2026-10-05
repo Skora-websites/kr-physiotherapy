@@ -9,8 +9,14 @@ async function renderHtmlForPath(urlPath) {
     return renderAdminShell();
   }
 
-  // Check SEO metadata
+  // Slug for content lookups, ignoring the .html/.htm suffix (clean URLs)
+  const pathSlug = normalized.replace(/^\//, '').replace(/\.(html|htm)$/, '');
+
+  // Check SEO metadata (SEO rows are keyed by their .html paths)
   let seo = await SeoModel.findByPath(normalized);
+  if (!seo && !normalized.includes('.') && !normalized.endsWith('/')) {
+    seo = await SeoModel.findByPath(normalized + '.html');
+  }
   if (!seo && normalized === '/index.htm') {
     seo = await SeoModel.findByPath('/');
   }
@@ -34,20 +40,25 @@ async function renderHtmlForPath(urlPath) {
     const slug = normalized.replace(/^\//, '').replace('.html', '');
     entityType = 'doctor';
     contentObj = await DoctorModel.findBySlug(slug);
-  } else if (normalized.endsWith('.html')) {
-    const slug = normalized.replace(/^\//, '').replace('.html', '');
-    // Try service
-    contentObj = await ServiceModel.findBySlug(slug);
+  } else {
+    // Try service, then treatment, then static page (both clean and .html paths)
+    contentObj = await ServiceModel.findBySlug(pathSlug);
     if (contentObj) {
       entityType = 'service';
     } else {
       // Try treatment
-      contentObj = await TreatmentModel.findBySlug(slug);
+      contentObj = await TreatmentModel.findBySlug(pathSlug);
       if (contentObj) {
         entityType = 'treatment';
       } else {
-        // Try page
+        // Try page: DB rows store .html paths, so also probe that variant
         contentObj = await PageModel.findByPath(normalized);
+        if (!contentObj && !normalized.includes('.')) {
+          contentObj = await PageModel.findByPath(normalized + '.html');
+        }
+        if (!contentObj) {
+          contentObj = await PageModel.findBySlug(pathSlug);
+        }
         if (contentObj) entityType = 'page';
       }
     }
@@ -173,10 +184,10 @@ async function renderHtmlForPath(urlPath) {
                 </a>
                 <nav class="hidden lg:flex items-center gap-6 text-xs font-bold text-slate-800">
                     <a href="/" class="hover:text-[#0084d1] transition">Home</a>
-                    <a href="/about.html" class="hover:text-[#0084d1] transition">About Us</a>
-                    <a href="/services.html" class="hover:text-[#0084d1] transition">Services</a>
-                    <a href="/treatments.html" class="hover:text-[#0084d1] transition">Treatments</a>
-                    <a href="/doctor-neelam-sharma.html" class="hover:text-[#0084d1] transition">Doctors</a>
+                    <a href="/about" class="hover:text-[#0084d1] transition">About Us</a>
+                    <a href="/services" class="hover:text-[#0084d1] transition">Services</a>
+                    <a href="/treatments" class="hover:text-[#0084d1] transition">Treatments</a>
+                    <a href="/doctor-neelam-sharma" class="hover:text-[#0084d1] transition">Doctors</a>
                     <a href="/blogs/index.htm" class="hover:text-[#0084d1] transition">Blogs</a>
                     <a href="/contact.html" class="hover:text-[#0084d1] transition">Contact</a>
                 </nav>
@@ -184,7 +195,7 @@ async function renderHtmlForPath(urlPath) {
                     <a href="tel:+917668527335" class="hidden sm:flex items-center gap-1.5 text-xs font-bold text-[#0084d1] bg-[#0084d1]/10 px-3.5 py-2 rounded-xl">
                         <span class="material-symbols-outlined text-[17px]">call</span> +91 76685 27335
                     </a>
-                    <a href="/contact.html" class="bg-gradient-to-r from-[#0084d1] to-[#0284c7] hover:from-[#006cb0] hover:to-[#0084d1] text-white px-5 py-2.5 rounded-xl text-xs font-bold transition shadow-sm">
+                    <a href="/contact" class="bg-gradient-to-r from-[#0084d1] to-[#0284c7] hover:from-[#006cb0] hover:to-[#0084d1] text-white px-5 py-2.5 rounded-xl text-xs font-bold transition shadow-sm">
                         Book Consultation
                     </a>
                 </div>
@@ -216,19 +227,20 @@ async function renderHtmlForPath(urlPath) {
                 <div>
                     <h4 class="font-bold text-sm tracking-wider uppercase mb-4 text-slate-200 font-headline">Services</h4>
                     <ul class="space-y-2 text-slate-400">
-                        <li><a href="/musculoskeletal-physiotherapy.html" class="hover:text-[#0084d1]">Musculoskeletal Physiotherapy</a></li>
-                        <li><a href="/neurological-physiotherapy.html" class="hover:text-[#0084d1]">Neurological Rehabilitation</a></li>
-                        <li><a href="/sports-physiotherapy.html" class="hover:text-[#0084d1]">Sports Physiotherapy</a></li>
-                        <li><a href="/physiotherapy-at-home.html" class="hover:text-amber-300 font-semibold text-amber-200">Physiotherapy at Home</a></li>
+                        <li><a href="/musculoskeletal-physiotherapy" class="hover:text-[#0084d1]">Musculoskeletal Physiotherapy</a></li>
+                        <li><a href="/neurological-physiotherapy" class="hover:text-[#0084d1]">Neurological Rehabilitation</a></li>
+                        <li><a href="/sports-physiotherapy" class="hover:text-[#0084d1]">Sports Physiotherapy</a></li>
+                        <li><a href="/physiotherapy-at-home" class="hover:text-amber-300 font-semibold text-amber-200">Physiotherapy at Home</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="font-bold text-sm tracking-wider uppercase mb-4 text-slate-200 font-headline">Sector Clinics</h4>
                     <ul class="space-y-2 text-slate-400">
-                        <li><a href="/physiotherapy-in-noida-sector-34.html" class="hover:text-emerald-400">Noida Sector 34</a></li>
-                        <li><a href="/physiotherapy-in-noida-sector-35.html" class="hover:text-emerald-400">Noida Sector 35</a></li>
-                        <li><a href="/physiotherapy-in-noida-sector-52.html" class="hover:text-emerald-400">Noida Sector 52</a></li>
-                        <li><a href="/physiotherapy-in-noida-sector-53.html" class="hover:text-emerald-400">Noida Sector 53</a></li>
+                        <li class="flex items-center gap-2"><a href="/physiotherapy-in-noida-sector-51" class="hover:text-amber-300 font-semibold text-amber-200">Noida Sector 51</a><span class="text-[9px] font-bold uppercase tracking-wider text-amber-200 bg-amber-400/10 px-1.5 py-0.5 rounded">Main Clinic</span></li>
+                        <li><a href="/physiotherapy-in-noida-sector-34" class="hover:text-emerald-400">Noida Sector 34</a></li>
+                        <li><a href="/physiotherapy-in-noida-sector-35" class="hover:text-emerald-400">Noida Sector 35</a></li>
+                        <li><a href="/physiotherapy-in-noida-sector-52" class="hover:text-emerald-400">Noida Sector 52</a></li>
+                        <li><a href="/physiotherapy-in-noida-sector-53" class="hover:text-emerald-400">Noida Sector 53</a></li>
                     </ul>
                 </div>
                 <div>
@@ -240,11 +252,12 @@ async function renderHtmlForPath(urlPath) {
             </div>
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 pt-8 border-t border-slate-800 text-xs text-slate-500 flex flex-col md:flex-row justify-between">
                 <p>&copy; ${new Date().getFullYear()} KR Physiotherapy &amp; Rehabilitation Clinic. All rights reserved.</p>
-                <div class="flex gap-4 mt-2 md:mt-0">
-                    <a href="/privacy-policy.html" class="hover:text-slate-300">Privacy Policy</a>
-                    <a href="/terms-and-conditions.html" class="hover:text-slate-300">Terms &amp; Conditions</a>
-                    <a href="/contact.html" class="hover:text-slate-300">Contact Us</a>
+                <div class="flex flex-wrap gap-4 mt-2 md:mt-0 items-center">
+                    <a href="/privacy-policy" class="hover:text-slate-300">Privacy Policy</a>
+                    <a href="/terms-and-conditions" class="hover:text-slate-300">Terms &amp; Conditions</a>
+                    <a href="/contact" class="hover:text-slate-300">Contact Us</a>
                     <a href="/admin" class="text-slate-400 hover:text-emerald-400 font-semibold">Staff Admin</a>
+                    <a href="https://skorainfotech.com/" target="_blank" rel="noopener noreferrer" class="hover:text-slate-300">Created by SkoroInfotech</a>
                 </div>
             </div>
         </footer>

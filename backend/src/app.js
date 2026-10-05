@@ -30,6 +30,21 @@ app.use('/api/admin', uploadRoutes);   // file uploads (multipart, own router)
 app.use('/api/admin', adminRoutes);
 app.use('/api', apiRoutes);
 
+// Clean URLs: 301-redirect legacy ".html" URLs to their extension-less form.
+// Registered after static/API routers, so real files and API paths are never touched.
+// (Apache deployments get the same behavior via public/.htaccess.)
+app.use((req, res, next) => {
+  if (req.method !== 'GET' && req.method !== 'HEAD') return next();
+  let target = null;
+  if (req.path === '/index.htm') target = '/';
+  else if (req.path === '/blogs/index.htm') target = '/blogs/';
+  else if (req.path === '/blogs') target = '/blogs/';
+  else if (/\.html$/i.test(req.path)) target = req.path.replace(/\.html$/i, '');
+  if (!target) return next();
+  const q = req.originalUrl.indexOf('?');
+  return res.redirect(301, target + (q >= 0 ? req.originalUrl.slice(q) : ''));
+});
+
 // Server-Side SEO HTML Render Handler for all public site routes
 app.use(async (req, res, next) => {
   if (req.method !== 'GET') return next();

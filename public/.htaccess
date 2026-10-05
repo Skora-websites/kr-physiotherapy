@@ -1,0 +1,32 @@
+# ========================================================
+# KR Physiotherapy — Clean URLs (remove the .html extension)
+# For Apache / LiteSpeed deployments (cPanel, shared hosting, Apache VPS).
+# The Express app (backend/src/app.js) implements the same behavior for
+# Vercel / nginx reverse-proxy deployments.
+# ========================================================
+
+# Prevent MultiViews content negotiation from serving files before our rules
+Options -MultiViews
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+
+# 1) /index.htm → /
+RewriteCond %{THE_REQUEST} \s/index\.htm[\s?] [NC]
+RewriteRule ^ / [R=301,L,NE]
+
+# 2) /blogs/index.htm → /blogs/
+RewriteCond %{THE_REQUEST} \s/blogs/index\.htm[\s?] [NC]
+RewriteRule ^ /blogs/ [R=301,L,NE]
+
+# 3) Direct requests for /page.html → /page (301, preserves query string)
+RewriteCond %{THE_REQUEST} \s/([^\s?]+)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L,NE]
+
+# 4) Internally serve /page from the existing /page.html file
+#    (no redirect — the visitor keeps seeing the clean URL)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L]
+</IfModule>

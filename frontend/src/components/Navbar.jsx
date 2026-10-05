@@ -4,7 +4,7 @@ import { EASE, MotionButton, useMotionPrefs } from './motion-primitives';
 
 const NAV_LINKS = [
   { label: 'Home', href: '/', match: (p) => p === '/' || p === '/index.htm' },
-  { label: 'About Us', href: '/about.html', match: (p) => p.startsWith('/about') },
+  { label: 'About Us', href: '/about', match: (p) => p.startsWith('/about') },
 ];
 
 
@@ -80,7 +80,7 @@ export default function Navbar({ onOpenBooking }) {
             ))}
 
             {/* Services */}
-            <a href="/services.html" className={linkClass(currentPath.startsWith('/services'))}>
+            <a href="/services" className={linkClass(currentPath.startsWith('/services'))}>
               Services
               {currentPath.startsWith('/services') && (
                 <motion.span
@@ -92,7 +92,7 @@ export default function Navbar({ onOpenBooking }) {
             </a>
 
             {/* Treatments */}
-            <a href="/treatments.html" className={linkClass(currentPath.startsWith('/treatments'))}>
+            <a href="/treatments" className={linkClass(currentPath.startsWith('/treatments'))}>
               Treatments
               {currentPath.startsWith('/treatments') && (
                 <motion.span
@@ -117,7 +117,7 @@ export default function Navbar({ onOpenBooking }) {
               )}
             </a>
             <a
-              href="/contact.html"
+              href="/contact"
               className={linkClass(currentPath.startsWith('/contact'))}
             >
               Contact
@@ -199,11 +199,11 @@ export default function Navbar({ onOpenBooking }) {
             >
               {[
                 { label: 'Home', href: '/' },
-                { label: 'About Us', href: '/about.html' },
-                { label: 'Our Services', href: '/services.html' },
-                { label: 'Conditions & Treatments', href: '/treatments.html' },
+                { label: 'About Us', href: '/about' },
+                { label: 'Our Services', href: '/services' },
+                { label: 'Conditions & Treatments', href: '/treatments' },
                 { label: 'Clinical Blogs', href: '/blogs/index.htm' },
-                { label: 'Contact Clinic', href: '/contact.html' },
+                { label: 'Contact Clinic', href: '/contact' },
               ].map((l) => (
                 <motion.a
                   key={l.href}

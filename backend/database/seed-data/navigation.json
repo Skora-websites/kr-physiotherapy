@@ -12,7 +12,7 @@
     "menu_location": "header",
     "parent_id": null,
     "title": "About Us",
-    "url": "/about.html",
+    "url": "/about",
     "sort_order": 2
   },
   {
@@ -20,7 +20,7 @@
     "menu_location": "header",
     "parent_id": null,
     "title": "Services",
-    "url": "/services.html",
+    "url": "/services",
     "sort_order": 3
   },
   {
@@ -28,7 +28,7 @@
     "menu_location": "header",
     "parent_id": 3,
     "title": "Musculoskeletal Physiotherapy",
-    "url": "/musculoskeletal-physiotherapy.html",
+    "url": "/musculoskeletal-physiotherapy",
     "sort_order": 1
   },
   {
@@ -36,7 +36,7 @@
     "menu_location": "header",
     "parent_id": 3,
     "title": "Neurological Physiotherapy",
-    "url": "/neurological-physiotherapy.html",
+    "url": "/neurological-physiotherapy",
     "sort_order": 2
   },
   {
@@ -44,7 +44,7 @@
     "menu_location": "header",
     "parent_id": 3,
     "title": "Sports Physiotherapy",
-    "url": "/sports-physiotherapy.html",
+    "url": "/sports-physiotherapy",
     "sort_order": 4
   },
   {
@@ -52,7 +52,7 @@
     "menu_location": "header",
     "parent_id": 3,
     "title": "Geriatric Physiotherapy",
-    "url": "/geriatric-physiotherapy.html",
+    "url": "/geriatric-physiotherapy",
     "sort_order": 5
   },
   {
@@ -60,7 +60,7 @@
     "menu_location": "header",
     "parent_id": 3,
     "title": "Paediatric Physiotherapy",
-    "url": "/paediatric-physiotherapy.html",
+    "url": "/paediatric-physiotherapy",
     "sort_order": 6
   },
   {
@@ -68,7 +68,7 @@
     "menu_location": "header",
     "parent_id": 3,
     "title": "Physiotherapy For Women’s Health",
-    "url": "/women-health-physiotherapy.html",
+    "url": "/women-health-physiotherapy",
     "sort_order": 7
   },
   {
@@ -76,7 +76,7 @@
     "menu_location": "header",
     "parent_id": 3,
     "title": "Physiotherapy at Home",
-    "url": "/physiotherapy-at-home.html",
+    "url": "/physiotherapy-at-home",
     "sort_order": 8
   },
   {
@@ -84,7 +84,7 @@
     "menu_location": "header",
     "parent_id": null,
     "title": "Treatments",
-    "url": "/treatments.html",
+    "url": "/treatments",
     "sort_order": 4
   },
   {
@@ -92,7 +92,7 @@
     "menu_location": "header",
     "parent_id": 12,
     "title": "Back Pain",
-    "url": "/back-pain.html",
+    "url": "/back-pain",
     "sort_order": 1
   },
   {
@@ -100,7 +100,7 @@
     "menu_location": "header",
     "parent_id": 12,
     "title": "Shoulder Pain",
-    "url": "/shoulder-pain.html",
+    "url": "/shoulder-pain",
     "sort_order": 2
   },
   {
@@ -108,7 +108,7 @@
     "menu_location": "header",
     "parent_id": 12,
     "title": "Knee Pain",
-    "url": "/knee-pain.html",
+    "url": "/knee-pain",
     "sort_order": 3
   },
   {
@@ -116,7 +116,7 @@
     "menu_location": "header",
     "parent_id": 12,
     "title": "Neck Pain",
-    "url": "/neck-pain.html",
+    "url": "/neck-pain",
     "sort_order": 4
   },
   {
@@ -124,7 +124,7 @@
     "menu_location": "header",
     "parent_id": 12,
     "title": "Knee Ligament Injury",
-    "url": "/knee-ligament-injury.html",
+    "url": "/knee-ligament-injury",
     "sort_order": 5
   },
   {
@@ -132,7 +132,7 @@
     "menu_location": "header",
     "parent_id": 12,
     "title": "Cerebral Palsy",
-    "url": "/cerebral-palsy.html",
+    "url": "/cerebral-palsy",
     "sort_order": 7
   },
   {
@@ -140,7 +140,7 @@
     "menu_location": "header",
     "parent_id": 12,
     "title": "Scoliosis",
-    "url": "/scoliosis.html",
+    "url": "/scoliosis",
     "sort_order": 8
   },
   {
@@ -148,7 +148,7 @@
     "menu_location": "header",
     "parent_id": 12,
     "title": "Bell’s Palsy",
-    "url": "/bell-palsy.html",
+    "url": "/bell-palsy",
     "sort_order": 9
   },
   {
@@ -156,7 +156,7 @@
     "menu_location": "header",
     "parent_id": null,
     "title": "Doctors",
-    "url": "/doctor-neelam-sharma.html",
+    "url": "/doctor-neelam-sharma",
     "sort_order": 5
   },
   {
@@ -164,7 +164,7 @@
     "menu_location": "header",
     "parent_id": 22,
     "title": "Dr. Neelam Sharma(PT)",
-    "url": "/doctor-neelam-sharma.html",
+    "url": "/doctor-neelam-sharma",
     "sort_order": 1
   },
   {
@@ -180,7 +180,7 @@
     "menu_location": "header",
     "parent_id": null,
     "title": "Contact",
-    "url": "/contact.html",
+    "url": "/contact",
     "sort_order": 7
   },
   {
@@ -188,7 +188,7 @@
     "menu_location": "footer_quick",
     "parent_id": null,
     "title": "About Us",
-    "url": "/about.html",
+    "url": "/about",
     "sort_order": 1
   },
   {
@@ -196,7 +196,7 @@
     "menu_location": "footer_quick",
     "parent_id": null,
     "title": "Our Services",
-    "url": "/services.html",
+    "url": "/services",
     "sort_order": 2
   },
   {
@@ -204,7 +204,7 @@
     "menu_location": "footer_quick",
     "parent_id": null,
     "title": "Treatments",
-    "url": "/treatments.html",
+    "url": "/treatments",
     "sort_order": 3
   },
   {
@@ -212,7 +212,7 @@
     "menu_location": "footer_quick",
     "parent_id": null,
     "title": "Clinical Team",
-    "url": "/doctor-neelam-sharma.html",
+    "url": "/doctor-neelam-sharma",
     "sort_order": 4
   },
   {
@@ -220,7 +220,7 @@
     "menu_location": "footer_quick",
     "parent_id": null,
     "title": "Contact Us",
-    "url": "/contact.html",
+    "url": "/contact",
     "sort_order": 5
   },
   {
@@ -228,7 +228,7 @@
     "menu_location": "footer_quick",
     "parent_id": null,
     "title": "Privacy Policy",
-    "url": "/privacy-policy.html",
+    "url": "/privacy-policy",
     "sort_order": 6
   },
   {
@@ -236,47 +236,55 @@
     "menu_location": "footer_quick",
     "parent_id": null,
     "title": "Terms & Conditions",
-    "url": "/terms-and-conditions.html",
+    "url": "/terms-and-conditions",
     "sort_order": 7
+  },
+  {
+    "id": 39,
+    "menu_location": "footer_locations",
+    "parent_id": null,
+    "title": "Physiotherapy in Sector 51 (Main Clinic)",
+    "url": "/physiotherapy-in-noida-sector-51",
+    "sort_order": 1
   },
   {
     "id": 34,
     "menu_location": "footer_locations",
     "parent_id": null,
     "title": "Physiotherapy in Sector 34",
-    "url": "/physiotherapy-in-noida-sector-34.html",
-    "sort_order": 1
+    "url": "/physiotherapy-in-noida-sector-34",
+    "sort_order": 2
   },
   {
     "id": 35,
     "menu_location": "footer_locations",
     "parent_id": null,
     "title": "Physiotherapy in Sector 35",
-    "url": "/physiotherapy-in-noida-sector-35.html",
-    "sort_order": 2
+    "url": "/physiotherapy-in-noida-sector-35",
+    "sort_order": 3
   },
   {
     "id": 36,
     "menu_location": "footer_locations",
     "parent_id": null,
     "title": "Physiotherapy in Sector 52",
-    "url": "/physiotherapy-in-noida-sector-52.html",
-    "sort_order": 3
+    "url": "/physiotherapy-in-noida-sector-52",
+    "sort_order": 4
   },
   {
     "id": 37,
     "menu_location": "footer_locations",
     "parent_id": null,
     "title": "Physiotherapy in Sector 53",
-    "url": "/physiotherapy-in-noida-sector-53.html",
-    "sort_order": 4
+    "url": "/physiotherapy-in-noida-sector-53",
+    "sort_order": 5
   },
   {
     "id": 38,
     "menu_location": "footer_locations",
     "parent_id": null,
     "title": "Physiotherapy in Sector 71",
-    "url": "/physiotherapy-in-noida-sector-71.html",
-    "sort_order": 5
+    "url": "/physiotherapy-in-noida-sector-71",
+    "sort_order": 6
   }
 ]

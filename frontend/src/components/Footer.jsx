@@ -29,14 +29,14 @@ export default function Footer() {
               Clinical Services
             </h3>
             <ul className="space-y-2 text-xs text-slate-400">
-              <li><a href="/musculoskeletal-physiotherapy.html" className="hover:text-[#0084d1] transition">Musculoskeletal Physiotherapy</a></li>
-              <li><a href="/neurological-physiotherapy.html" className="hover:text-[#0084d1] transition">Neurological Rehabilitation</a></li>
-              <li><a href="/chronic-pain-physiotherapy.html" className="hover:text-[#0084d1] transition">Chronic Pain Relief</a></li>
-              <li><a href="/sports-physiotherapy.html" className="hover:text-[#0084d1] transition">Sports Injury Management</a></li>
-              <li><a href="/geriatric-physiotherapy.html" className="hover:text-[#0084d1] transition">Geriatric Rehabilitation</a></li>
-              <li><a href="/paediatric-physiotherapy.html" className="hover:text-[#0084d1] transition">Paediatric Physiotherapy</a></li>
-              <li><a href="/women-health-physiotherapy.html" className="hover:text-[#0084d1] transition">Women's Health Physiotherapy</a></li>
-              <li><a href="/physiotherapy-at-home.html" className="hover:text-[#f37021] font-semibold text-amber-300 transition">Physiotherapy at Home</a></li>
+              <li><a href="/musculoskeletal-physiotherapy" className="hover:text-[#0084d1] transition">Musculoskeletal Physiotherapy</a></li>
+              <li><a href="/neurological-physiotherapy" className="hover:text-[#0084d1] transition">Neurological Rehabilitation</a></li>
+              <li><a href="/chronic-pain-physiotherapy" className="hover:text-[#0084d1] transition">Chronic Pain Relief</a></li>
+              <li><a href="/sports-physiotherapy" className="hover:text-[#0084d1] transition">Sports Injury Management</a></li>
+              <li><a href="/geriatric-physiotherapy" className="hover:text-[#0084d1] transition">Geriatric Rehabilitation</a></li>
+              <li><a href="/paediatric-physiotherapy" className="hover:text-[#0084d1] transition">Paediatric Physiotherapy</a></li>
+              <li><a href="/women-health-physiotherapy" className="hover:text-[#0084d1] transition">Women's Health Physiotherapy</a></li>
+              <li><a href="/physiotherapy-at-home" className="hover:text-[#f37021] font-semibold text-amber-300 transition">Physiotherapy at Home</a></li>
             </ul>
           </div>
 
@@ -46,11 +46,15 @@ export default function Footer() {
               Sector Clinics &amp; Coverage
             </h3>
             <ul className="space-y-2 text-xs text-slate-400">
-              <li><a href="/physiotherapy-in-noida-sector-34.html" className="hover:text-emerald-400 transition">Physiotherapy in Noida Sector 34</a></li>
-              <li><a href="/physiotherapy-in-noida-sector-35.html" className="hover:text-[#0084d1] transition">Physiotherapy in Noida Sector 35</a></li>
-              <li><a href="/physiotherapy-in-noida-sector-52.html" className="hover:text-[#0084d1] transition">Physiotherapy in Noida Sector 52</a></li>
-              <li><a href="/physiotherapy-in-noida-sector-53.html" className="hover:text-[#0084d1] transition">Physiotherapy in Noida Sector 53</a></li>
-              <li><a href="/physiotherapy-in-noida-sector-71.html" className="hover:text-[#0084d1] transition">Physiotherapy in Noida Sector 71</a></li>
+              <li className="flex items-center gap-2">
+                <a href="/physiotherapy-in-noida-sector-51" className="hover:text-[#f37021] font-semibold text-amber-300 transition">Physiotherapy in Noida Sector 51</a>
+                <span className="text-[9px] font-bold uppercase tracking-wider text-amber-300 bg-amber-400/10 px-1.5 py-0.5 rounded">Main Clinic</span>
+              </li>
+              <li><a href="/physiotherapy-in-noida-sector-34" className="hover:text-emerald-400 transition">Physiotherapy in Noida Sector 34</a></li>
+              <li><a href="/physiotherapy-in-noida-sector-35" className="hover:text-[#0084d1] transition">Physiotherapy in Noida Sector 35</a></li>
+              <li><a href="/physiotherapy-in-noida-sector-52" className="hover:text-[#0084d1] transition">Physiotherapy in Noida Sector 52</a></li>
+              <li><a href="/physiotherapy-in-noida-sector-53" className="hover:text-[#0084d1] transition">Physiotherapy in Noida Sector 53</a></li>
+              <li><a href="/physiotherapy-in-noida-sector-71" className="hover:text-[#0084d1] transition">Physiotherapy in Noida Sector 71</a></li>
             </ul>
           </div>
 
@@ -91,10 +95,11 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-slate-800/80 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-4">
           <p>&copy; {new Date().getFullYear()} KR Physiotherapy &amp; Rehabilitation Clinic. All rights reserved.</p>
-          <div className="flex items-center gap-6">
-            <a href="/privacy-policy.html" className="hover:text-slate-300 transition">Privacy Policy</a>
-            <a href="/terms-and-conditions.html" className="hover:text-slate-300 transition">Terms &amp; Conditions</a>
-            <a href="/contact.html" className="hover:text-slate-300 transition">Contact Us</a>
+          <div className="flex flex-wrap items-center gap-6">
+            <a href="/privacy-policy" className="hover:text-slate-300 transition">Privacy Policy</a>
+            <a href="/terms-and-conditions" className="hover:text-slate-300 transition">Terms &amp; Conditions</a>
+            <a href="/contact" className="hover:text-slate-300 transition">Contact Us</a>
+            <a href="https://skorainfotech.com/" target="_blank" rel="noopener noreferrer" className="hover:text-slate-300 transition">Created by SkoroInfotech</a>
           </div>
         </div>
       </div>

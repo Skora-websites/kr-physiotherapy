@@ -37,28 +37,30 @@ export default function App() {
 
   const renderCurrentTemplate = () => {
     const { entityType, content } = initialData;
+    // Clean URLs: match routes with or without the .html suffix
+    const path = currentPath.replace(/\.html$/, '');
 
     if (currentPath === '/' || currentPath === '/index.htm') {
       return <HomeTemplate onBook={handleOpenBooking} />;
     }
 
-    if (currentPath === '/about.html') {
+    if (path === '/about') {
       return <AboutTemplate page={content} onBook={handleOpenBooking} />;
     }
 
-    if (currentPath === '/services.html') {
+    if (path === '/services') {
       return <ServicesListTemplate onBook={handleOpenBooking} />;
     }
 
-    if (currentPath === '/treatments.html') {
+    if (path === '/treatments') {
       return <TreatmentsListTemplate onBook={handleOpenBooking} />;
     }
 
-    if (currentPath === '/contact.html') {
+    if (path === '/contact') {
       return <ContactTemplate onBook={handleOpenBooking} />;
     }
 
-    if (currentPath === '/privacy-policy.html' || currentPath === '/terms-and-conditions.html') {
+    if (path === '/privacy-policy' || path === '/terms-and-conditions') {
       return <LegalTemplate page={content} />;
     }
 
@@ -78,11 +80,11 @@ export default function App() {
       return <LocationTemplate page={content} onBook={handleOpenBooking} />;
     }
 
-    if (entityType === 'service' || currentPath.includes('physiotherapy')) {
+    if (entityType === 'service' || path.includes('physiotherapy')) {
       return <ServiceTemplate service={content} onBook={handleOpenBooking} />;
     }
 
-    if (entityType === 'treatment' || currentPath.includes('-pain') || currentPath.includes('therapy') || currentPath.includes('palsy') || currentPath.includes('scoliosis')) {
+    if (entityType === 'treatment' || path.includes('-pain') || path.includes('therapy') || path.includes('palsy') || path.includes('scoliosis')) {
       return <TreatmentTemplate treatment={content} onBook={handleOpenBooking} />;
     }
 

@@ -65,7 +65,7 @@ export function HomeTemplate({ onBook }) {
                   <span>Book Consultation</span>
                 </MotionButton>
                 <a
-                  href="/physiotherapy-at-home.html"
+                  href="/physiotherapy-at-home"
                   className="px-7 py-4 bg-white/90 hover:bg-white text-[#0b1c30] hover:text-[#0084d1] border border-slate-200 text-xs font-bold uppercase tracking-wider rounded-2xl shadow-xs hover:shadow-md transition flex items-center gap-2"
                 >
                   <span className="material-symbols-outlined text-lg text-[#f37021]">home_health</span>
@@ -169,7 +169,7 @@ export function HomeTemplate({ onBook }) {
           title="Comprehensive Clinical Physiotherapy"
           subtitle="Engineered protocols across sports, neuro, orthopaedic and post-surgical rehabilitation."
           ctaText="View All 8 Clinical Services"
-          ctaLink="/services.html"
+          ctaLink="/services"
         />
         <Stagger gap={0.08} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.slice(0, 4).map((s) => (
@@ -220,7 +220,7 @@ export function HomeTemplate({ onBook }) {
           title="Non-Surgical Pain Management"
           subtitle="Effective treatment for severe musculoskeletal disorders and chronic acute pain syndromes."
           ctaText="Explore All Conditions"
-          ctaLink="/treatments.html"
+          ctaLink="/treatments"
         />
         <Stagger gap={0.08} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {treatments.slice(0, 3).map((t) => (
@@ -423,7 +423,7 @@ export function AboutTemplate({ page, onBook }) {
                   <span className="material-symbols-outlined text-sm">calendar_month</span>
                   Consult Our Specialists
                 </MotionButton>
-                <a href="/physiotherapy-at-home.html" className="px-7 py-3.5 bg-white border border-slate-200 text-[#0b1c30] text-xs font-bold uppercase tracking-wider rounded-xl hover:border-[#0084d1] hover:text-[#0084d1] transition flex items-center gap-2">
+                <a href="/physiotherapy-at-home" className="px-7 py-3.5 bg-white border border-slate-200 text-[#0b1c30] text-xs font-bold uppercase tracking-wider rounded-xl hover:border-[#0084d1] hover:text-[#0084d1] transition flex items-center gap-2">
                   <span className="material-symbols-outlined text-sm text-[#f37021]">home_health</span>
                   Request Home Visit
                 </a>
@@ -637,7 +637,7 @@ export function AboutTemplate({ page, onBook }) {
                   <h3 className="text-2xl font-black text-[#0b1c30] font-headline">Dr. Neelam Sharma(PT)</h3>
                   <p className="text-xs text-slate-500 font-semibold mt-0.5">Senior Consultant Physiotherapist &amp; Clinical Director</p>
                 </div>
-                <a href="/doctor-neelam-sharma.html" className="px-4 py-2 text-xs font-bold text-[#0084d1] bg-[#0084d1]/10 hover:bg-[#0084d1]/20 rounded-xl transition shrink-0">Full Profile →</a>
+                <a href="/doctor-neelam-sharma" className="px-4 py-2 text-xs font-bold text-[#0084d1] bg-[#0084d1]/10 hover:bg-[#0084d1]/20 rounded-xl transition shrink-0">Full Profile →</a>
               </div>
               <p className="text-sm text-slate-600 leading-relaxed mt-4">
                 Dr. Neelam Sharma(PT) holds a Bachelor of Physiotherapy (BPT) and a Master of Physiotherapy in Neurology (MPT), and has 15 years of clinical experience. She treats orthopaedic, neurological, geriatric and paediatric conditions: assessment first, then a treatment plan using manual therapy, exercise and electrotherapy. As Clinical Director she also trains the clinic's team, and continues to see patients daily.
