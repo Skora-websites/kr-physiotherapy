@@ -40,7 +40,6 @@
 | `/scoliosis.html` | 200 | ✅ | ✅ | ✅ | ✅ | ✅ | 1 scripts |
 | `/bell-palsy.html` | 200 | ✅ | ✅ | ✅ | ✅ | ✅ | 2 scripts |
 | `/doctor-neelam-sharma.html` | 200 | ✅ | ✅ | ✅ | ✅ | ✅ | 2 scripts |
-| `/doctor-anamika.html` | 200 | ✅ | ✅ | ✅ | ✅ | ✅ | 1 scripts |
 | `/physiotherapy-in-noida-sector-34.html` | 200 | ✅ | ✅ | ✅ | ✅ | ✅ | 1 scripts |
 | `/physiotherapy-in-noida-sector-35.html` | 200 | ✅ | ✅ | ✅ | ✅ | ✅ | 1 scripts |
 | `/physiotherapy-in-noida-sector-52.html` | 200 | ✅ | ✅ | ✅ | ✅ | ✅ | 1 scripts |

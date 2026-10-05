@@ -133,8 +133,7 @@ const TREATMENT_FILES = [
 
 // Doctor files
 const DOCTOR_FILES = [
-  'doctor-neelam-sharma.html',
-  'doctor-anamika.html'
+  'doctor-neelam-sharma.html'
 ];
 
 // Location files
@@ -340,7 +339,7 @@ DOCTOR_FILES.forEach((file, idx) => {
   seoInventory.push(seo);
 
   const h1 = $('h1').first().text().trim() || seo.title;
-  let photo = $('img[src*="Dr-"], img[src*="dr-"], img[src*="Neelam"], img[src*="anamika"]').first().attr('src') || '';
+  let photo = $('img[src*="Dr-"], img[src*="dr-"], img[src*="Neelam"]').first().attr('src') || '';
   if (photo && !photo.startsWith('/')) photo = '/' + photo;
 
   // Extract bio paragraphs
@@ -359,7 +358,7 @@ DOCTOR_FILES.forEach((file, idx) => {
     qualification,
     experience_years: experienceYears,
     bio_html: bioHtml.trim(),
-    photo_url: photo || (slug.includes('neelam') ? '/images/Dr-Neelam-Sharma2.jpg' : '/images/Dr-anamika.png'),
+    photo_url: photo || '/images/Dr-Neelam-Sharma2.jpg',
     phone: '+91 8595321652',
     email: 'info@krphysiotherapy.com',
     sort_order: idx + 1,
@@ -634,7 +633,6 @@ const navItems = [
   { id: 21, menu_location: 'header', parent_id: 12, title: 'Bell’s Palsy', url: '/bell-palsy.html', sort_order: 9 },
   { id: 22, menu_location: 'header', parent_id: null, title: 'Doctors', url: '/doctor-neelam-sharma.html', sort_order: 5 },
   { id: 23, menu_location: 'header', parent_id: 22, title: 'Dr. Neelam Sharma', url: '/doctor-neelam-sharma.html', sort_order: 1 },
-  { id: 24, menu_location: 'header', parent_id: 22, title: 'Dr. Anamika', url: '/doctor-anamika.html', sort_order: 2 },
   { id: 25, menu_location: 'header', parent_id: null, title: 'Blogs', url: '/blogs/index.htm', sort_order: 6 },
   { id: 26, menu_location: 'header', parent_id: null, title: 'Contact', url: '/contact.html', sort_order: 7 },
   // Footer menu
@@ -686,7 +684,7 @@ const reportMd = `# Source Audit & Migration Inventory Report
 - **Core Standard Pages:** ${inventory.pages.length} (\`index.htm\`, \`about.html\`, \`services.html\`, \`treatments.html\`, \`contact.html\`, \`privacy-policy.html\`, \`terms-and-conditions.html\`)
 - **Clinical Services:** ${seedServices.length}
 - **Treatments & Conditions:** ${seedTreatments.length}
-- **Doctor Profiles:** ${seedDoctors.length} (\`Dr. Neelam Sharma\`, \`Dr. Anamika\`)
+- **Doctor Profiles:** ${seedDoctors.length} (\`Dr. Neelam Sharma\`)
 - **Sector / Location Landing Pages:** ${inventory.locations.length} (Sectors 34, 35, 52, 53, 71)
 - **Clinical Blog Posts:** ${seedBlogs.length}
 - **Blog Archive & Category Pages:** ${inventory.blogArchives.length}
@@ -708,7 +706,7 @@ ${routeManifest.map(r => `- **${r.url}** (${r.type} -> ${r.template} template)`)
 
 ## 4. Assets & Images
 - **Total Images Migrated:** ${inventory.images.length}
-- **Doctor Photos Preserved:** \`Dr-Neelam-Sharma2.jpg\`, \`Dr-anamika.png\`
+- **Doctor Photos Preserved:** \`Dr-Neelam-Sharma2.jpg\`
 - **Brand Logo Preserved:** \`logo1.jpg\`, \`logo1.png\`
 `;
 

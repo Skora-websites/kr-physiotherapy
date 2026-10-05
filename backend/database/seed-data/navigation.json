@@ -168,14 +168,6 @@
     "sort_order": 1
   },
   {
-    "id": 24,
-    "menu_location": "header",
-    "parent_id": 22,
-    "title": "Dr. Anamika",
-    "url": "/doctor-anamika.html",
-    "sort_order": 2
-  },
-  {
     "id": 25,
     "menu_location": "header",
     "parent_id": null,

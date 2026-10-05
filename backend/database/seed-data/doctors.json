@@ -12,19 +12,5 @@
     "email": "info@krphysiotherapy.com",
     "sort_order": 1,
     "status": "published"
-  },
-  {
-    "id": 2,
-    "slug": "doctor-anamika",
-    "name": "Doctor Anamika",
-    "designation": "Consultant Physiotherapist",
-    "qualification": "B.P.T, M.P.T (Ortho), MIAP",
-    "experience_years": 8,
-    "bio_html": "<h3 class=\"icon-default\"><a href=\"doctor-anamika.html\"> Dr. Anamika</a></h3>\n <h5 class=\"icon-primary\"><strong>BPT</strong> </h5>\n <p>Dr. Anamika done her Bachelor of Physiotherapy from one of the best college of Delhi NCR. Dr\n Anamika have great knowledge about Manual therapy, Physiotherapy Modalities, Tapping.</p>",
-    "photo_url": "/images/Dr-anamika.png",
-    "phone": "+91 7668527335",
-    "email": "info@krphysiotherapy.com",
-    "sort_order": 2,
-    "status": "published"
   }
 ]

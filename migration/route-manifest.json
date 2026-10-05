@@ -175,13 +175,6 @@
     "entitySlug": "doctor-neelam-sharma"
   },
   {
-    "sourcePath": "doctor-anamika.html",
-    "url": "/doctor-anamika.html",
-    "type": "doctor",
-    "template": "doctor",
-    "entitySlug": "doctor-anamika"
-  },
-  {
     "sourcePath": "physiotherapy-in-noida-sector-34.html",
     "url": "/physiotherapy-in-noida-sector-34.html",
     "type": "location",

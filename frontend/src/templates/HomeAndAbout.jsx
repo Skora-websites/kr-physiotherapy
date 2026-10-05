@@ -80,7 +80,7 @@ export function HomeTemplate({ onBook }) {
                   <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">Years Experience</div>
                 </div>
                 <div className="p-3 bg-white/70 backdrop-blur-sm rounded-xl border border-slate-100">
-                  <div className="text-2xl sm:text-3xl font-black text-[#0084d1] font-headline">2</div>
+                  <div className="text-2xl sm:text-3xl font-black text-[#0084d1] font-headline">1</div>
                   <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">Physiotherapists</div>
                 </div>
                 <div className="p-3 bg-white/70 backdrop-blur-sm rounded-xl border border-slate-100">
@@ -481,7 +481,7 @@ export function AboutTemplate({ page, onBook }) {
           {[
             { val: '15', label: 'Years Experience', icon: 'history', color: 'text-[#0084d1]', bg: 'bg-[#0084d1]/10' },
             { val: '5.0 ★', label: 'Google Rating', icon: 'star', color: 'text-[#f37021]', bg: 'bg-[#f37021]/10' },
-            { val: '2', label: 'Physiotherapists', icon: 'groups', color: 'text-[#16a34a]', bg: 'bg-[#16a34a]/10' },
+            { val: '1', label: 'Physiotherapists', icon: 'groups', color: 'text-[#16a34a]', bg: 'bg-[#16a34a]/10' },
             { val: '7 Days', label: 'Open Every Day', icon: 'calendar_month', color: 'text-[#7c3aed]', bg: 'bg-[#7c3aed]/10' },
           ].map((s, i) => (
             <div key={i} className={`bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs flex items-center gap-4 hover:shadow-md transition-shadow`}>
@@ -612,12 +612,12 @@ export function AboutTemplate({ page, onBook }) {
 
 
       {/* ═════════════════════════════════════════════════════
-          MEET THE TEAM — Dedicated section for each doctor
+          MEET THE TEAM — Senior physiotherapist profile
       ═════════════════════════════════════════════════════ */}
       <MotionSection className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          title="Meet Our Physiotherapists"
-          subtitle="Our two physiotherapists diagnose the problem first, explain it plainly, and treat it with hands-on care."
+          title="Meet Our Senior Physiotherapist"
+          subtitle="Our physiotherapist diagnoses the problem first, explains it plainly, and treats it with hands-on care."
         />
         <div className="space-y-10">
           {/* ── Dr. Neelam Sharma(PT) ── */}
@@ -658,47 +658,6 @@ export function AboutTemplate({ page, onBook }) {
               <div className="mt-auto pt-6 flex flex-wrap items-center gap-3">
                 <button onClick={() => onBook('Dr. Neelam Sharma(PT)')} className="px-6 py-3 bg-gradient-to-r from-[#0084d1] to-[#0284c7] hover:from-[#006cb0] hover:to-[#0084d1] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-md transition active:scale-95 flex items-center gap-1.5"><span className="material-symbols-outlined text-sm">calendar_month</span> Book with Dr. Neelam</button>
                 <a href="tel:+917668527335" className="px-5 py-3 bg-white border border-slate-200 text-xs font-bold text-[#0b1c30] rounded-xl hover:border-[#0084d1] hover:text-[#0084d1] transition flex items-center gap-1.5"><span className="material-symbols-outlined text-sm text-[#f37021]">call</span> +91 76685 27335</a>
-              </div>
-            </div>
-          </div>
-          {/* ── Dr. Anamika ── */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 bg-white rounded-3xl border border-slate-200/80 shadow-[0_10px_30px_rgba(11,28,48,0.05)] overflow-hidden">
-            {/* Profile (text-first, mirrored layout) */}
-            <div className="lg:col-span-8 p-7 sm:p-9 flex flex-col order-2 lg:order-1">
-              <div className="flex flex-wrap items-start justify-between gap-3">
-                <div>
-                  <h3 className="text-2xl font-black text-[#0b1c30] font-headline">Dr. Anamika</h3>
-                  <p className="text-xs text-slate-500 font-semibold mt-0.5">Consultant Physiotherapist — Orthopaedic &amp; Sports Rehab</p>
-                </div>
-                <a href="/doctor-anamika.html" className="px-4 py-2 text-xs font-bold text-[#0084d1] bg-[#0084d1]/10 hover:bg-[#0084d1]/20 rounded-xl transition shrink-0">Full Profile →</a>
-              </div>
-              <p className="text-sm text-slate-600 leading-relaxed mt-4">
-                Dr. Anamika is a Bachelor of Physiotherapy graduate with an M.P.T (Ortho). She handles orthopaedic and sports rehab cases and keeps her sessions focused on assessment, treatment and measurable progress.
-              </p>
-              <div className="flex flex-wrap gap-2 mt-5">
-                {['Manual Therapy', 'Physiotherapy Modalities', 'Kinesio Taping', 'Post-Surgical Rehab', 'Sports Injury Care'].map((t, i) => (
-                  <span key={i} className="px-3 py-1.5 bg-slate-50 border border-slate-200 text-[11px] font-bold text-slate-600 rounded-full">{t}</span>
-                ))}
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-6">
-                {[{ v: 'B.P.T', l: 'Qualification' }, { v: '8+', l: 'Years Experience' }, { v: 'M.P.T (Ortho)', l: 'Specialisation' }].map((s, i) => (
-                  <div key={i} className="p-3.5 bg-slate-50 rounded-xl border border-slate-100 text-center">
-                    <div className="text-sm font-black text-[#f37021] font-headline truncate">{s.v}</div>
-                    <div className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">{s.l}</div>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-auto pt-6 flex flex-wrap items-center gap-3">
-                <button onClick={() => onBook('Dr. Anamika')} className="px-6 py-3 bg-gradient-to-r from-[#f37021] to-[#ea580c] hover:from-[#d9570c] hover:to-[#f37021] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-md transition active:scale-95 flex items-center gap-1.5"><span className="material-symbols-outlined text-sm">calendar_month</span> Book with Dr. Anamika</button>
-                <a href="tel:+917668527335" className="px-5 py-3 bg-white border border-slate-200 text-xs font-bold text-[#0b1c30] rounded-xl hover:border-[#f37021] hover:text-[#f37021] transition flex items-center gap-1.5"><span className="material-symbols-outlined text-sm text-[#0084d1]">call</span> +91 76685 27335</a>
-              </div>
-            </div>
-            {/* Portrait */}
-            <div className="lg:col-span-4 relative min-h-[320px] order-1 lg:order-2">
-              <img src="/images/Dr-anamika.png" alt="Dr. Anamika, Consultant Physiotherapist" className="absolute inset-0 w-full h-full object-cover object-top" />
-              <div className="absolute top-4 left-4 flex flex-col gap-2">
-                <span className="bg-[#0b1c30]/90 backdrop-blur-md text-amber-300 text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow">8+ Years Experience</span>
-                <span className="bg-white/95 backdrop-blur-md text-[#0084d1] text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow flex items-center gap-1.5"><span className="material-symbols-outlined text-xs">verified</span> MIAP Certified</span>
               </div>
             </div>
           </div>
@@ -862,7 +821,6 @@ export function AboutTemplate({ page, onBook }) {
                 { year: '2013', title: 'Clinic Founded', desc: 'Established in Sector 51, Noida with a vision for evidence-based rehab.' },
                 { year: '2016', title: 'Facility Expansion', desc: 'Upgraded to a full-scale rehabilitation centre with dedicated recovery bays.' },
                 { year: '2020', title: 'Home Care Launch', desc: 'Introduced bedside physiotherapy services across Noida.' },
-                { year: '2024', title: '2 Physiotherapists', desc: 'A second physiotherapist joined the clinic.' },
               ].map((m, i) => (
                 <div key={i} className={`relative`}>
                   {/* Dot */}

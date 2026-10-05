@@ -812,24 +812,6 @@
     "entity_id": 1
   },
   {
-    "path": "/doctor-anamika.html",
-    "title": "Physiotherapy In sciatica - Best Physiotherapy In Sector 51",
-    "description": "KR Physiotherapy services: Musculoskeletal Physiotherapy, Sports Physiotherapy, Geriatric Physiotherapy, Paediatric Physiotherapy, Physiotherapy For Women’s Health, Neurological Physiotherapy. you make a call: 7668527335, 9821611201. ",
-    "keywords": "Physiotherapy In sciatica Noida, Best Physiotherapy In Sector 51",
-    "robots": "INDEX,FOLLOW",
-    "canonical": "doctor-anamika.html",
-    "ogTitle": "Physiotherapy In sciatica - Best Physiotherapy In Sector 51",
-    "ogDesc": "KR Physiotherapy services: Musculoskeletal Physiotherapy, Sports Physiotherapy, Geriatric Physiotherapy, Paediatric Physiotherapy, Physiotherapy For Women’s Health, Neurological Physiotherapy.",
-    "ogUrl": "http://www.krphysiotherapy.com/contact.html",
-    "ogImage": "http://krphysiotherapy.com/images/favicon.png",
-    "structuredData": [
-      "{\n \"@context\": \"https://schema.org\",\n \"image\":\"https://www.krphysiotherapy.com/images/logo1.jpg\",\n \"@type\": \"LocalBusiness\",\n \"address\": {\n \"@type\": \"PostalAddress\",\n \"streetAddress\": \"Kisan Tower, Basement, Main Road Hosiyarpur, Sector 51\",\n \"addressLocality\": \"Noida\",\n \"addressRegion\": \"Uttar Pradesh\",\n \"postalCode\": \"201304\",\n \"addressCountry\": \"India\"\n },\n \n \"aggregateRating\": {\n \"@type\": \"AggregateRating\",\n \"ratingValue\": \"5\",\n \"reviewCount\": \"219\"\n },\n \"name\": \"KR Physiotherapy & Rehabilitation Clinic (Physiotherapist, Physiotherapy at Home, Physiotherapy Clinic in Noida)\",\n \"description\": \"KR Physiotherapy is a physiotherapy clinic in Noida, offers physiotherapy services with the help of the best physiotherapist. Our physiotherapy clinic is nearby sector 50 and sector 53 in Noida.\",\n \"openingHours\": [\n\"Monday\t8.30am–8.30pm\",\n\"Tuesday 8.30am–8.30pm\",\n\"Wednesday 8.30am–8.30pm\",\n\"Thursday 8.30am–8.30pm\",\n\"Friday\t8.30am–8.30pm\",\n\"Saturday 8.30am–8.30pm\",\n\"Sunday\t8.30am–8.30pm\"\n ],\n \"priceRange\": \"INR\",\n \n \"telephone\": \" +91 7668527335\",\n \"url\": \"https://www.krphysiotherapy.com/\"\n}"
-    ],
-    "id": 26,
-    "entity_type": "doctor",
-    "entity_id": 2
-  },
-  {
     "path": "/physiotherapy-in-noida-sector-34.html",
     "title": "Physiotherapy in Noida Sector 34 - KR Physiotherapy",
     "description": "",

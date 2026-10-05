@@ -9,7 +9,7 @@
 - **Core Standard Pages:** 7 (`index.htm`, `about.html`, `services.html`, `treatments.html`, `contact.html`, `privacy-policy.html`, `terms-and-conditions.html`)
 - **Clinical Services:** 8
 - **Treatments & Conditions:** 9
-- **Doctor Profiles:** 2 (`Dr. Neelam Sharma`, `Dr. Anamika`)
+- **Doctor Profiles:** 1 (`Dr. Neelam Sharma`)
 - **Sector / Location Landing Pages:** 5 (Sectors 34, 35, 52, 53, 71)
 - **Clinical Blog Posts:** 26
 - **Blog Archive & Category Pages:** 2
@@ -44,7 +44,6 @@ Every legacy URL with its original `.html` extension or blog path has been inven
 - **/scoliosis.html** (treatment -> treatment template)
 - **/bell-palsy.html** (treatment -> treatment template)
 - **/doctor-neelam-sharma.html** (doctor -> doctor template)
-- **/doctor-anamika.html** (doctor -> doctor template)
 - **/physiotherapy-in-noida-sector-34.html** (location -> location template)
 - **/physiotherapy-in-noida-sector-35.html** (location -> location template)
 - **/physiotherapy-in-noida-sector-52.html** (location -> location template)
@@ -146,5 +145,5 @@ Every legacy URL with its original `.html` extension or blog path has been inven
 
 ## 4. Assets & Images
 - **Total Images Migrated:** 139
-- **Doctor Photos Preserved:** `Dr-Neelam-Sharma2.jpg`, `Dr-anamika.png`
+- **Doctor Photos Preserved:** `Dr-Neelam-Sharma2.jpg`
 - **Brand Logo Preserved:** `logo1.jpg`, `logo1.png`
